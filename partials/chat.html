@@ -42,19 +42,19 @@
 
 
                                         <input type="text" ng-model="pin.name" />
-                                        
-<lx-select ng-model="pin.tipo" placeholder="Lorem Ipsum" choices="tipos" floating-label>
-            <lx-select-selected>
-                {{ $selected.name }} - {{ $selected.age }}
-            </lx-select-selected>
 
-            <lx-select-choices>
-                {{ $choice.email }}
-            </lx-select-choices>
-        </lx-select>                                        
-                                        
-                                        
-                                        
+                                        <!--<lx-select ng-model="pin.tipo" placeholder="Lorem Ipsum" choices="tipos" floating-label>-->
+                                        <!--            <lx-select-selected>-->
+                                        <!--                {{ $selected.name }} - {{ $selected.age }}-->
+                                        <!--            </lx-select-selected>-->
+
+                                        <!--            <lx-select-choices>-->
+                                        <!--                {{ $choice.email }}-->
+                                        <!--            </lx-select-choices>-->
+                                        <!--        </lx-select>                                        -->
+
+
+
 
                                     </p>
                                 </div>
@@ -142,13 +142,11 @@
             <!-- header -->
             <fa-surface fa-index="2">
 
-                <fa-modifier ng-repeat="usuarioOnline in usuariosOnline">
-                    <fa-surface>
-                       <div class="list-content-tile list-content-tile--two-lines">
-                            <strong>{{usuariosOnline.user.fullmane}}</strong>
-                        </div>
-                    </fa-surface>
-                </fa-modifier>
+                <ul>
+                    <li ng-repeat="usuarioContecado in usuariosOnline">
+                        {{usuarioContecado.usuario.name}}
+                    </li>
+                </ul>
 
             </fa-surface>
 

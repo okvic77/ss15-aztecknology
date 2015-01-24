@@ -211,7 +211,7 @@ console.log($element);
 			.state('chat', {
 				url: "/:chat",
 				templateUrl: "/partials/chat.html",
-				controller: ['$scope', 'live', '$firebase', 'user', '$famous', function($scope, live, $firebase, user, $famous) {
+				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', function($scope, live, $firebase, user, $famous, $interval) {
 
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
@@ -254,12 +254,27 @@ console.log($element);
 					// };
 
 
-					live.chat.set({
-						title: live.alias
-					});
 					
-
-					var usersss = live.child('online');
+					
+					
+					var usersss = live.chat.child('online');
+					console.log(user);
+					var me = usersss.child(user.response.uid);
+					
+					
+					var reporter = function reporter() {
+						me.set({
+						online: true,
+						time: Date.now(),
+						usuario: user.main
+					});
+					};
+					
+					var myReporter = $interval(reporter, 10000);
+					reporter();
+					
+					
+					
 					
 					$scope.usuariosOnline = $firebase(usersss).$asArray();
 

@@ -207,7 +207,6 @@ body {
   overflow: hidden;
 }
 .mainboard {
-  background-color: #222;
   overflow: scroll;
   overflow-x: hidden;
 }
