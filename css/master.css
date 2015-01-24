@@ -221,8 +221,10 @@ body {
   bottom: 0;
   left: 0;
 }
-.boxfixed .item {
-  display: inline;
+.item {
+  display: inline-block;
+  padding: 10px;
+  width: 200px;
 }
 .contenedor {
   display: table;

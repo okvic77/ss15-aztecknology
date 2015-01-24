@@ -126,14 +126,14 @@ app.constant('angularMomentConfig', {
 // 				$element.replaceWith(newElement);
 				
 				
-// 				var container = jQuery(newElement);
-// var prueba = container.masonry({
-//   itemSelector: '.item',
-//   containerStyle: null,
-//   columnWidth: 60,
-//   "gutter": 10
-// });
-// console.log(container);
+				var container = jQuery($element.context);
+var prueba = container.masonry({
+  itemSelector: '.item',
+  containerStyle: null,
+  columnWidth: 60,
+  "gutter": 10
+});
+console.log($element);
 
 // $scope.items.$watch(function(item) {
 // 	if (item.event == 'child_added') {
@@ -308,6 +308,12 @@ app.constant('angularMomentConfig', {
 					$scope.remover = function(mensaje) {
 						$scope.mensajes.$remove(mensaje);
 					}
+					
+					
+					$scope.quitarPin = function(pin){
+						$scope.pins.$remove(pin);
+					}
+					
 					$scope.salirSala = function(sala) {
 						$scope.chats.$remove(mensaje);
 					}
