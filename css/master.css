@@ -215,5 +215,20 @@ body {
   overflow: scroll;
   overflow-x: hidden;
 }
+.contenedor {
+  display: table;
+}
+.contenidos {
+  display: table-row;
+}
+.columna1 {
+  display: table-cell;
+}
+.columna2 {
+  display: table-cell;
+}
+.columna3 {
+  display: table-cell;
+}
 
  /*# sourceMappingURL=master.css.map */

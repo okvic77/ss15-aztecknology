@@ -69,12 +69,31 @@ app.directive('masonry', function() {
 //   itemSelector: '.item',
 //   columnWidth: 200
 // });
-	
+	var link = function(scope, element, attrs){
+		
+		//console.log(element);
+		
+var msnry = new Masonry( element[0], {
+  // options...
+  itemSelector: '.item',
+  columnWidth: 200
+});
+		
+		console.log('LINK', scope);
+	}
 	
   return {
   	restrict: 'E',
+  	link: link,
+  	scope: {
+  		items: '=imPins'
+  	},
+  	controller: ['$scope', '$element', '$attrs', '$transclude', function( $scope, $element, $attrs, $transclude ) {
+  		console.log('CONTROLLER', $scope);
+            // Controller code goes here.
+        }]
   	
-    template: 'Name: {{customer.name}} Address: {{customer.address}}'
+    //template: 'Name: {{customer.name}} Address: {{customer.address}}'
   };
 })
 

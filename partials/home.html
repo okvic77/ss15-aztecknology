@@ -1,5 +1,6 @@
-<div style="margin-top:25px;">
-    <div align="center" style="width: 170px; display: inline-block; height: 155px;">
+<div class="contenedor">
+<div class="contenidos">
+    <div align="center" class="columna1" style="width: 170px; display: inline-block; height: 155px;">
         <div ng-hide="user">
             <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
         </div>
@@ -11,22 +12,22 @@
     </div>
 
 
-    <div style="width: calc(100% - 180px); display: inline-block;">
+    <div class="columna2" style="width: calc(100% - 180px); display: inline-block;">
         <div>
             <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" />
-            <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--red btn--raised" lx-ripple>Crear chat <i><b>{{sala}}</b></i>
-            </button>
+            <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--red btn--raised" lx-ripple>Crear chat {{sala}}</button>
         </div>
 
         <div>
-            Mis Salas:
+            Mis Chats:
 
             <ul>
                 <li ng-repeat="chat in chats">
-                    <div style="display:inline-block; width: 200px;">
+                    <div style="width: 200px;">
                         {{chat.title}}
                     </div>
-                    <div style="display:inline-block; width: 200px;">
+                    <div style="width: 200px;">
+                        <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--red btn--raised" lx-ripple>Entrar</button>
                         <button ui-sref="chat({chat:chat.title})">Entrar</button>
                         <button ng-click="salirSala(title)">Salir</button>
                     </div>
