@@ -10,10 +10,10 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx', 'angularMoment']);
 
 
-app.constant('angularMomentConfig', {
-    //preprocess: 'unix', // optional
-    timezone: 'Europe/London' // optional
-});
+	app.constant('angularMomentConfig', {
+		//preprocess: 'unix', // optional
+		timezone: 'Europe/London' // optional
+	});
 
 	app.factory('user', ['$timeout', function($timeout) {
 		var ok = {
@@ -122,50 +122,50 @@ app.constant('angularMomentConfig', {
 
 
 				//var newElement = document.createElement('div');
-// 				var newElement = $('<div class="boxfixed" style="width:100%;" ng-transclude></div>');
-// 				$element.replaceWith(newElement);
-				
-				
+				// 				var newElement = $('<div class="boxfixed" style="width:100%;" ng-transclude></div>');
+				// 				$element.replaceWith(newElement);
+
+
 				var container = jQuery($element.context);
-var prueba = container.masonry({
-  itemSelector: '.item',
-  containerStyle: null,
-  columnWidth: 60,
-  "gutter": 10
-});
-console.log($element);
+				var prueba = container.masonry({
+					itemSelector: '.item',
+					containerStyle: null,
+					columnWidth: 60,
+					"gutter": 10
+				});
+				console.log($element);
 
-// $scope.items.$watch(function(item) {
-// 	if (item.event == 'child_added') {
-		
-// 		var insert = $('<div class="item" style="width:50px;height: 100px;">Esto es una prueba</div>');
-		
-// 		container.append(insert);
-// 		//container.masonry();
-// 		prueba.masonry('appended', insert);
-// 	}
-// });
+				// $scope.items.$watch(function(item) {
+				// 	if (item.event == 'child_added') {
+
+				// 		var insert = $('<div class="item" style="width:50px;height: 100px;">Esto es una prueba</div>');
+
+				// 		container.append(insert);
+				// 		//container.masonry();
+				// 		prueba.masonry('appended', insert);
+				// 	}
+				// });
 
 
-// $timeout(function(){
-// 	$(window).trigger('resize')
-// }, 1000);
+				// $timeout(function(){
+				// 	$(window).trigger('resize')
+				// }, 1000);
 
-				
+
 				// var msnry = new Masonry(newElement, {
 				// 	itemSelector: '.item',
 				// 	columnWidth: 200
 				// });
 
 
-//var container = newElement.querySelector('.masonry');
+				//var container = newElement.querySelector('.masonry');
 
 				// $scope.items.$watch(function(item) {
 
 				// 	if (item.event == 'child_added') {
-						
-						
-						
+
+
+
 				// 		var newPin = document.createElement('div');
 				// 		newPin.className = '.item';
 				// 		msnry.addItems([newPin]);
@@ -215,11 +215,11 @@ console.log($element);
 
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
-$scope.tmp = {};
-				$scope.guardarPin = function(pin){
-					//pin.tipo = $scope.tmp.tipo;
-					$scope.pins.$save(pin);
-				}
+					$scope.tmp = {};
+					$scope.guardarPin = function(pin) {
+						//pin.tipo = $scope.tmp.tipo;
+						$scope.pins.$save(pin);
+					}
 
 					// var EventHandler = $famous['famous/core/EventHandler'];
 					// $scope.eventHandler = new EventHandler();
@@ -248,58 +248,61 @@ $scope.tmp = {};
 					// };
 
 
-					
-					
-					
+
+
+
 					var usersss = live.chat.child('online');
 					var me = usersss.child(user.response.uid);
-					
-				
-				
-	//var cleanOld = function(){
-						//var timestamp = new Date();
-//timestamp.setDate(timestamp.getDate()-2);
-// timestamp -= 1000*15;
-// usersss.endAt(timestamp).on("child_added", function(snap) {
-//   //snap.ref().remove();
-// }); 
+
+					console.log(live.alias);
+
+					live.chat.child('title').set(live.alias);
+
+					//var cleanOld = function(){
+					//var timestamp = new Date();
+					//timestamp.setDate(timestamp.getDate()-2);
+					// timestamp -= 1000*15;
+					// usersss.endAt(timestamp).on("child_added", function(snap) {
+					//   //snap.ref().remove();
+					// }); 
 
 
 					//}				
-				
-					
+
+
 					var reporter = function reporter() {
 						me.set({
-						online: true,
-						time: Date.now(),
-						usuario: user.main
-					});
-					
+							online: true,
+							time: Date.now(),
+							usuario: user.main
+						});
 
-					
+
+
 					};
-					
-					
-				
-					
-					
+
+
+
+
+
 					var myReporter = $interval(reporter, 10000);
 					reporter();
-					
-					
-					
-					
+
+
+
+
 					$scope.usuariosOnline = $firebase(usersss).$asArray();
 
 					$scope.nuevo = {};
 					$scope.mensajes = $firebase(live.menssages).$asArray();
 					//$scope.usuarioActivo = $firebase(live.usuarioActivo).$asArray();
 					$scope.pins = $firebase(live.pins).$asArray();
-
+					console.log($scope.pins);
 					$scope.pin = {
 						nuevo: function() {
 							var insert = {
-								text: 'ok'
+								text: 'ok',
+									tipo: 'prueba'
 							}
 
 							insert.user = user.main;
@@ -308,6 +311,9 @@ $scope.tmp = {};
 					}
 
 
+					$scope.log = function() {
+						console.log('ksdasdsa');
+					}
 
 
 					$scope.enviar = function() {
@@ -324,18 +330,18 @@ $scope.tmp = {};
 					$scope.remover = function(mensaje) {
 						$scope.mensajes.$remove(mensaje);
 					}
-					
-					
-					$scope.quitarPin = function(pin){
+
+
+					$scope.quitarPin = function(pin) {
 						console.log('ELIMINADO');
 						$scope.pins.$remove(pin);
 					}
-					
+
 					$scope.salirSala = function(sala) {
 						$scope.chats.$remove(sala);
 					}
-					
-					$scope.cambiarPin = function(pin){
+
+					$scope.cambiarPin = function(pin) {
 						console.log('Prienas');
 					}
 

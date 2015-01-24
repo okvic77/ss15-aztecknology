@@ -23,24 +23,22 @@
 
                 <div class="boxfixed">
 
-                    <div class="item" ng-repeat="pin in pins">
+                    <div class="item" ng-repeat="pink in pins">
 
                         <div class="card">
 
 
                             <div class="card__content card__content--small">
-                                {{pin.tipo}}
-                                <div ng-switch="pin.tipo">
+                                <div ng-switch="pink.tipo">
                                     <div ng-switch-when="votaciones">
 
-                                       fsfd
                                     </div>
                                     <div ng-switch-when="mensaje"> Aqui sale el mensaje
 
                                     </div>
                                     <div ng-switch-when="cuentas">
                                         agregar concepto precio total total repartido
-                                    </div> d
+                                    </div>
                                     <div ng-switch-when="tarea">
                                         Descripcion
 
@@ -51,15 +49,11 @@ f
 sdfsfs
 
                                     </div>
-
-
-
-
                                 </div>
 
-                                <select sng-model="pin.tipo" sng-model-options="{ getterSetter: true }" sng-change="cambiarPin(pin)" id="">
-                                    <option value="mensaje">Mensaje</option>
+                                <select sng-model="pink.tipo" sng-model-options="{ getterSetter: true }" sng-change="cambiarPin(pink)" id="">
                                     <option value="votaciones">Votacion</option>
+                                    <option value="mensaje">Mensaje</option>
                                     <option value="tarea">Tarea</option>
                                     <option value="cuentas">Cuentas</option>
                                 </select>
@@ -67,8 +61,8 @@ sdfsfs
                             </div>
 
                             <div class="card__actions">
-                                <button class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pin)" lx-ripple>Guardar</button>
-                                <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pin)" lx-ripple>Eliminar</button>
+                                <button class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pink)" lx-ripple>Guardar</button>
+                                <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pink)" lx-ripple>Eliminar</button>
                             </div>
 
 
