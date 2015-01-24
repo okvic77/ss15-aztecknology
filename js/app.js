@@ -71,15 +71,32 @@ app.directive('masonry', function() {
 // });
 	var link = function(scope, element, attrs){
 		
-		//console.log(element);
+		scope.$watch(attrs.items, function(value) {
+     console.log('okas');
+    }, true);
 		
-var msnry = new Masonry( element[0], {
+		
+		var newElement = document.createElement('div');
+		element.replaceWith(newElement);
+		
+var msnry = new Masonry( newElement, {
   // options...
   itemSelector: '.item',
   columnWidth: 200
 });
+
+//msnry.appended( elems );
+angular.forEach(scope.items, function(value, key) {
+  var item = {
+  	dom: document.createElement('div')
+  };
+  
+  console.log(value, key)
+  
+});
 		
-		console.log('LINK', scope);
+		
+		console.log('LINK', newElement, scope);
 	}
 	
   return {
@@ -87,11 +104,11 @@ var msnry = new Masonry( element[0], {
   	link: link,
   	scope: {
   		items: '=imPins'
-  	},
-  	controller: ['$scope', '$element', '$attrs', '$transclude', function( $scope, $element, $attrs, $transclude ) {
-  		console.log('CONTROLLER', $scope);
-            // Controller code goes here.
-        }]
+  	}
+  	// controller: ['$scope', '$element', '$attrs', '$transclude', function( $scope, $element, $attrs, $transclude ) {
+  	// 	console.log('CONTROLLER', $scope);
+   //         // Controller code goes here.
+   //     }]
   	
     //template: 'Name: {{customer.name}} Address: {{customer.address}}'
   };

@@ -221,14 +221,11 @@ body {
 .contenidos {
   display: table-row;
 }
-.columna1 {
-  display: table-cell;
-}
-.columna2 {
-  display: table-cell;
-}
+.columna1,
+.columna2,
 .columna3 {
   display: table-cell;
+  min-height: 155px;
 }
 
  /*# sourceMappingURL=master.css.map */
