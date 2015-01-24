@@ -200,5 +200,19 @@ body {
   border: solid 1px #aaa;
   background-color: #d13f19;
 }
+#chatView {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.message {
+  overflow: hidden;
+}
+.boxchat {
+  background-color: #222;
+  overflow: hidden;
+}
 
  /*# sourceMappingURL=master.css.map */
