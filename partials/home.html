@@ -1,10 +1,13 @@
 Este es el inicio
-
-
+<button ng-click="login()">Entrar con Facebook</button>
+{{response}}
 <a href="/hola" ng-disable="true" ui-sref="chat({chat:sala})">Ir a la sala {{sala}}</a>
 
 
 <input type="text" ng-model="sala"/>
 
 
-{{chats}}
+<ul>
+    <li ng-repeat="chat in chats">{{chat.title}}
+    <button ui-sref="chat({chat:chat.title})">Entrar</button></li>
+</ul>

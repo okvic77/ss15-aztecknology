@@ -18,6 +18,21 @@ var myMessageRef = myFirebaseRef.child('messages');
       templateUrl: "/partials/home.html",
       controller: ['$scope', '$firebase', function($scope, $firebase){
       	$scope.chats = $firebase(myChatsRef).$asArray();
+      	
+      	
+      	$scope.login = function(){
+      		myFirebaseRef.authWithOAuthPopup("facebook", function(error, authData) {
+			  if (error) {
+			    console.log("Login Failed!", error);
+			    $scope.response = error;
+			  } else {
+			  	$scope.response = authData;
+			    console.log("Authenticated successfully with payload:", authData);
+			  }
+			});
+      	}
+      	
+      	
       }]
     })
     .state('chat', {
