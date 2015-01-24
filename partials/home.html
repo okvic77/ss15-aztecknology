@@ -1,23 +1,28 @@
-Este es el inicio
-<button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
-
-<p ng-show="user">
-
-    <div align="center">
-        <img src="" ng-src="{{user.image}}" alt=""><br>
-        {{user.name}}
+<div style="margin-top:20px;">
+    <div align="center" style="width: 150px; display: inline-block;">
+        <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
+        <div ng-show="user">
+            <img src="" ng-src="{{user.image}}" alt="">
+            <br>{{user.name}}
+        </div>
     </div>
 
-</p>
 
-<a href="/hola" ng-disable="true" ui-sref="chat({chat:sala})">Ir a la sala {{sala}}</a>
+    <div style="width: calc(100% - 160px); display: inline-block;">
+        <div>
+            <input type="text" ng-model="sala" placeholder="Nombre de la sala a crear" />
+            <a href="/hola" ng-disable="true" ui-sref="chat({chat:sala})">Crear la sala <i><b>{{sala}}</b></i></a>
+            <button class="btn btn--m btn--red btn--raised" lx-ripple>Button</button>
+        </div>
 
+        <div>
+            Mis Salas:
 
-<input type="text" ng-model="sala" /><input type="button" ng-disable="true" onclick="window.location='chat({chat:sala})';" />
-
-
-<ul>
-    <li ng-repeat="chat in chats">{{chat.title}}
-        <button ui-sref="chat({chat:chat.title})">Entrar</button>
-    </li>
-</ul>
+            <ul>
+                <li ng-repeat="chat in chats">{{chat.title}}
+                    <button ui-sref="chat({chat:chat.title})">Entrar</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
