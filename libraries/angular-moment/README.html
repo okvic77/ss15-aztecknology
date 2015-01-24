@@ -1,0 +1,96 @@
+<h1 id="angular-moment">angular-moment</h1>
+<p>AngularJS directive and filters for <a href="http://www.momentjs.com">Moment.JS</a>.</p>
+<p>Copyright (C) 2013, 2014, 2015, Uri Shaked <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#117;&#114;&#x69;&#x40;&#117;&#114;&#105;&#115;&#x68;&#x2e;&#x6f;&#x72;&#103;">&#117;&#114;&#x69;&#x40;&#117;&#114;&#105;&#115;&#x68;&#x2e;&#x6f;&#x72;&#103;</a></p>
+<p><a href="https://travis-ci.org/urish/angular-moment"><img src="https://travis-ci.org/urish/angular-moment.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/urish/angular-moment"><img src="https://coveralls.io/repos/urish/angular-moment/badge.png" alt="Coverage Status"></a></p>
+<h2 id="installation">Installation</h2>
+<p>You can choose your preferred method of installation:</p>
+<ul>
+<li>Through bower: <code>bower install angular-moment --save</code></li>
+<li>Through npm: <code>npm install angular-moment --save</code></li>
+<li>Through NuGet: <code>Install-Package angular-moment</code></li>
+<li>From a CDN: <a href="https://cdn.jsdelivr.net/angular.moment/0.9.0/angular-moment.min.js">jsDelivr</a> or <a href="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js">CDNJS</a></li>
+<li>Download from github: <a href="https://raw.github.com/urish/angular-moment/master/angular-moment.min.js">angular-moment.min.js</a></li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>Include both moment.js and angular-moment.js in your application.</p>
+<pre><code class="lang-html">&lt;script src=&quot;components/moment/moment.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;components/angular-moment/angular-moment.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Add the module <code>angularMoment</code> as a dependency to your app module:</p>
+<pre><code class="lang-js">var myapp = angular.module(&#39;myapp&#39;, [&#39;angularMoment&#39;]);
+</code></pre>
+<p>If you need internationalization support, load specified moment.js locale file first:</p>
+<pre><code class="lang-html">&lt;script src=&quot;components/moment/locale/de.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Then call the <code>amMoment.changeLocale()</code> method (e.g. inside your app&#39;s run() callback):</p>
+<pre><code class="lang-js">myapp.run(function(amMoment) {
+    amMoment.changeLocale(&#39;de&#39;);
+});
+</code></pre>
+<h3 id="configuration">Configuration</h3>
+<p>Parameter <code>preprocess</code>(e.g: <code>unix</code>, <code>utc</code>) would pre-execute before. </p>
+<pre><code class="lang-js">angular.module(&#39;myapp&#39;).constant(&#39;angularMomentConfig&#39;, {
+    preprocess: &#39;unix&#39;, // optional
+    timezone: &#39;Europe/London&#39; // optional
+});
+</code></pre>
+<h3 id="timeago-directive">Timeago directive</h3>
+<p>Use am-time-ago directive to format your relative timestamps. For example:</p>
+<pre><code class="lang-html">&lt;span am-time-ago=&quot;message.time&quot;&gt;&lt;/span&gt;
+&lt;span am-time-ago=&quot;message.time&quot; am-preprocess=&quot;unix&quot;&gt;&lt;/span&gt;
+</code></pre>
+<p>angular-moment will dynamically update the span to indicate how much time
+passed since the message was created. So, if you controller contains the following
+code:</p>
+<pre><code class="lang-js">$scope.message = {
+   text: &#39;hello world!&#39;,
+   time: new Date()
+};
+</code></pre>
+<p>The user will initially see &quot;a few seconds ago&quot;, and about a minute
+after the span will automatically update with the text &quot;a minute ago&quot;,
+etc.</p>
+<h3 id="amdateformat-filter">amDateFormat filter</h3>
+<p>Format dates using moment.js format() method. Example:</p>
+<pre><code class="lang-html">&lt;span&gt;{{message.time | amDateFormat:&#39;dddd, MMMM Do YYYY, h:mm:ss a&#39;}}&lt;/span&gt;
+</code></pre>
+<p>This snippet will format the given time as &quot;Monday, October 7th 2013, 12:36:29 am&quot;.</p>
+<p>For more information about Moment.JS formatting options, see the
+<a href="http://momentjs.com/docs/#/displaying/format/">docs for the format() function</a>.</p>
+<h3 id="amcalendar-filter">amCalendar filter</h3>
+<p>Format dates using moment.js calendar() method. Example:</p>
+<pre><code class="lang-html">&lt;span&gt;{{message.time | amCalendar}}&lt;/span&gt;
+</code></pre>
+<p>This snippet will format the given time as e.g. &quot;Today 2:30 AM&quot; or &quot;Last Monday 2:30 AM&quot; etc..</p>
+<p>For more information about Moment.JS calendar time format, see the
+<a href="http://momentjs.com/docs/#/displaying/calendar-time/">docs for the calendar() function</a>.</p>
+<h3 id="time-zone-support">Time zone support</h3>
+<p>The <code>amDateFormat</code> and <code>amCalendar</code> filters can be configured to display dates aligned
+to a specific timezone. You can configure the timezone using the following syntax:</p>
+<pre><code class="lang-js">angular.module(&#39;myapp&#39;).constant(&#39;angularMomentConfig&#39;, {
+    timezone: &#39;Name of Timezone&#39; // e.g. &#39;Europe/London&#39;
+});
+</code></pre>
+<p>Remember to include <code>moment-timezone.js</code> in your project, otherwise the custom timezone
+functionality will not be available. You will also need to include a timezone data file that
+you can create using the <a href="http://momentjs.com/timezone/data/">Timezone Data Builder</a>
+or simply download from <a href="https://rawgithub.com/qw4n7y/7282780/raw/6ae3b334b295f93047e8f3ad300db6bc4387e235/moment-timezone-data.js">here</a>.</p>
+<h2 id="license">License</h2>
+<p>Released under the terms of MIT License:</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&#39;Software&#39;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>

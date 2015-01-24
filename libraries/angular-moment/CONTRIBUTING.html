@@ -1,0 +1,56 @@
+<h1 id="contributing-guide">Contributing Guide</h1>
+<p>Contributing to <code>angular-moment</code> is fairly easy. This document shows you how to
+get the project, run all provided tests and generate a production ready build.</p>
+<p>It also covers provided grunt tasks, that help you developing on <code>angular-moment</code>.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>To make sure, that the following instructions work, please install the following dependencies
+on you machine:</p>
+<ul>
+<li>Node.js</li>
+<li>npm</li>
+<li>Git</li>
+</ul>
+<p>If you install node through the binary installation file, <strong>npm</strong> will be already there.
+When <strong>npm</strong> is installed, use it to install the needed npm packages:</p>
+<p><code>npm install -g grunt-cli bower</code></p>
+<h2 id="installation">Installation</h2>
+<p>To get the source of <code>angular-moment</code> clone the git repository via:</p>
+<p><code>git clone https://github.com/urish/angular-moment</code></p>
+<p>This will clone the complete source to your local machine. Navigate to the project folder
+and install all needed dependencies via <strong>npm</strong>:</p>
+<p><code>npm install</code></p>
+<p>Then install all the needed client-side dependencies via <strong>bower</strong>:</p>
+<p><code>bower install</code></p>
+<p><code>angular-moment</code> is now installed and ready to be built.</p>
+<h2 id="building">Building</h2>
+<p><code>angular-moment</code> comes with a few <strong>grunt tasks</strong> which help you to automate
+the development process. The following grunt tasks are provided:</p>
+<h4 id="grunt-test">grunt test</h4>
+<p><code>grunt test</code> executes (as you might thought) the unit tests, which are located
+in <code>tests.js</code>. The task uses the <strong>karma</strong> test runner to executes the tests with
+the <strong>jasmine testing framework</strong>. This task also checks the coding using <strong>jshint</strong>.</p>
+<h4 id="grunt-build">grunt build</h4>
+<p><code>grunt build</code> updates the minified version of the code (angular-moment.min.js). It also
+checks the code using <strong>jshint</strong>.</p>
+<h2 id="contributing-submitting-changes">Contributing/Submitting changes</h2>
+<ul>
+<li>Checkout a new branch based on <code>master</code> and name it to what you intend to do:<ul>
+<li>Example:<pre><code>$ git checkout -b BRANCH_NAME
+</code></pre></li>
+<li>Use one branch per fix/feature</li>
+</ul>
+</li>
+<li>Make your changes<ul>
+<li>Make sure to provide a spec for unit tests (in <code>tests.js</code>)</li>
+<li>Run your tests with <code>grunt test</code></li>
+<li>When all tests pass, everything&#39;s fine</li>
+</ul>
+</li>
+<li>Commit your changes<ul>
+<li>Please provide a git message which explains what you&#39;ve done</li>
+<li>Commit to the forked repository</li>
+</ul>
+</li>
+<li>Make a pull request</li>
+</ul>
+<p>If you follow these instructions, your PR will land pretty safety in the main repo!</p>

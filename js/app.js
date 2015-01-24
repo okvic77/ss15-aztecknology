@@ -7,7 +7,13 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 (function($) {
 
 
-	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx']);
+	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx', 'angularMoment']);
+
+
+app.constant('angularMomentConfig', {
+    //preprocess: 'unix', // optional
+    timezone: 'Europe/London' // optional
+});
 
 	app.factory('user', ['$timeout', function($timeout) {
 		var ok = {
@@ -114,13 +120,16 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 				//var newElement = document.createElement('div');
-				var newElement = $('<div style="width:100%;"></div>');
+				var newElement = $('<div class="boxfixed" style="width:100%;"></div>');
 				$element.replaceWith(newElement);
 				
 				
 				var container = jQuery(newElement);
 var prueba = container.masonry({
-   itemSelector: '.item'
+   itemSelector: '.item',
+   containerStyle: null,
+   columnWidth: 60,
+   "gutter": 10
 });
 console.log(container);
 
@@ -132,13 +141,14 @@ $scope.items.$watch(function(item) {
 		container.append(insert);
 		//container.masonry();
 		prueba.masonry('appended', insert);
-		
-		$timeout(function(){
-			prueba.masonry('reloadItems');
-		},500);
-		
 	}
 });
+
+
+$timeout(function(){
+	prueba.masonry('reloadItems');
+}, 1000);
+
 				
 				// var msnry = new Masonry(newElement, {
 				// 	itemSelector: '.item',
@@ -285,8 +295,8 @@ $scope.items.$watch(function(item) {
 					$scope.enviar = function() {
 						var insert = {
 							text: $scope.nuevo.mensaje,
+							//date: moment().format('x')
 							date: Date.now()
-							//date: moment()
 						};
 						insert.user = user.main;
 						$scope.mensajes.$add(insert);

@@ -94,7 +94,7 @@
 
                                     <div class="list-content-tile list-content-tile--two-lines">
                                         <strong>{{mensaje.text}}</strong>
-                                        <span>por {{mensaje.user.name}} {{mensaje.date}}</span>
+                                        <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date"></span></span>
                                     </div>
 
                                     <div class="fab show_more">
@@ -104,13 +104,13 @@
                                         </button>
 
                                         <div class="fab__actions fab__actions--left">
-                                            <!--
+                                            
                                             <button ng-click="remover(mensaje)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Eliminar" tooltip-position="top"><i class="mdi mdi--delete"></i>
                                             </button>
-                                            -->
-                                            <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--archive"></i>
+                                            
+                                            <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Marcar" tooltip-position="top"><i class="mdi mdi--archive"></i>
                                             </button>
-                                            <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--edit"></i>
+                                            <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Editar" tooltip-position="top"><i class="mdi mdi--edit"></i>
                                             </button>
                                         </div>
                                     </div>
