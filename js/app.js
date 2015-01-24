@@ -71,44 +71,74 @@ app.directive('masonry', function() {
 // });
 	var link = function(scope, element, attrs){
 		
-		scope.$watch(attrs.items, function(value) {
-     console.log('okas');
-    }, true);
+// 		scope.$watch(attrs.items, function(value) {
+//      console.log('okas');
+//     }, true);
 		
 		
-		var newElement = document.createElement('div');
-		element.replaceWith(newElement);
+// 		var newElement = document.createElement('div');
+// 		element.replaceWith(newElement);
 		
-var msnry = new Masonry( newElement, {
-  // options...
-  itemSelector: '.item',
-  columnWidth: 200
-});
+// var msnry = new Masonry( newElement, {
+//   // options...
+//   itemSelector: '.item',
+//   columnWidth: 200
+// });
 
-//msnry.appended( elems );
-angular.forEach(scope.items, function(value, key) {
-  var item = {
-  	dom: document.createElement('div')
-  };
+// //msnry.appended( elems );
+// angular.forEach(scope.items, function(value, key) {
+//   var item = {
+//   	dom: document.createElement('div')
+//   };
   
-  console.log(value, key)
+//   console.log(value, key)
   
-});
+// });
 		
 		
-		console.log('LINK', newElement, scope);
+// 		console.log('LINK', newElement, scope);
 	}
 	
   return {
   	restrict: 'E',
-  	link: link,
+  	//link: link,
   	scope: {
   		items: '=imPins'
-  	}
-  	// controller: ['$scope', '$element', '$attrs', '$transclude', function( $scope, $element, $attrs, $transclude ) {
-  	// 	console.log('CONTROLLER', $scope);
-   //         // Controller code goes here.
-   //     }]
+  	},
+  	controller: ['$scope', '$element', '$attrs', '$transclude', function( $scope, $element, $attrs, $transclude ) {
+  		//console.log('CONTROLLER', $scope);
+  		
+  		
+  		
+  			
+
+
+  		 		var newElement = document.createElement('div');
+ 		$element.replaceWith(newElement);
+  	var msnry = new Masonry( newElement, {
+  itemSelector: '.item',
+  columnWidth: 200
+});	
+
+
+
+	$scope.items.$watch(function(value) {
+		
+		
+		  var item = {
+  	dom: document.createElement('div')
+  };
+
+
+     console.log('okas', value);
+     msnry.appended( item.dom );
+    });
+    
+    
+console.log(newElement, $scope.items, $scope, 'CONTROLLER');
+  		
+            // Controller code goes here.
+        }]
   	
     //template: 'Name: {{customer.name}} Address: {{customer.address}}'
   };
