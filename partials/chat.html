@@ -5,12 +5,25 @@ Este es el chat
 {{alias}}
 
 <br>
+<a href="/hola" ui-sref="inicio">Ir al inicio</a>
 
+<br>
 
 
 <ul>
-    <li ng-repeat="mensaje in mensajes">{{mensaje.text}}</li>
+    <li ng-repeat="mensaje in mensajes">{{mensaje.text}}
+    
+    <br>
+    
+    <button ng-click="mensajes.$remove(mensaje)">X</button>
+    
+    </li>
 </ul>
 
-<input type="text" ng-model="nuevo.mensaje" />
-<button ng-click="enviar()">Enviar</button>
+
+
+<form ng-submit="enviar()">
+      <input ng-model="nuevo.mensaje" />
+      <input type="submit" value="Enviar mensaje">
+      <fa-view ng-repeat="view in views" fa-animate-enter="myAnimationFunction($done)">asd</fa-view>
+</form>
