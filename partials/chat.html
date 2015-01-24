@@ -22,13 +22,8 @@
                 <!--<masonry im-pins="pins">-->
 
                 <div class="boxfixed">
-
+                    <!--INICIA                    -->
                     <div class="item" ng-repeat="pin in pins">
-
-
-
-
-
 
                         <div class="card">
 
@@ -43,6 +38,11 @@
 
                                         <input type="text" ng-model="pin.name" />
 
+                                        <select name="" ng-model="tmp.tipo" id="">
+                                            <option value="uno">Uno</option>
+                                            <option value="dos">Dos</option>
+                                            <option value="tres">TRes</option>
+                                        </select>
                                         <!--<lx-select ng-model="pin.tipo" placeholder="Lorem Ipsum" choices="tipos" floating-label>-->
                                         <!--            <lx-select-selected>-->
                                         <!--                {{ $selected.name }} - {{ $selected.age }}-->
@@ -61,7 +61,7 @@
                             </div>
 
                             <div ng-hide="pin.tipo" class="card__actions">
-                                <button class="btn btn--m btn--black btn--flat" ng-click="pins.$save(pin)" lx-ripple>Gaurdar</button>
+                                <button class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pin)" lx-ripple>Guardar</button>
                                 <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pin)" lx-ripple>Eliminar</button>
                             </div>
 
@@ -85,7 +85,7 @@
 
 
                     </div>
-
+                    <!--TEMRINA-->
                 </div>
 
 
@@ -141,25 +141,26 @@
 
             <!-- header -->
             <fa-surface fa-index="2">
-                <div ng-repeat="usuarioContecado in usuariosOnline | limitTo: 4" style="display:inline-block;">
-                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}{{usuarioContecado.length}}" tooltip-position="bottom">
-                        <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
-                    </button>
-                    <div ng-if='usuarioContecado.length > 3'>
-                        <div class="fab ml">
-                            <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right">
-                                <i class="mdi mdi--add"></i>
-                                <i class="mdi mdi--android"></i>
-                            </button>
+                <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
+                    <div class="fab ml" style="display:inline-block;" ng-if='$index <= 2'>
+                        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}} - {{$index+1}} / {{usuariosOnline.length}}" tooltip-position="bottom">
+                            <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
+                        </button>
+                    </div>
+                    <div class="fab ml" style="display:inline-block;" ng-if='$index > 2'>
+                        <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right">
+                            <i class="mdi mdi--add"></i>
+                            <i class="mdi mdi--android"></i>
+                        </button>
 
-                            <div class="fab__actions fab__actions--down">
-                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right"><i class="mdi mdi--edit"></i>
-                                </button>
-                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right"><i class="mdi mdi--archive"></i>
-                                </button>
-                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right"><i class="mdi mdi--delete"></i>
-                                </button>
-                            </div>
+                        <div class="fab__actions fab__actions--down">
+                            <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right">
+                                <i class="mdi mdi--edit">
+                                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}} - {{$index+1}} / {{usuariosOnline.length}}" tooltip-position="bottom">
+                                        <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
+                                    </button>
+                                </i>
+                            </button>
                         </div>
                     </div>
                     <!-- {{Date.now()}} {{usuarioContecado.time}}-->
