@@ -1,10 +1,5 @@
-
-Este es el chat
-
-
-{{alias}}
-
 <br>
+
 <a href="/hola" ui-sref="inicio">Ir al inicio</a>
 
 <br>
@@ -12,18 +7,20 @@ Este es el chat
 
 <ul>
     <li ng-repeat="mensaje in mensajes">{{mensaje.text}}
-    
-    <br>
-    
-    <button ng-click="mensajes.$remove(mensaje)">X</button>
-    
+
+        <br>
+
+        <button ng-click="mensajes.$remove(mensaje)">X</button>
+
     </li>
 </ul>
 
 
 
 <form ng-submit="enviar()">
-      <input ng-model="nuevo.mensaje" />
-      <input type="submit" value="Enviar mensaje">
-      <fa-view ng-repeat="view in views" fa-animate-enter="myAnimationFunction($done)">asd</fa-view>
+    <fa-animation timeline="0">
+    <input ng-model="nuevo.mensaje" />
+    <input type="submit" value="Enviar mensaje">
+        <animate targetModSelector="#topMod" field="rotateX" startValue="3.1415" endValue="0" curve="inQuad" timelineLowerBound="0" timelineUpperBound=".25" />
+    </fa-animation>
 </form>

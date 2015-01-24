@@ -3,7 +3,7 @@ var myChatsRef = myFirebaseRef.child('chats');
 var myMessageRef = myFirebaseRef.child('messages');
 (function($) {
 	
-	var app = angular.module('SteakIm', ['ui.router', 'firebase']);
+	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular']);
 	
 	
 	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -16,16 +16,21 @@ var myMessageRef = myFirebaseRef.child('messages');
     .state('inicio', {
       url: "/",
       templateUrl: "/partials/home.html",
-      controller: ['$scope', function($scope){
-      	
+      controller: ['$scope', '$firebase', function($scope, $firebase){
+      	$scope.chats = $firebase(myChatsRef).$asArray();
       }]
     })
     .state('chat', {
       url: "/:chat",
       templateUrl: "/partials/chat.html",
-      controller: ['$scope', '$stateParams', 'live', '$firebase', function($scope, $stateParams, live, $firebase) {
+      controller: ['$scope', 'live', '$firebase', function($scope, live, $firebase) {
+      	
+      	live.chat.set({title:live.alias});
+      	
 		$scope.nuevo = {};
-		$scope.mensajes = $firebase(live.messages).$asArray();
+		$scope.mensajes = $firebase(live.menssages).$asArray();
+		
+		
 		
 		$scope.enviar = function(){
 			
@@ -35,7 +40,7 @@ var myMessageRef = myFirebaseRef.child('messages');
 
 		$scope.list = [1, 2, 3, 4];
 		
-      	$scope.alias = $stateParams.chat;
+      	$scope.alias = live.alias;
       	
       }
       ],
@@ -45,7 +50,8 @@ var myMessageRef = myFirebaseRef.child('messages');
       		console.log('Cargando firebase de '+ chat);
       		return {
       			chat: myChatsRef.child(chat),
-      			menssages: myMessageRef.child(chat)
+      			menssages: myMessageRef.child(chat),
+      			alias: chat
       		};
       	}]
       }
