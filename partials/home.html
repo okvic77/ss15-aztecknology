@@ -3,17 +3,21 @@ Este es el inicio
 
 <p ng-show="user">
 
-{{user.name}} <img src="" ng-src="{{user.image}}" alt="">
+    <div align="center">
+        <img src="" ng-src="{{user.image}}" alt=""><br>
+        {{user.name}}
+    </div>
 
 </p>
 
 <a href="/hola" ng-disable="true" ui-sref="chat({chat:sala})">Ir a la sala {{sala}}</a>
 
 
-<input type="text" ng-model="sala"/>
+<input type="text" ng-model="sala" /><input type="button" ng-disable="true" onclick="window.location='chat({chat:sala})';" />
 
 
 <ul>
     <li ng-repeat="chat in chats">{{chat.title}}
-    <button ui-sref="chat({chat:chat.title})">Entrar</button></li>
+        <button ui-sref="chat({chat:chat.title})">Entrar</button>
+    </li>
 </ul>
