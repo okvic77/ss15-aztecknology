@@ -27,7 +27,7 @@ var myChatsRef = myFirebaseRef.child('chats');
 		
 		$scope.enviar = function(){
 			
-			liveChat.set('ok', true);
+			liveChat.$add('ok', true);
 			
 			console.log('Envio');
 		}
