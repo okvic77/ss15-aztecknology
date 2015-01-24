@@ -252,7 +252,6 @@ $scope.tmp = {};
 					
 					
 					var usersss = live.chat.child('online');
-					console.log(user);
 					var me = usersss.child(user.response.uid);
 					
 				
@@ -276,8 +275,7 @@ $scope.tmp = {};
 						usuario: user.main
 					});
 					
-					console.log('login check');
-					
+
 					
 					};
 					
@@ -311,33 +309,6 @@ $scope.tmp = {};
 
 
 
-					$scope.grids = [{
-						bgColor: "orange"
-					}, {
-						bgColor: "red"
-					}, {
-						bgColor: "green"
-					}, {
-						bgColor: "yellow"
-					}];
-
-
-
-
-					$scope.data = {
-						name: 'dsadas',
-						t: 1
-					};
-					$scope.grids = [{
-						bgColor: "orange"
-					}, {
-						bgColor: "red"
-					}, {
-						bgColor: "green"
-					}, {
-						bgColor: "yellow"
-					}];
-
 
 					$scope.enviar = function() {
 						var insert = {
@@ -363,8 +334,10 @@ $scope.tmp = {};
 					$scope.salirSala = function(sala) {
 						$scope.chats.$remove(mensaje);
 					}
-
-					$scope.list = [1, 2, 3, 4];
+					
+					$scope.cambiarPin = function(pin){
+						console.log('Prienas');
+					}
 
 					$scope.alias = live.alias;
 

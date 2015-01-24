@@ -29,28 +29,28 @@
 
 
                             <div class="card__content card__content--small">
-
-                                <div ng-switch="pin.tipo">
+                                {{pin.tipo}}
+                                <div ng-switch on="pin.tipo||false">
                                     <div ng-switch-when="votaciones">
 
                                         Descripcion de las votacion
-                                         <lx-text-field label="Description">
-                                            <textarea ng-model="pin.desc"></textarea>
-                                        </lx-text-field>
+                                        <!-- <lx-text-field label="Description">-->
+                                        <!--    <textarea ng-model="pin.desc"></textarea>-->
+                                        <!--</lx-text-field>-->
                                         Lista de opciones
-                                        <select name="" ng-model="pin.valor" id="">
-                                            <option value="mensaje">Mensaje</option>
-                                            <option value="votaciones">Votacion</option>
-                                            <option value="tarea">Tarea</option>
-                                            <option value="cuentas">Cuentas</option>
-                                        </select>
+                                        <!--<select name="" ng-model="pin.valor" id="">-->
+                                        <!--    <option value="mensaje">Mensaje</option>-->
+                                        <!--    <option value="votaciones">Votacion</option>-->
+                                        <!--    <option value="tarea">Tarea</option>-->
+                                        <!--    <option value="cuentas">Cuentas</option>-->
+                                        <!--</select>-->
                                         Agregar nueva opcion
-                                       <lx-text-field label="Description">
-                                            <textarea ng-model="pin.texto"></textarea>
-                                        </lx-text-field>                                        
-                                        
-                                     FEcha de termino de la votacion resultados
-                                        <input type="checkbox" ng-model="pin.finalizo">
+                                        <!--<lx-text-field label="Company">-->
+                                        <!--    <input type="text" ng-model="pin.nueva">-->
+                                        <!--</lx-text-field>-->
+
+                                        FEcha de termino de la votacion resultados
+                                        <!--<input type="checkbox" ng-model="pin.finalizo">-->
 
 
                                     </div>
@@ -69,7 +69,7 @@
 
 
 
-                                        <input type="text" name="" /> Usuario fecha para conclusion done/undone
+                                        <!--<input type="text" name="" /> Usuario fecha para conclusion done/undone-->
 
 
                                     </div>
@@ -79,10 +79,11 @@
                                         <span class="card-subtitle">Configura tu pin</span>
 
                                         <div class="paragraph">
+                                            <input type="text" ng-model="pin.holas" /> sadasds
                                             <p>
 
 
-                                                <input type="text" ng-model="pin.name" /> sadasds
+                                                
 
 
 
@@ -96,12 +97,12 @@
 
                                 </div>
 
-                                        <select ng-model="pin.tipo" id="">
-                                            <option value="mensaje">Mensaje</option>
-                                            <option value="votaciones">Votacion</option>
-                                            <option value="tarea">Tarea</option>
-                                            <option value="cuentas">Cuentas</option>
-                                        </select>
+                                <select sng-model="pin.tipo" sng-change="cambiarPin(pin)" id="">
+                                    <option value="mensaje">Mensaje</option>
+                                    <option value="votaciones">Votacion</option>
+                                    <option value="tarea">Tarea</option>
+                                    <option value="cuentas">Cuentas</option>
+                                </select>
 
                             </div>
 
@@ -173,24 +174,22 @@
             <!-- header -->
             <fa-surface fa-index="2">
                 <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
-                    <div class="fab ml" style="display:inline-block;" ng-if='$index <= 2'>
+                    <div class="fab ml" style="display:inline-block;" ng-if='$index <= 1'>
                         <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
                             <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                         </button>
                     </div>
-                    <div class="fab ml" style="display:inline-block;" ng-if='$index == 3'>
+                    <div class="fab ml" style="display:inline-block;" ng-if='$index == 2'>
                         <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
                             <i class="mdi mdi--add"></i>
                             <i class="mdi mdi--android"></i>
                         </button>
 
                         <div class="fab__actions fab__actions--down">
-                            <div ng-repeat="usuarioContecadoOculto in usuariosOnline">
-                                <div ng-if='$index >= $parent.$index'>
-                                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom">
-                                        <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
-                                    </button>
-                                </div>
+                            <div ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-if='$index >= $parent.$index'>
+                                <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom">
+                                    <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
+                                </button>
                             </div>
                         </div>
                         <!-- {{Date.now()}} {{usuarioContecado.time}}-->
