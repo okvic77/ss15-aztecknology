@@ -14,10 +14,10 @@
 
             </fa-surface>
 
-
+<fa-modifier fa-size="[800, 50]" fa-origin="[0,0]" class="test">
             <fa-surface>
 
-                <div class="grid">
+                <div class="grid" lx-scrollbar style="max-height:400px;">
                     <div class="grid__col4" ng-repeat="pin in pins">
                         <div class="card">
                             <div class="card__top card__top--img">
@@ -45,7 +45,7 @@
                 </div>
 
             </fa-surface>
-
+</fa-modifier>
 
 
         </fa-header-footer-layout>
@@ -59,7 +59,7 @@
             <fa-surface>Header</fa-surface>
 
             <!-- content fa-background-color="'blue'" -->
-            <fa-modifier fa-size="[600, 5]">
+            <fa-modifier fa-size="[undefined, true]" class="test">
 
                 <fa-scroll-view fa-pipe-from="eventHandler" fa-options="{clipSize:300}">
                     <fa-view>

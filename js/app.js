@@ -137,9 +137,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 						}
 					}
 					
-					$scope.myGridLayoutOptions = {
-       dimensions: [2,undefined], // specifies number of columns and rows
-    };
+					
 
     $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}];
 
