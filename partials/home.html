@@ -4,6 +4,7 @@
         <div ng-show="user">
             <img src="" ng-src="{{user.image}}" alt="">
             <br>{{user.name}}
+            <br>{{user.name}}
         </div>
     </div>
 
@@ -11,16 +12,22 @@
     <div style="width: calc(100% - 160px); display: inline-block;">
         <div>
             <input type="text" ng-model="sala" placeholder="Nombre de la sala a crear" />
-            <a href="/hola" ng-disable="true" ui-sref="chat({chat:sala})">Crear la sala <i><b>{{sala}}</b></i></a>
-            <button class="btn btn--m btn--red btn--raised" lx-ripple>Button</button>
+            <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--red btn--raised" lx-ripple>Crear la sala <i><b>{{sala}}</b></i>
+            </button>
         </div>
 
         <div>
             Mis Salas:
 
             <ul>
-                <li ng-repeat="chat in chats">{{chat.title}}
-                    <button ui-sref="chat({chat:chat.title})">Entrar</button>
+                <li ng-repeat="chat in chats">
+                    <div style="display:inline-block; width: 200px;">
+                        {{chat.title}}
+                    </div>
+                    <div style="display:inline-block; width: 200px;">
+                        <button ui-sref="chat({chat:chat.title})">Entrar</button>
+                        <button ui-sref="chat({chat:chat.title})">Salir</button>
+                    </div>
                 </li>
             </ul>
         </div>
