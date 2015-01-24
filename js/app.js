@@ -261,6 +261,19 @@ console.log($element);
 					console.log(user);
 					var me = usersss.child(user.response.uid);
 					
+				
+				
+	//var cleanOld = function(){
+						//var timestamp = new Date();
+//timestamp.setDate(timestamp.getDate()-2);
+// timestamp -= 1000*15;
+// usersss.endAt(timestamp).on("child_added", function(snap) {
+//   //snap.ref().remove();
+// }); 
+
+
+					//}				
+				
 					
 					var reporter = function reporter() {
 						me.set({
@@ -268,7 +281,15 @@ console.log($element);
 						time: Date.now(),
 						usuario: user.main
 					});
+					
+					console.log('login check');
+					
+					
 					};
+					
+					
+				
+					
 					
 					var myReporter = $interval(reporter, 10000);
 					reporter();

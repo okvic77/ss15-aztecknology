@@ -141,13 +141,15 @@
 
             <!-- header -->
             <fa-surface fa-index="2">
+                <div ng-repeat="usuarioContecado in usuariosOnline | limitTo: 4" style="display:inline-block;">
+                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
+                        <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
+                    </button>
+                    <div ng-if='usuarioContecado.length > 3'>Más</div>
 
-                <ul>
-                    <li ng-repeat="usuarioContecado in usuariosOnline">
-                        {{usuarioContecado.usuario.name}}
-                    </li>
-                </ul>
-
+                    {{Date.now()}}
+                    {{usuarioContecado.time}}
+                </div>
             </fa-surface>
 
             <!-- content fa-background-color="'blue'" -->
