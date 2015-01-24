@@ -1,0 +1,67 @@
+<h1 id="contributing-to-famo-us">Contributing to Famo.us</h1>
+<p>Active involvement from the community is essential to help make famous the most
+capable and performant front-end JavaScript framework out there. You can help by
+reporting bugs, fixing bugs, adding features, contributing new modules and by
+providing feedback.</p>
+<h2 id="reporting-bugs-and-other-issues">Reporting bugs and other issues</h2>
+<p>Famo.us is a framework that is always testing the limits of where browsers can go. As a result, it&#39;s likely that you may encounter bugs or other issues while developing with it.</p>
+<p>If you think you&#39;ve encountered a bug, do the following:</p>
+<ol>
+<li>Make sure you are working with the latest version of the Famo.us <code>master</code> branch.</li>
+<li>Browse through the <a href="#issues">issues</a> to check if
+anyone else has already reported. If someone has, feel free to add more
+information to that issue to help us solve it.</li>
+<li>If no one has yet submitted the issue you are encountering, check the
+<a href="#issues">guidelines for deciding where to file your issue</a>. Please be sure
+to include as much information as possible, include errors, warnings,
+screenshots, links to a video showing the problem or code that can reproduce
+the issue.</li>
+</ol>
+<h2 id="contributing-code">Contributing code</h2>
+<p>The Famo.us framework is made possible by open source
+contributors like you. We&#39;re very interested in getting help from the greater
+community, but before you start it&#39;s important that you become acquainted with
+our workflow. Following these guidelines below will make collaboration much
+smoother and increase the chances that we will accept your pull request without
+hiccups.</p>
+<h3 id="development-process">Development Process</h3>
+<p>Our development process is very similar to the approach
+described in the well-known article <a href="http://nvie.com/posts/a-successful-git-branching-model/">A Successful Git Branching Model by Vincent
+Driessen</a>. Here&#39;s an overview:</p>
+<ul>
+<li>Our <code>master</code> branch is the branch upon which 
+Famo.us developers should be basing their work on. The <code>master</code> branch is not guaranteed to be stable.</li>
+<li>All commits intended for <code>master</code> should take place on your own personal
+fork, and be submitted via pull request when ready.</li>
+<li>Only maintainers can accept pull requests from forks into the core Famo.us
+repository.</li>
+<li>Please squash your commits into a single commit before making a pull request.</li>
+</ul>
+<h3 id="getting-started">Getting started</h3>
+<ol>
+<li>Make sure you have a <a href="https://github.com/signup/free">GitHub account</a></li>
+<li><a href="https://github.com/Famous/famous/fork">Fork famous</a></li>
+<li>Keep your fork up to date. Famo.us is a fast moving project, and things are
+changing all the time. It&#39;s important that any changes you make are based on
+the most recent version of famous, since it&#39;s possible that something may
+have changed that breaks your pull request or invalidates its need.</li>
+<li>Make sure you have a <a href="http://famo.us/cla">Contributor License Agreement</a> on file.</li>
+<li>Read on ...</li>
+</ol>
+<h3 id="contributor-license-agreement">Contributor License Agreement</h3>
+<p>Before we can accept any contributions to Famo.us, we first require that all
+individuals or companies agree to our Contributor License Agreement (CLA). The e-mail
+address used in the pull request will be used to check if a CLA has already been
+filed, so be sure to list all email addresses that you might use to submit your
+pull requests when filling it out. Our CLA can be found <a href="http://famo.us/cla">here</a>.</p>
+<h3 id="testing-and-linting">Testing and Linting</h3>
+<p>Travis-ci is integrated into all of our submodules to automatically run tests on our codebase. All pull requests must pass our tests before they can be merged. Currently, the only test we support is a linting test. This ensures a consistently styled codebase. Before making a pull request, please run our linter locally. From the submodule directory, execute</p>
+<pre><code class="lang-js">npm install
+npm test
+</code></pre>
+<p>The created <code>node_modules</code> folder will be ignored in your push by our <code>.gitignore</code> file.</p>
+<h3 id="bug-fixes">Bug fixes</h3>
+<p>If you&#39;d like to contribute a fix for a bug you&#39;ve encountered, first read up on
+<a href="#reporting-bugs-and-other-issues">how to report a bug</a> and report it so we are
+aware of the issue. By filing the issue first, we may be able to provide you
+with some insight that guides you in the right direction.</p>

@@ -1,0 +1,80 @@
+<h1 id="famo-us-angular-build-status-https-travis-ci-org-famous-famous-angular-svg-branch-master-https-travis-ci-org-famous-famous-angular-">Famo.us/Angular <a href="https://travis-ci.org/Famous/famous-angular"><img src="https://travis-ci.org/Famous/famous-angular.svg?branch=master" alt="Build Status"></a></h1>
+<p>Famo.us/Angular is an AngularJS-driven framework for building Famo.us apps.</p>
+<h3 id="read-more">Read More</h3>
+<p><a href="https://famo.us/angular">Project Site</a></p>
+<h3 id="download">Download</h3>
+<p><a href="http://code.famo.us/famous-angular/latest/famous-angular-starter-kit.zip?src=github-readme">Famo.us/Angular Starter Kit</a>
+  or
+<code>bower install famous-angular</code></p>
+<p>Using F/A, you can:</p>
+<ul>
+<li>Create Famo.us apps using familiar AngularJS tools like controllers, directives, and services.</li>
+<li>Bring rich Famo.us animations to new or existing AngularJS apps.</li>
+<li>Use HTML to declare Famo.us UIs, complete with Angular&#39;s two-way databinding.</li>
+<li>Easily integrate Famo.us and AngularJS apps.</li>
+</ul>
+<h2 id="project-roadmap">Project Roadmap</h2>
+<p><a href="https://www.pivotaltracker.com/n/projects/1119890">https://www.pivotaltracker.com/n/projects/1119890</a>
+Contact <a href="mailto:famous-angular@thomasstreet.com">famous-angular@thomasstreet.com</a> if you want to claim tasks or contribute to the roadmap.</p>
+<h2 id="running-for-using-f-a-in-your-angular-app-">Running (For using F/A in your Angular app)</h2>
+<h4 id="before-you-start-tools-you-will-need">Before you start, tools you will need</h4>
+<ul>
+<li>Download and install <a href="http://git-scm.com/downloads">git</a></li>
+<li>Download and install <a href="http://nodejs.org/download/">nodeJS</a></li>
+<li>Install bower <code>npm install -g bower</code></li>
+</ul>
+<h4 id="inside-of-your-app-">Inside of your app:</h4>
+<ul>
+<li>Run <code>bower install famous-angular</code></li>
+<li>Add the following to your index.html<pre><code class="lang-html">&lt;script src=&quot;bower_components/famous/famous-global.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;bower_components/famous-angular/dist/famous-angular.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</li>
+<li>Add<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;bower_components/famous-angular/dist/famous-angular.css&quot;&gt;</code> to the <code>&lt;head&gt;</code> of your index.html</li>
+<li>Add the <code>famous.angular</code> module to your Angular module list (e.g. in a main app.js file: <code>angular.module(&#39;yourMainModule&#39;,[&#39;famous.angular&#39;, &#39;ui.router&#39;, &#39;ngAnimate&#39;])</code>)</li>
+<li>And add an <code>&lt;fa-app style=&quot;height: 200px&quot;&gt;&lt;fa-surface fa-background-color=&quot;&#39;red&#39;&quot;&gt;Hello world&lt;/fa-surface&gt;&lt;/fa-app&gt;</code> in one of your templates.  If you see &#39;Hello world&#39; on a red background, you should be good to go.
+<strong>Note: currently, the element that the <code>&lt;fa-app&gt;</code> is on must be display: block (like a <code>&lt;div fa-app&gt;</code> or a <code>&lt;p fa-app&gt;</code>, or just <code>&lt;fa-app&gt;</code>) and must have a set height (like <code>style=&quot;height: 200px&quot;</code> in this example.)  Future versions will not have these requirements.</strong></li>
+</ul>
+<h4 id="build-off-of-the-starter-app">Build off of the starter app</h4>
+<p>To get started even faster, try the <a href="https://github.com/thomasstreet/famous-angular-starter">famous-angular-starter</a> seed project, with everything already in place.  The starter app has a powerful gulp-based workflow, which includes live reloading and Jade/HAML support.</p>
+<h2 id="running-for-developing-or-contributing-to-the-library-">Running (For developing or contributing to the library)</h2>
+<h4 id="before-you-start-tools-you-will-need">Before you start, tools you will need</h4>
+<ul>
+<li>Download and install <a href="http://git-scm.com/downloads">git</a></li>
+<li>Download and install <a href="http://nodejs.org/download/">nodeJS</a></li>
+</ul>
+<h4 id="first-time-">First time:</h4>
+<p><code>git clone https://github.com/thomasstreet/famous-angular.git</code></p>
+<p><code>npm install</code></p>
+<p><code>npm install -g gulp</code></p>
+<h4 id="thereafter-">Thereafter:</h4>
+<p>Clone the submodules and install the frontend dependencies inside of your example folder.</p>
+<p><code>git submodule update --init --recursive</code></p>
+<p><code>cd famous-angular-examples</code></p>
+<p><code>bower install</code></p>
+<p><code>cd ..</code></p>
+<p><code>npm start</code></p>
+<p>Npm start will use gulp to concatenate files into famous-angular.js, which is built into the app folder. It will also watch for changes inside app and livereload as necessary.</p>
+<p>Then open <a href="http://localhost:4000">http://localhost:4000</a>.</p>
+<h4 id="to-develop-the-library-using-the-famous-angular-examples-submodule">To develop the library using the famous-angular-examples submodule</h4>
+<p><code>gulp dev</code></p>
+<h4 id="to-build-the-docs">To build the docs</h4>
+<p><code>gulp docs</code></p>
+<h4 id="to-run-tests">To run tests</h4>
+<p>Ensure that you have the <a href="http://karma-runner.github.io/0.12/intro/installation.html">karma</a> command line interface installed.
+&#39;npm install -g karma-cli&#39;</p>
+<p>`karma start&#39;</p>
+<h2 id="support">Support</h2>
+<p>Please submit issues as Github issues or reach out for support on the Famous IRC channel on Freenode</p>
+<h2 id="contributing">Contributing</h2>
+<p>We would love to have community contributions and support!  A few areas where could use help right now:</p>
+<ul>
+<li>Writing tests</li>
+<li>Elaborating on documentation</li>
+<li>Creating examples for the docs</li>
+<li>Bug reports and/or fixes</li>
+<li>Continuing to wrap Famo.us layouts and views into directives [advanced]</li>
+</ul>
+<p>If you want to contribute, please submit a pull request, or contact famous-angular@thomasstreet.com for more information.</p>
+<p>Please read the contribution guidelines in <a href="https://github.com/Famous/famous-angular/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a></p>
+<p>Famo.us/Angular is being developed by <a href="http://thomasstreet.com">Thomas Street</a> in partnership with <a href="https://famo.us">Famo.us</a>, along with community support.</p>

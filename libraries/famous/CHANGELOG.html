@@ -1,0 +1,296 @@
+<h2 id="0-3-0">0.3.0</h2>
+<h3 id="general">General</h3>
+<ul>
+<li>Fixed various spelling and grammar errors</li>
+<li>Updated README.md</li>
+<li>Updated the linters</li>
+<li>Updated CONTRIBUTING.md</li>
+<li>Changed to relative pathing</li>
+<li>Move source to src/ directory</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><p>General</p>
+<ul>
+<li>Fixed issues that prevented Famous from being loaded in the head</li>
+</ul>
+</li>
+<li><p>Famous/core</p>
+<ul>
+<li>Fixed opacity issues on setup and cleanup</li>
+<li>Now resets origin on setup</li>
+<li>Added guard for precommited size to allow Surface&#39;s getSize call to be non nullification</li>
+<li>Fixed issue taht when the size of a Surface changes, the transform matrix is recalculated to account for non [0, 0] origins</li>
+<li>&quot;true&quot; sized Surfaces now use the offsetWidth and offsetHeight property find their size in order to account for padding and border</li>
+</ul>
+</li>
+<li><p>Famous/inputs</p>
+<ul>
+<li>Added guard to TouchTracker to avoid collisions with two finger sync    </li>
+</ul>
+</li>
+<li><p>Famous/physics</p>
+<ul>
+<li>PhysicsEngine detatchBody now works as intended</li>
+</ul>
+</li>
+<li><p>Famous/surfaces</p>
+<ul>
+<li>Fixed VideoSurface setOptions</li>
+<li>Fixed issue with VideoSurface instantiation not respecting src options that were passed</li>
+<li>Fixed outdated references to this._currTarget</li>
+</ul>
+</li>
+<li><p>Famous/transitions</p>
+<ul>
+<li>TransitionableTransform no longer reverts to the original state reducing frame flickering</li>
+</ul>
+</li>
+<li><p>Famous/utilities</p>
+<ul>
+<li>Added checks for the existence of performance.now</li>
+</ul>
+</li>
+<li><p>Famous/view</p>
+<ul>
+<li>ScrollContainer eventing has been fixed</li>
+<li>Scroller now defaults to the size of it&#39;s content if the size of it&#39;s content is less that the size of it&#39;s parent context</li>
+<li>Scrollview pagination now working</li>
+<li>Fixed bug that allows Scrollview to know what index it is on</li>
+<li>Scrollview goToPreviousPage, goToNextPage now work</li>
+<li>Added align to Lightbox</li>
+</ul>
+</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><p>Famous/core</p>
+<ul>
+<li>Added the ability for Scene to be passed functions for Modifier properties</li>
+<li>Added a toggleClass function to Surface for toggling CSS classes</li>
+<li>Made Surface methods chainable (setAttributes, setProperties, toggleClass, addClass, removeClass, setClasses, setContent, setOptions, setSize)</li>
+<li>Surfaces now have the ability to set HTML attributes on itself (id, data, etc)</li>
+<li><p>Modifier now has the ability to specify size as a proportion of it&#39;s parent</p>
+<pre><code>new Modifier({
+  proportions: [.5, .25]
+});
+</code></pre></li>
+<li>Made changes to OptionsManager&#39;s getOptions to return either the full options hash or particular options based on the existence of a parameter</li>
+<li>Surface now emits &quot;resize&quot; events</li>
+<li>ViewSequence now has a trackSize options that tracks the size of it&#39;s collection</li>
+</ul>
+</li>
+<li><p>Famous/inputs</p>
+<ul>
+<li>Added OptionsManager to syncs</li>
+<li>Added preventDefault to ScrollSync to allow for scrolling navigation in the browser</li>
+<li>TouchSync now averages out velocity for a smoother, more expected stream of values</li>
+</ul>
+</li>
+<li><p>Famous/physics</p>
+<ul>
+<li>Particle now has a setForce function</li>
+<li>PhysicsEngine can now cap the velocity/angular velocity of particles</li>
+<li>PhysicsEngine now hs a getAgentEnergy function for calculating the energy of an agent</li>
+<li>PhysicsEngine now sleeps if all particles/bodies are sleeping</li>
+<li>Particle now has setForce to set a vector force to apply to itself</li>
+<li>RotationalSpring now has setOptions</li>
+<li>RotationalSpring now has options, forceFunction and maxLength</li>
+<li>VectorField has a getEnergy method</li>
+<li>Methods that can accept bodies and now also accept arrays of bodies</li>
+</ul>
+</li>
+<li><p>Famous/transitions</p>
+<ul>
+<li>Transitionable&#39;s halt is now chainable</li>
+<li>Transitionable has a register in the same manner as GenericSync</li>
+</ul>
+</li>
+<li><p>Famous/utilities</p>
+<ul>
+<li>Added clone function for deep cloning of objects</li>
+</ul>
+</li>
+<li><p>Famous/views</p>
+<ul>
+<li>Scrollview now uses enum for spring states</li>
+<li>Added a getSize function to ScrollContainer</li>
+<li>Scroller has a function getCumulativeSize that returns the size of the collection of renderables</li>
+<li>Scrollview emits &quot;settled&quot;, &quot;onEdge&quot; and &quot;offEdge&quot; events</li>
+<li>Scrollview can now handle &quot;true&quot; sized elements</li>
+<li>Scrollview has a getCurrentIndex that returns the index of the renderable of it&#39;s collection that it is on</li>
+<li>Scrollview now has a goToPage method</li>
+<li>Scrollview now has getAbsolutePosition which returns the total progress through the Scrollview in pixels</li>
+<li>FlexibleLayout now reflows when an element marked as true size changes it&#39;s size</li>
+<li>ViewSequence now has indexOf</li>
+</ul>
+</li>
+</ul>
+<h3 id="performance-increases">Performance Increases</h3>
+<ul>
+<li>Famous/views<ul>
+<li>More performant edge detection for Scrollview</li>
+</ul>
+</li>
+</ul>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<ul>
+<li><p>Famous/core</p>
+<ul>
+<li>Align defaults to [0, 0] no matter what the origin was set as</li>
+</ul>
+</li>
+<li><p>Famous/views</p>
+<ul>
+<li>Reimplemented SequentialLayout to reduce the API</li>
+</ul>
+</li>
+<li><p>Famous/physics</p>
+<ul>
+<li>Constraint no longer has energy</li>
+<li>Constraint has a default output EventHandler</li>
+<li>Constraint and Force no longer has setEnergy</li>
+<li>Snap&#39;s and Spring&#39;s setAnchor was deprecated</li>
+<li>Force now has an output EventHandler and emits change events on setOptions changes</li>
+<li>RotationalSpring&#39;s and Spring&#39;s getEnergy now takes in an array of targets</li>
+<li>VectorField methods, RADIAL, LINEAR, POINT_ATTRACTOR, now return vectors instead of numbers</li>
+<li>VectorField defaults have changed</li>
+<li>Removed options from SymplecticEuler</li>
+</ul>
+</li>
+<li><p>Famous/views</p>
+<ul>
+<li>Scroller emits &quot;onEdge&quot; and &quot;offEdge&quot; events instead of &quot;edgeHit&quot; events</li>
+<li>Scrollview&#39;s default options have changed</li>
+<li>Scrollview getPosition marked for deprecation in favor of getOffset</li>
+</ul>
+</li>
+</ul>
+<h2 id="0-2-2">0.2.2</h2>
+<p><strong>famous/core:</strong></p>
+<ul>
+<li>FIX <code>Scene</code> now has support for <code>align</code>.</li>
+<li>UPDATE <code>requestAnimationFrame</code> scoped to <code>window</code>.</li>
+</ul>
+<p><strong>famous/inputs:</strong></p>
+<ul>
+<li>FIX <code>ScrollSync</code> position type set on <code>start</code> instead of <code>reset</code> on end.</li>
+<li>FIX <code>FastClick</code> typo fix.</li>
+</ul>
+<p><strong>famous/math:</strong></p>
+<ul>
+<li>FIX <code>Vector</code> <code>.put</code> can be called from a <code>Vector</code> instead of only a <code>register</code>.</li>
+</ul>
+<p><strong>famous/physics:</strong></p>
+<ul>
+<li>FIX <code>Walls</code> <code>.forEach</code> bug.</li>
+</ul>
+<h2 id="0-2-1">0.2.1</h2>
+<p><strong>famous/core:</strong></p>
+<ul>
+<li>FEATURE <code>Transform</code> now has <code>.skewX</code> and <code>.skewY</code> methods</li>
+</ul>
+<p><strong>famous/inputs:</strong></p>
+<ul>
+<li>ADD <code>DesktopEmulationMode</code> is a convenience utility to cancel mouse events</li>
+<li>UPDATE <code>ScaleSync</code> now outputs <code>center</code> for the <code>[x,y]</code> point between two fingers</li>
+</ul>
+<p><strong>famous/physics:</strong></p>
+<ul>
+<li>FIX time-stepping bug which caused jittering</li>
+</ul>
+<p><strong>famous/surfaces:</strong></p>
+<ul>
+<li>FIX <code>InputSurface</code> <code>blur</code> event</li>
+</ul>
+<p><strong>famous/transitions:</strong></p>
+<ul>
+<li>FIX <code>Transitionable</code> callback bug on <code>.reset</code> method</li>
+<li>FIX <code>Transitionable</code> <code>.delay</code> bug when <code>_engineInstance</code> not defined.</li>
+</ul>
+<p><strong>famous/utilities:</strong></p>
+<ul>
+<li>FIX <code>Timer</code> bug in <code>debounce</code> for clearing timers</li>
+</ul>
+<p><strong>famous/views:</strong></p>
+<ul>
+<li>UPDATE <code>SequentialView</code> now has <code>itemSpacing</code></li>
+<li>FIX <code>FlexibleLayout</code> caching bug</li>
+<li>FIX <code>Scrollview</code> <code>groupScroll</code> option</li>
+<li>FIX <code>ContextualView</code> <code>DEFAULT_OPTIONS</code> inheritance</li>
+</ul>
+<h2 id="0-2-0">0.2.0</h2>
+<p><strong>famous/core:</strong></p>
+<ul>
+<li>FEATURE <code>Modifier</code> now takes <code>align</code> as well as <code>origin</code> for layout</li>
+<li>FIX <code>Surface</code> <code>{size : [true, true]}</code> now works with origin and alignment</li>
+<li>FIX Famo.us can now run before the <code>&lt;body&gt;</code> tag loads</li>
+<li>FIX <code>Engine</code> <code>resize</code> event when an <code>input</code> field has focus</li>
+</ul>
+<p><strong>famous/inputs:</strong></p>
+<ul>
+<li>ADD <code>Accumulator</code> can accumulate differentials from various syncs</li>
+<li>UPDATE <code>GenericSync</code> now acts as a registry for various syncs</li>
+<li>UPDATE <code>Scroll</code> <code>Rotate</code> and <code>Pinch</code> syncs now emit <code>center</code> for stable zooming</li>
+<li>UPDATE <code>clientX</code>, <code>clientY</code>, on <code>Mouse</code> and <code>Touch</code> syncs</li>
+<li>UPDATE <code>offsetX</code>, <code>offsetY</code> on <code>MouseSync</code></li>
+</ul>
+<p><strong>famous/modifiers:</strong></p>
+<ul>
+<li>UPDATE <code>StateModifier</code> takes <code>align</code> attribute</li>
+</ul>
+<p><strong>famous/transitions:</strong></p>
+<ul>
+<li>FIX <code>Transitionable</code> can now transition arrays with non-numeric (<code>boolean</code>, <code>undefined</code>) values</li>
+</ul>
+<p><strong>famous/views:</strong></p>
+<ul>
+<li>ADD <code>FlexibleLayout</code>, a layout for defining proportions of a sizing context for responsive and fixed layouts</li>
+<li>ADD <code>ContextualView</code> is similar to <code>core/View</code> but passes in contextual information (<code>transform</code>, <code>size</code>, etc) for dynamic layouts.</li>
+<li>FEATURE <code>GridLayout</code> now has a <code>gutterSize</code> attribute</li>
+<li>FEATURE <code>Flipper</code> now has <code>setAngle</code> method</li>
+</ul>
+<h2 id="0-1-2">0.1.2</h2>
+<ul>
+<li>ADD <code>package.json</code> and <code>Gruntfile.js</code> to automate linting with Grunt and eslint</li>
+<li>ADD <code>.travis.yml</code> for continuous integration with Travis-CI</li>
+<li>Improved documentation</li>
+</ul>
+<p><strong>famous/core:</strong></p>
+<ul>
+<li>FEATURE Automatic CSS <code>transform-matrix</code> pixel rounding</li>
+<li>FIX <code>Modifier</code> zero sizing</li>
+<li>FIX Firefox <code>z-index</code> bug</li>
+</ul>
+<p><strong>famous/inputs:</strong></p>
+<ul>
+<li>UPDATE <code>FastClick</code> improvements for <code>click</code> events</li>
+</ul>
+<p><strong>famous/modifiers:</strong></p>
+<ul>
+<li>FIX <code>StateModifier</code> opacity 0 bug</li>
+</ul>
+<p><strong>famous/physics:</strong></p>
+<ul>
+<li>FIX <code>Walls</code> bug</li>
+</ul>
+<p><strong>famous/surfaces:</strong></p>
+<ul>
+<li>ADD <code>Textarea</code> surface</li>
+<li>ADD <code>FormContainerSurface</code> surface</li>
+<li>ADD <code>SubmitInputSurface</code> surface</li>
+</ul>
+<p><strong>famous/views:</strong></p>
+<ul>
+<li>FEATURE <code>Scrollview</code> group piping flag for automatic eventing</li>
+<li>FIX <code>Scrollview</code> <code>options</code> passing</li>
+<li>FIX <code>ScrollContainer</code> typo</li>
+</ul>
+<p><strong>famous/widgets:</strong></p>
+<ul>
+<li>FIX <code>NavigationBar</code> <code>optionsManager</code> typo</li>
+</ul>
+<h2 id="0-1-1">0.1.1</h2>
+<ul>
+<li>Initial release</li>
+</ul>

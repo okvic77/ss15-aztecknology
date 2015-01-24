@@ -1,0 +1,406 @@
+<p><a name="0.5.0"></a></p>
+<h1 id="0-5-0-2014-10-10-">0.5.0 (2014-10-10)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>typo
+(<a href="https://github.com/Famous/famous-angular/commit/96f6e3834965473973194755566957a0c97388ff">96f6e383</a>)</li>
+<li>compare attr.disabled with a string to disable click on surface
+(<a href="https://github.com/Famous/famous-angular/commit/4714e383be78071089321a4c35cf04894ea6ed22">4714e383</a>)</li>
+<li>add .bowerrc that specifies installation directory (fixes inconsistent bower version behaviors)
+(<a href="https://github.com/Famous/famous-angular/commit/7c31c9d424b1d5bb3d700157785ae91e9ac0e9cb">7c31c9d4</a>)</li>
+<li>handle DOM clean-up more effectively when both fa-animate-enter and fa-animate-leave are present on one element
+(<a href="https://github.com/Famous/famous-angular/commit/4e34a22fdc1a8f8a1a64be7ef5f2c81c1e4c21c1">4e34a22f</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>track famo.us 0.3.0
+(<a href="https://github.com/Famous/famous-angular/commit/624091e7d4203d342a8762c50f6b4563374bc005">624091e7</a>)</li>
+<li>support fa-options and fa-index with fa-edge-swapper
+(<a href="https://github.com/Famous/famous-angular/commit/024a37e3048df69eb66caa51d18ec8d29f9dd187">024a37e3</a>)</li>
+<li>implement fa-edge-swapper
+(<a href="https://github.com/Famous/famous-angular/commit/5ec551327f44f1d6188860d816b247b149f9a9cd">5ec55132</a>)</li>
+<li>default to linear easing in $timeline step
+(<a href="https://github.com/Famous/famous-angular/commit/8ea7d8b263d442e8b045e62cfaa44e77ae859f9f">8ea7d8b2</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>add documentation for fa-animate-leave, fa-animate-halt, fa-animate-move
+(<a href="https://github.com/Famous/famous-angular/commit/f74ef7b91b14ebeff0ccebf07f7d88c7db1d8081">f74ef7b9</a>)</li>
+<li>add basic fa-animate-enter documentation
+(<a href="https://github.com/Famous/famous-angular/commit/48b4b386ee92c78d2ae01a48d87a53fbf3a5acb4">48b4b386</a>)</li>
+<li>add documentation for fa-edge-swapper
+(<a href="https://github.com/Famous/famous-angular/commit/8b3ae3394a00967b6d367bf4efd8f305ed509a11">8b3ae339</a>)</li>
+<li>modify multi piping example to work
+(<a href="https://github.com/Famous/famous-angular/commit/3f3403bc3dddb46dec5382788fa76a6e8b808952">3f3403bc</a>)</li>
+<li>clarify submodule init step for library development in README
+(<a href="https://github.com/Famous/famous-angular/commit/5d54a0154ad7ee204db13507b6bf609d7f478d63">5d54a015</a>)</li>
+</ul>
+<h2 id="breaking-changes">Breaking Changes</h2>
+<ul>
+<li>due to <a href="https://github.com/Famous/famous-angular/commit/624091e7d4203d342a8762c50f6b4563374bc005">624091e7</a>,</li>
+</ul>
+<p>Famo.us 0.3.0 introduces some breaking changes.</p>
+<ul>
+<li><p>Boilerplate:</p>
+<ul>
+<li><p>Must change src of famous-global from:
+&quot;bower_components/famous/famous-global.js&quot;
+  to
+&quot;bower_components/famous/dist/famous-global.js&quot;</p>
+</li>
+<li><p>May need to perform a <code>bower cache clean</code> before updating your bower packages.  Verify that &quot;bower_components/famous/CHANGELOG.md&quot; mentions 0.3.0 to ensure that the update was successful.</p>
+</li>
+</ul>
+</li>
+<li><p>Application code:</p>
+<ul>
+<li>Famo.us 0.3.0 defaults <code>align</code> to [0,0] instead of defaulting to any provided value of <code>origin</code>.  In cases where <code>origin</code> is defined but <code>align</code> is not, element alignment will be broken.  Simplest fix for existing code is to add an <code>fa-align</code> attribute that matches <code>fa-origin</code> on any element where <code>fa-origin</code> is defined and <code>fa-align</code> is not.</li>
+<li>Vanilla Famo.us Surfaces&#39; <code>eventHandler</code> member has been renamed to <code>_eventOutput</code>.</li>
+<li>See the <a href="https://github.com/Famous/famous/blob/v0.3.0/CHANGELOG.md">Famo.us CHANGELOG</a> for more details.</li>
+</ul>
+</li>
+</ul>
+<p><a name="0.4.0"></a></p>
+<h1 id="0-4-0-2014-09-18-">0.4.0 (2014-09-18)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>deep-watch fa-options to support inline options declarations without digest errors
+(<a href="https://github.com/Famous/famous-angular/commit/d6067018b7721899adf121247fbd2e4d333a57f0">d6067018</a>)</li>
+<li>remove unnecessary exception when fa-container-surface&#39;s children are removed
+(<a href="https://github.com/Famous/famous-angular/commit/422576a573d5bd42ddb4d9a23f49bdff377e7006">422576a5</a>)</li>
+<li>invoke isolate.hide() when elements are destroyed (fixes, e.g. clean-up when transitioning states with ui-router)
+(<a href="https://github.com/Famous/famous-angular/commit/269c6d646f008ada50c6acead77da7f9cd1ae153">269c6d64</a>)</li>
+<li>minification process
+(<a href="https://github.com/Famous/famous-angular/commit/1a88a6b0af5200699d2f9ed06f76fd60975b62cd">1a88a6b0</a>)</li>
+<li>Updated canvas and video surfaces to support new  methods
+(<a href="https://github.com/Famous/famous-angular/commit/b7c81aae64ce5a640ecfac33dc16f57a3759cc67">b7c81aae</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>support removing children from fa-header-footer-layout
+(<a href="https://github.com/Famous/famous-angular/commit/01fefee23f7eb9e55cda72405b040e27aeaa84ec">01fefee2</a>)</li>
+<li>add fa-option directive
+(<a href="https://github.com/Famous/famous-angular/commit/221cf4e34bdc92a9efc8f11a78d6c3fbb5545185">221cf4e3</a>,
+<a href="https://github.com/Famous/famous-angular/issues/193">#193</a>)</li>
+<li>support piping to/from Modifiers (e.g. Draggable) with fa-pipe-to and fa-pipe-from
+(<a href="https://github.com/Famous/famous-angular/commit/070bf026644f1e49ce259144f1851bac606dee0d">070bf026</a>)</li>
+<li>implement fa-draggable
+(<a href="https://github.com/Famous/famous-angular/commit/a11c12dc927225ca0b1a4b1b0b4187760c08fe5a">a11c12dc</a>)</li>
+<li>add observe on faSize of faSurface
+(<a href="https://github.com/Famous/famous-angular/commit/b621ff5398aa606ef52d3126b76615356fa5febd">b621ff53</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>add live examples for surface, tap, touchend, touchmove, touchstart
+(<a href="https://github.com/Famous/famous-angular/commit/d27595ebe3adbc2d8b574a3861824ed8df7167c0">d27595eb</a>)</li>
+<li>modified scrollview live examples, add sequential + surface live examples
+(<a href="https://github.com/Famous/famous-angular/commit/66b8d3e34c1c1ece1b6bf98df6213adb381af5eb">66b8d3e3</a>)</li>
+<li>add live examples for pipefrom, rendernode, scrollview
+(<a href="https://github.com/Famous/famous-angular/commit/8bb10f8746672b7b8c29189b7a2dcfeeff393796">8bb10f87</a>)</li>
+<li>add modifier live examples
+(<a href="https://github.com/Famous/famous-angular/commit/21533a5cca45612f93f175c872c9838353acde4a">21533a5c</a>)</li>
+<li>add live examples for app flipper grid header image index modifier
+(<a href="https://github.com/Famous/famous-angular/commit/5783027af3ad457626917e542d7e90c8a34cab7e">5783027a</a>)</li>
+<li>fix scope =&gt; $scope typos in famousAnimate.js
+(<a href="https://github.com/Famous/famous-angular/commit/bb29170313ead2da18ed17e08346490b7521cd07">bb291703</a>)</li>
+<li>correct the documentation for sizing elements in a fa-header-footer-layout
+(<a href="https://github.com/Famous/famous-angular/commit/7d0becbeb5b1223bf2a1d17a6ddbfeefd20dc8d6">7d0becbe</a>,
+<a href="https://github.com/Famous/famous-angular/issues/196">#196</a>)</li>
+<li>clarify global installation of bower in readme
+(<a href="https://github.com/Famous/famous-angular/commit/d40a893b342e07160264cd3d4c5dc29c77ab4669">d40a893b</a>)</li>
+</ul>
+<p><a name="0.3.0"></a></p>
+<h1 id="0-3-0-2014-08-15-">0.3.0 (2014-08-15)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>expose .util on window for non-DI use
+(<a href="https://github.com/Famous/famous-angular/commit/3820b783ebabbfc50da1aa63ac1ec00bf0b81304">3820b783</a>)</li>
+<li>throw exception if fa-elements are added to fa-surface
+(<a href="https://github.com/Famous/famous-angular/commit/60c8fe05539c51e7d004c76404e473530ad42a82">60c8fe05</a>)</li>
+<li>make famous#getIsolate correctly manage cases where scope is null
+(<a href="https://github.com/Famous/famous-angular/commit/175a775a04e2bc9245ae1e8c14c7d6a2e940dedf">175a775a</a>)</li>
+<li>support proper translate-z (and general 3D) behavior in Chrome
+(<a href="https://github.com/Famous/famous-angular/commit/1f82bd97d9fb03249023b6a90f8e3ce787bb38e5">1f82bd97</a>)</li>
+<li>add check for isFaElement for animate leave
+(<a href="https://github.com/Famous/famous-angular/commit/4d009c5d0f34ae6cdafe5e10cbc7b54e3decd526">4d009c5d</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>implement fa-video-surface
+(<a href="https://github.com/Famous/famous-angular/commit/9a07f11d69016eb5b46983d7ba7da451c11d133a">9a07f11d</a>)</li>
+<li>ngClick decorated for fa-surface with touch
+(<a href="https://github.com/Famous/famous-angular/commit/3e50b871a0f52ff90a9905917a027f5dafea95c8">3e50b871</a>)</li>
+<li>add all mouseEvents
+(<a href="https://github.com/Famous/famous-angular/commit/cbd875bcfe5436fb2085e7265f4b65d147051330">cbd875bc</a>)</li>
+<li>decorate ng-click to register on renderNode in fa-directives
+(<a href="https://github.com/Famous/famous-angular/commit/968b09ac3b85d6fe29003cdcb1844058d3419af1">968b09ac</a>)</li>
+<li>update famous-angular.css to support changes in Famo.us core
+(<a href="https://github.com/Famous/famous-angular/commit/864bd8b8ca5866959e34af3f85cbc8a0108e96c2">864bd8b8</a>)</li>
+<li>removed the requirejs dependency
+(<a href="https://github.com/Famous/famous-angular/commit/c9d318f27bb5d5f0ecdadf0029955976b5d8eff0">c9d318f2</a>)</li>
+<li>add hide and show functionality on renderables
+(<a href="https://github.com/Famous/famous-angular/commit/767fea86397ffcc874de463bb8f630d091c27e08">767fea86</a>)</li>
+</ul>
+<h2 id="performance-improvements">Performance Improvements</h2>
+<ul>
+<li>include the famous modules definition in $famous provider
+(<a href="https://github.com/Famous/famous-angular/commit/12668f2a287439397f2a33907bdfb835a32ed2df">12668f2a</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>fixed docs code interpreted by jekyll &amp; angular
+(<a href="https://github.com/Famous/famous-angular/commit/4993f169c1305afd922626c040fb64d16d8cbf82">4993f169</a>)</li>
+<li>live demos
+(<a href="https://github.com/Famous/famous-angular/commit/4b519241abb367dbb80f742833ea104abf87dfae">4b519241</a>,
+<a href="https://github.com/Famous/famous-angular/issues/158">#158</a>)</li>
+<li>update readme to describe how to get started without RequireJS
+(<a href="https://github.com/Famous/famous-angular/commit/aa553e4c9e7c0df146d98670457f62310b211fbe">aa553e4c</a>)</li>
+</ul>
+<p><a name="0.2.0"></a></p>
+<h1 id="0-2-0-2014-08-04-">0.2.0 (2014-08-04)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>faOptions in faGridLayout to work properly
+(<a href="https://github.com/Famous/famous-angular/commit/990864068c1b8f7ee8ce052e9622033620ab3d9e">99086406</a>)</li>
+<li>make addClass and removeClass return the correct element (enables ng-bind-html)
+(<a href="https://github.com/Famous/famous-angular/commit/4c62288a11f081fc4e59f682e8371265b6c26875">4c62288a</a>)</li>
+<li>make fa-grid-layout respect changes in ng-repeat index when updating
+(<a href="https://github.com/Famous/famous-angular/commit/0410113d07df68a147137efe8c89c7283bdc9bd7">0410113d</a>)</li>
+<li>fix errors caused by empty class names getting applied to Surfaces via
+(<a href="https://github.com/Famous/famous-angular/commit/4054c446c9d0995814805ce3406cc3ad1247051b">4054c446</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>deprecate fa-animation
+(<a href="https://github.com/Famous/famous-angular/commit/e50d35367b8f28181fe40ce47d312456f81bfada">e50d3536</a>)</li>
+<li>run unit tests with PhantomJS
+(<a href="https://github.com/Famous/famous-angular/commit/481a483c3a3a0c4359790f21c0fd106e68ed12bd">481a483c</a>)</li>
+<li>add fa-mouseover directive
+(<a href="https://github.com/Famous/famous-angular/commit/b2d00d095fff2fb9f3d66cf406e28633cf7ef730">b2d00d09</a>)</li>
+<li>support removing children from fa-flipper
+(<a href="https://github.com/Famous/famous-angular/commit/f97e357d5e231c01c8f45c4464a8b2477460fd01">f97e357d</a>)</li>
+<li>implement physics support by accepting Particles as fa-modifier attributes
+(<a href="https://github.com/Famous/famous-angular/commit/32c8ebe97011b5fc6adcb964cfc209924654a77f">32c8ebe9</a>)</li>
+<li>add timeline service to replace fa-animation
+(<a href="https://github.com/Famous/famous-angular/commit/dd5494d15329413cd6033df8db43f9a37b597cd9">dd5494d1</a>)</li>
+<li>added faCanvasSurface
+(<a href="https://github.com/Famous/famous-angular/commit/82295bf1448d35529befe9e22c1be0ee2201adad">82295bf1</a>)</li>
+<li>support reflowing fa-grid-layout and fa-scrollview when fa-index changes
+(<a href="https://github.com/Famous/famous-angular/commit/3a7d6ee4e990e1a0e81832fdfb1f066b15821cc7">3a7d6ee4</a>)</li>
+<li>throw error objects
+(<a href="https://github.com/Famous/famous-angular/commit/c0d3130abf7eba74da176ffbbfb2db5656bc7fa8">c0d3130a</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>update fa-modifier ng-doc with support for Particles
+(<a href="https://github.com/Famous/famous-angular/commit/32f296dbb972956d949b15e6293f1cce1acb2a1f">32f296db</a>)</li>
+<li>add link to starter kit zip in README
+(<a href="https://github.com/Famous/famous-angular/commit/cd75fd436715703769897c03bf303a746b94bd8a">cd75fd43</a>)</li>
+<li>add link to Pivotal roadmap in README
+(<a href="https://github.com/Famous/famous-angular/commit/b9599c1ea494f478920a86345a772dbccba24403">b9599c1e</a>)</li>
+</ul>
+<p><a name="0.1.0"></a></p>
+<h1 id="0-1-0-2014-07-13-">0.1.0 (2014-07-13)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>remove $timeout in faScrollView and use scope.$$postDigest instead
+(<a href="https://github.com/Famous/famous-angular/commit/137f260fe117ae7260d7bdad848241616fa92f29">137f260f</a>)</li>
+<li>fix some cases where &#39;digest is already in progress&#39; is thrown for fa-modifiers
+(<a href="https://github.com/Famous/famous-angular/commit/f5d9fa0127b4135efef0d2f622077dec1cfbdfa4">f5d9fa01</a>)</li>
+<li>consolidating the sequencer into a single call, and modifying the destruction listener to run on scope.$id instead of scope
+(<a href="https://github.com/Famous/famous-angular/commit/aa65be37fb4f4bdc3ab638ccb253056b5f806d27">aa65be37</a>)</li>
+<li>track if the animation has been halted at the level of the element using the existing status data
+(<a href="https://github.com/Famous/famous-angular/commit/a265623b714e7a8cc1fba6231ad2108c1535cca4">a265623b</a>)</li>
+<li>defer unregistering sequenced items until their elements, not their scopes, are destroyed
+(<a href="https://github.com/Famous/famous-angular/commit/8517838c909a546a36045a589a634f887251953a">8517838c</a>)</li>
+<li>defer execution of modifier blanking to the resolution of the animation queue
+(<a href="https://github.com/Famous/famous-angular/commit/d5889834111e6ce55d710a8753baed1610dcf749">d5889834</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>enable setting perspective on an fa-app (Famo.us Context)
+(<a href="https://github.com/Famous/famous-angular/commit/d99b39beb8b35fd014cb61b8daa7fc53d04eac07">d99b39be</a>)</li>
+<li>fa-grid-layout options and update the GridLayout when changed
+(<a href="https://github.com/Famous/famous-angular/commit/445707fbb7d4158acae35153c643bb331bd13fd8">445707fb</a>)</li>
+<li>support $done callbacks for complex animations and conditional animation chains in the $animate event lifecycle
+(<a href="https://github.com/Famous/famous-angular/commit/82bdfe0d9d2d876669c72f9fe8c86edb3ecd5f68">82bdfe0d</a>)</li>
+<li>restore coverage for ng-class manipulation, with and without ngAnimate
+(<a href="https://github.com/Famous/famous-angular/commit/1cf7f1513b129a1fef97ffb8f5a3c76be42958b4">1cf7f151</a>)</li>
+<li>full and ngAnimate-compliant  event lifecycle support for Famo.us/Angular
+(<a href="https://github.com/Famous/famous-angular/commit/2f857868a0ffcc8b66f73bd3580faaade66592c9">2f857868</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>fix naming typo in fa-flipper
+(<a href="https://github.com/Famous/famous-angular/commit/6345ca763024c4ac98c9593e664cad0878c35e7c">6345ca76</a>)</li>
+<li>fix broken links to famous docs
+(<a href="https://github.com/Famous/famous-angular/commit/56fad126fd0aa593fabee8b5bdaf6489788114a0">56fad126</a>)</li>
+<li>add basic documentation for fa-flexible-layout
+(<a href="https://github.com/Famous/famous-angular/commit/1a6794dac1d4449880f7e7cb87773fb47f989006">1a6794da</a>)</li>
+<li>clarifying and cleaning up famousAnimate.js documentation
+(<a href="https://github.com/Famous/famous-angular/commit/93eec030aa0aad5f172c8a00e809f85a800d35b8">93eec030</a>)</li>
+<li>cleaning up examples for $famousDecorator
+(<a href="https://github.com/Famous/famous-angular/commit/3c74717dda361212f0215d46cc36bcc1190d7d75">3c74717d</a>)</li>
+<li>added a step for test
+(<a href="https://github.com/Famous/famous-angular/commit/0bc9bdb09b1a92707272679c2249f49307a3f27b">0bc9bdb0</a>)</li>
+<li>corrected command to start tests
+(<a href="https://github.com/Famous/famous-angular/commit/4c92e30c8a09e44f05b33409f90b8e059d898aa0">4c92e30c</a>)</li>
+<li>ANIMATION_DURATION should be DURATION
+(<a href="https://github.com/Famous/famous-angular/commit/f70264d87a668ae83ebc852059428230b1650996">f70264d8</a>)</li>
+</ul>
+<p><a name="0.0.17"></a></p>
+<h1 id="0-0-17-2014-06-24-">0.0.17 (2014-06-24)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>fix edge cases where fa-surface#isClassable hits an undefined reference
+(<a href="https://github.com/Famous/famous-angular/commit/d4b352d5babe82e825c26b3f96b2844897913c8e">d4b352d5</a>)</li>
+<li>make multiple ng-shows inside of an fa-surface behave as expected
+(<a href="https://github.com/Famous/famous-angular/commit/5478f03b5b6179317b851917b3db9c42e2a99287">5478f03b</a>)</li>
+<li>correctly remove ng-repeated fa-surfaces from fa-scroll-view and fa-sequential-layout
+(<a href="https://github.com/Famous/famous-angular/commit/55328faf40f327f5eb6801ae1dc9162aa33ecf66">55328faf</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>implement fa-flexible-layout
+(<a href="https://github.com/Famous/famous-angular/commit/7b3ffd76d3b575b9452a6fae6971c97c6c9dbd28">7b3ffd76</a>)</li>
+<li>implement fa-properties on fa-image-surface, the same as on fa-surface
+(<a href="https://github.com/Famous/famous-angular/commit/cee67e0c9dbbd9ecd50d75510bf9692bdf446c15">cee67e0c</a>)</li>
+<li>implement fa-properties on fa-surface; make ad hoc property declaration more generic
+(<a href="https://github.com/Famous/famous-angular/commit/7c101d0662dd9c43087c90bf2f685481e139c69e">7c101d06</a>)</li>
+<li>add margin and padding properties to fa-surface
+(<a href="https://github.com/Famous/famous-angular/commit/16842b2356302de8f82e149d6c8e5c547dfbe1d3">16842b23</a>)</li>
+<li>implement fa-container-surface
+(<a href="https://github.com/Famous/famous-angular/commit/94998b7c94c475635c5227af2ca366f015e891d9">94998b7c</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>add CLA instructions to CONTRIBUTING.md
+(<a href="https://github.com/Famous/famous-angular/commit/2954e26c8cf367ba986c0467412d389ec5863113">2954e26c</a>)</li>
+<li>add animation directive - edit: surf, grid, app, mod, pipe n more
+(<a href="https://github.com/Famous/famous-angular/commit/bbb02889bff9a5fd67985d9c6f75a6c32aa5ca99">bbb02889</a>)</li>
+<li>fix fa-pipe - add imagesurf, header, seq, flipper
+(<a href="https://github.com/Famous/famous-angular/commit/70283d0cc3f2993ae4c6fe16064e745f4e3d4bd4">70283d0c</a>)</li>
+<li>edit animation, modifier, tap -  add imagesurface
+(<a href="https://github.com/Famous/famous-angular/commit/7654d276b32b746ba3cbd09458eaa63424078bb3">7654d276</a>)</li>
+<li>edit scrollview touchend move start view
+(<a href="https://github.com/Famous/famous-angular/commit/610191b5444152e78aa129ea0c12d9ae5aea7629">610191b5</a>)</li>
+<li>edit app, click, index, rendernode
+(<a href="https://github.com/Famous/famous-angular/commit/f605521ac16a02fad6dcc89f67c4748cc52b7840">f605521a</a>)</li>
+<li>edit faSurface
+(<a href="https://github.com/Famous/famous-angular/commit/540b39b03e295b3fd96fb3307816fc677360f2d1">540b39b0</a>)</li>
+<li>edit fa-modifier
+(<a href="https://github.com/Famous/famous-angular/commit/4ceb44641ee7f97e2d5b936cd19ca21395b6d6c2">4ceb4464</a>)</li>
+<li>edit faAnimation + faScrollView
+(<a href="https://github.com/Famous/famous-angular/commit/65a31257a42b5535f971c40b719ba28288c5307e">65a31257</a>)</li>
+<li>add click, tap, index
+(<a href="https://github.com/Famous/famous-angular/commit/45c0d072213169725de3db89600948079faec449">45c0d072</a>)</li>
+<li>add fa-app
+(<a href="https://github.com/Famous/famous-angular/commit/2e21d736f83f3a8232b8598fb6ba245dd8eafb5c">2e21d736</a>)</li>
+<li>add rendernode
+(<a href="https://github.com/Famous/famous-angular/commit/f651daa6c8c3d27833ec425508be349ac76a7735">f651daa6</a>)</li>
+<li>add fa-transform + fa-transform-order
+(<a href="https://github.com/Famous/famous-angular/commit/66d2923d7bf86b6eaa60b67a84b6b239d2632d5c">66d2923d</a>)</li>
+<li>add touchstart touchmove touchend
+(<a href="https://github.com/Famous/famous-angular/commit/448efdcd3dfe901e2fedc4f7d76eda73f6d61623">448efdcd</a>)</li>
+<li>add fa-pipe-from examples
+(<a href="https://github.com/Famous/famous-angular/commit/b3a1f36c14ac6137e428e882c76d7b7ae987f08f">b3a1f36c</a>)</li>
+</ul>
+<p><a name="0.0.16"></a></p>
+<h1 id="0-0-16-2014-06-07-">0.0.16 (2014-06-07)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>fix bugs in fa-touchmove, fa-touchstart, fa-touchend
+(<a href="https://github.com/Famous/famous-angular/commit/5babd6403cde559cae85736e7196bbfb95521029">5babd640</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>implement fa-header-footer-layout
+(<a href="https://github.com/Famous/famous-angular/commit/6b6338f76ebcacd000fb0300f85c281da7efe119">6b6338f7</a>)</li>
+<li>implement fa-sequential-layout directive
+(<a href="https://github.com/Famous/famous-angular/commit/23429a6692bc2c9f56e3f66cee28346c6ab7a843">23429a66</a>)</li>
+</ul>
+<p><a name="0.0.15"></a></p>
+<h1 id="0-0-15-2014-06-04-">0.0.15 (2014-06-04)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>handle multiple classes in fa-surface, both in class attribute and in ng-class
+(<a href="https://github.com/Famous/famous-angular/commit/e48c187abfba93732f907fe83b1eb70979758617">e48c187a</a>)</li>
+<li>allow $famous.find to return multiple elements
+(<a href="https://github.com/Famous/famous-angular/commit/1a880727e0e4711a1ba48cd54b83b68d5734c0f4">1a880727</a>,
+<a href="https://github.com/Famous/famous-angular/issues/80">#80</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>implement faFlipper directive
+(<a href="https://github.com/Famous/famous-angular/commit/64c98b655e790ce48b96531585ab4eb84eeba673">64c98b65</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>add scrollview examples + add headings modifier surface
+(<a href="https://github.com/Famous/famous-angular/commit/4ea11ad73e6ca20ca4f3080013811113f99c2627">4ea11ad7</a>)</li>
+<li>modifier surface scrollview progress examples
+(<a href="https://github.com/Famous/famous-angular/commit/e5746674daf5920e15c7a95d9a1bb2caee75b495">e5746674</a>)</li>
+</ul>
+<p><a name="0.0.14"></a></p>
+<h1 id="0-0-14-2014-05-31-">0.0.14 (2014-05-31)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>fix &#39;undefined is not a function&#39; error from angular-animate
+(<a href="https://github.com/Famous/famous-angular/commit/022f8a7528c60ec9cdbe7219bb7be2e3322a1e29">022f8a75</a>)</li>
+</ul>
+<p><a name="0.0.13"></a></p>
+<h1 id="0-0-13-2014-05-30-">0.0.13 (2014-05-30)</h1>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<ul>
+<li>reverting invocation order of faPipeFrom to its previous state
+(<a href="https://github.com/Famous/famous-angular/commit/9485fdb3c1084db1038cae9641c5fbdeeefddf51">9485fdb3</a>)</li>
+<li>modified execution order for faPipeFrom was correct
+(<a href="https://github.com/Famous/famous-angular/commit/3862a8a7687812575f56cbc5c287ac6bf45fced9">3862a8a7</a>)</li>
+<li>fixing invocation order of unpiping in faPipeFrom
+(<a href="https://github.com/Famous/famous-angular/commit/8dc41641ece5291fc80cb4cca5ced53340a83e1a">8dc41641</a>)</li>
+<li>modify fa-pipe-from and fa-pipe-to to unbind their event listeners when their scopes are destroyed
+(<a href="https://github.com/Famous/famous-angular/commit/405e0d616c73023030dcbef135b52ad841417a2c">405e0d61</a>)</li>
+<li>ensure that fa-modifier $observe callbacks will always fire at least once.
+(<a href="https://github.com/Famous/famous-angular/commit/c248ebd95055cfe300ffbf22e4bd10de8db67763">c248ebd9</a>)</li>
+<li>reverting invocation order of faPipeFrom to its previous state
+(<a href="https://github.com/Famous/famous-angular/commit/ed1dcfb364813d1e345e3eb89c2cf9f9775c9a48">ed1dcfb3</a>)</li>
+<li>modified execution order for faPipeFrom was correct
+(<a href="https://github.com/Famous/famous-angular/commit/291b7887bdbdf952f4d7aa7d8ff9a1844e7050d6">291b7887</a>)</li>
+<li>fix fa-animation behavior when two animates are assigned to one field with non-overlapping domains
+(<a href="https://github.com/Famous/famous-angular/commit/ab74509370162035ec2ff8ac136fbabf63bd04b5">ab745093</a>)</li>
+<li>fixing invocation order of unpiping in faPipeFrom
+(<a href="https://github.com/Famous/famous-angular/commit/8855f4feefeeb0e1606433ec83257b9813810a2b">8855f4fe</a>)</li>
+<li>make fa-animation work correctly without jquery
+(<a href="https://github.com/Famous/famous-angular/commit/e844971dbb526fe97684d82261a6a3c7b6a069ac">e844971d</a>)</li>
+<li>added changelog.js &amp; validateCommitMsg.js to bower ignore list
+(<a href="https://github.com/Famous/famous-angular/commit/4c97c1b8155161aad72e99188d902b6b83c53366">4c97c1b8</a>)</li>
+<li>modify fa-pipe-from and fa-pipe-to to unbind their event listeners when their scopes are destroyed
+(<a href="https://github.com/Famous/famous-angular/commit/4957f7f485670ee4a86fab7ee57fa971ad8a2e54">4957f7f4</a>)</li>
+<li>make function-passing to fa-transform fields more reasonable
+(<a href="https://github.com/Famous/famous-angular/commit/ef7ad8e345f5369409297a2832e4ba2d2ebc6651">ef7ad8e3</a>)</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>adds support for ng-class on all surfaces :smile:
+(<a href="https://github.com/Famous/famous-angular/commit/c869fb1e6214b056487d1622e4bc82bbceeff887">c869fb1e</a>)</li>
+<li>Added the changelog and release gulp tasks
+(<a href="https://github.com/Famous/famous-angular/commit/a0406e1a62cbbefe3bedc8a8b01af7e27385f824">a0406e1a</a>,
+<a href="https://github.com/Famous/famous-angular/issues/62">#62</a>)</li>
+<li>Added validation commit msg file
+(<a href="https://github.com/Famous/famous-angular/commit/a3b570516e0938f961c887600dd59e582a12c2de">a3b57051</a>)</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>clearly stating what fa-pipe-to and fa-pipe-from are supposed to be doing
+(<a href="https://github.com/Famous/famous-angular/commit/568d6d85908f0acd4ffeb74c547c658b623ec4de">568d6d85</a>)</li>
+<li>clearly stating what fa-pipe-to and fa-pipe-from are supposed to be doing
+(<a href="https://github.com/Famous/famous-angular/commit/8a9ba9ab5245edcd8c1e847c46a4387789a56e0e">8a9ba9ab</a>)</li>
+<li>added a link to the starter app
+(<a href="https://github.com/Famous/famous-angular/commit/5e36d45d60a353bc45e2c3ab5ae35239bc4a84f9">5e36d45d</a>)</li>
+<li>update contact info and change sample commit messages to imperative tense
+(<a href="https://github.com/Famous/famous-angular/commit/843c9e8246deb297c1ce4b0cf8460a340fa609a9">843c9e82</a>)</li>
+<li>updated the list of accepted types in the commit messages
+(<a href="https://github.com/Famous/famous-angular/commit/334bc7a671985edee07f39a5d1e68e6cbe113a30">334bc7a6</a>)</li>
+<li>updated the contribute section to include the commits validation
+(<a href="https://github.com/Famous/famous-angular/commit/442cb0c9ca4c7ebdd05b80b950cb677b1f8428bc">442cb0c9</a>)</li>
+</ul>

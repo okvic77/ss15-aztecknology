@@ -1,0 +1,62 @@
+<h1 id="physics-famo-us-core-physics-engine">Physics: Famo.us core physics engine</h1>
+<p>Core engine controlling animations via physical simulation.</p>
+<h2 id="files">Files</h2>
+<ul>
+<li>bodies/Body.js: A unit controlled by the physics engine which serves to
+provide position and orientation.</li>
+<li>bodies/Circle.js: An elemental circle-shaped Body in the physics engine.</li>
+<li>bodies/Particle.js:  A unit controlled by the physics engine which serves to
+provide position.</li>
+<li>bodies/Rectangle.js: An elemental rectangle-shaped Body in the physics engine.</li>
+<li>constraints/Collision.js: Allows for two circular bodies to collide and bounce off each other.</li>
+<li>constraints/Constraint.js: Allows for two circular bodies to collide and bounce off each other.</li>
+<li>constraints/Curve.js: A constraint that keeps a physics body on a given implicit curve 
+regardless of other physical forces are applied to it.</li>
+<li>constraints/Distance.js:  A constraint that keeps a physics body a given distance away from a given anchor, or another attached body.</li>
+<li>constraints/Snap.js: A spring constraint is like a spring force, except that it is always numerically stable (even for low periods).</li>
+<li>constraints/Surface.js: A constraint that keeps a physics body on a given implicit surface 
+regardless of other physical forces are applied to it.</li>
+<li>constraints/Wall.js:  A wall describes an infinite two-dimensional plane that physics bodies can collide with.</li>
+<li>constraints/Walls.js: Walls combines one or more Wall primitives and exposes a simple 
+API to interact with several walls at once</li>
+<li>forces/Drag.js: Drag is a force that opposes velocity. Attach it to the
+physics engine to slow down a physics body in motion.</li>
+<li>forces/Force.js: Force base class.</li>
+<li>forces/Repulsion.js: Repulsion is a force that repels (attracts) bodies away
+(towards) each other.</li>
+<li>forces/RotationalDrag.js:  Rotational drag is a force that opposes angular
+velocity. Attach it to a physics body to slow down its rotation.</li>
+<li>forces/RotationalSpring.js:  A force that rotates a physics body back to
+target Euler angles.</li>
+<li>forces/Spring.js: A force that moves a physics body to a location with a
+spring motion.</li>
+<li>forces/VectorField.js:  A force that moves a physics body to a location with a spring motion.</li>
+<li>integrators/SymplecticEuler.js:  Ordinary Differential Equation (ODE)
+Integrator. Manages updating a physics body&#39;s state over time.</li>
+<li>PhysicsEngine.js: The Physics Engine is responsible for mediating Bodies and 
+their interaction with forces and constraints.</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li><a href="http://famo.us/docs">Reference Docs</a></li>
+<li><a href="http://famo.us/guides/animations">Animating</a></li>
+<li><a href="http://famo.us/guides/pitfalls">Pitfalls</a></li>
+</ul>
+<h2 id="famous-physics-framework">Famous Physics Framework</h2>
+<p>The framework has three main parts that application developers should expect to
+use:</p>
+<h3 id="bodies">Bodies</h3>
+<p>Bodies represent physical objects. For example, the Circle class represents a
+solid ball, the Rectangle class represents a solid rectangular prism.</p>
+<h3 id="constraints">Constraints</h3>
+<p>Constraints represent ways that objects can be connected. For example, you might
+want two objects to behave as is there were a Rope or a StiffSpring connecting
+them.</p>
+<h3 id="forces">Forces</h3>
+<p>Forces can be thought of as soft constraints. So while StiffSpring is a
+constraint, Spring is a force. TODO: @dmvaldman, can you explain forces better?</p>
+<h2 id="license">License</h2>
+<p>Copyright (c) 2014 Famous Industries, Inc.</p>
+<p>This Source Code Form is subject to the terms of the Mozilla Public License,
+v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain
+one at <a href="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</a>.</p>
