@@ -190,8 +190,15 @@ body {
   padding: 0px;
 }
 .show_more {
-  position: absoulte;
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
   right: 0px;
+}
+.chat {
+  border: solid 1px #aaa;
+  background-color: #fff;
 }
 
  /*# sourceMappingURL=master.css.map */

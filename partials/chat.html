@@ -1,57 +1,85 @@
-<br>
+<fa-app style="width: 100%; height: 600px;">
 
-<a href="/hola" ui-sref="inicio">Ir al inicio</a>
+    <fa-flexible-layout fa-options="{ratios:[1,1]}">
 
-<br>
+        <fa-surface>
+
+            <a href="/hola" ui-sref="inicio">Ir al inicio</a> Prueba de board
+        </fa-surface>
+        
+        <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
+
+            <!-- header -->
+            <fa-surface>Header</fa-surface>
+
+            <!-- content fa-background-color="'blue'" -->
+            <fa-modifier fa-size="[undefined, undefined]">
+
+                <fa-scroll-view fa-pipe-from="eventHandler" fa-options="{clipSize:300}">
+                    <fa-view>
+
+                        <fa-surface fa-pipe-to="eventHandler">
+
+                            <li ng-repeat="mensaje in mensajes" class="list-row list-row--has-primary list-row--has-separator">
+                                <div class="list-primary-tile">
+                                    <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
+                                </div>
+
+                                <div class="list-content-tile list-content-tile--two-lines">
+                                    <strong>{{mensaje.text}}</strong>
+                                    <span>por {{mensaje.user.name}}</span>
+                                </div>
+
+                                <div class="fab show_more">
+                                    <button class="fab__primary btn btn--xl btn--red btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top">
+                                        <i class="mdi mdi--add"></i>
+                                        <i class="mdi mdi--android"></i>
+                                    </button>
+
+                                    <div class="fab__actions fab__actions--left">
+                                        <button ng-click="mensajes.$remove(mensaje)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--delete"></i>
+                                        </button>
+                                        <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--archive"></i>
+                                        </button>
+                                        <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--edit"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </fa-surface>
+
+                    </fa-view>
+                </fa-scroll-view>
+            </fa-modifier>
+
+            <!-- footer fa-background-color="'green'" -->
+            <fa-surface>
 
 
+                <form name="myMessageForm" ng-submit="enviar()">
+
+                    <div class="grid">
+                        <div class="grid__col4">
+                            <lx-text-field label="Escribe tu mensaje">
+                                <input type="text" ng-model="nuevo.mensaje" required min="3">
+                            </lx-text-field>
+                        </div>
+
+                        <div class="grid__col4">
+                            <input type="submit" ng-disabled="myMessageForm.$invalid" class="btn btn--m btn--blue btn--raised" lx-ripple>
+                        </div>
+
+                    </div>
 
 
+                    <!-- <input type="submit" value="Enviar mensaje"> -->
 
+                </form>
 
-<ul class="list">
+            </fa-surface>
 
+        </fa-header-footer-layout>
 
+    </fa-flexible-layout>
 
-    <li ng-repeat="mensaje in mensajes" class="list-row list-row--has-primary list-row--has-separator">
-        <div class="list-primary-tile">
-            <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
-        </div>
-
-        <div class="list-content-tile list-content-tile--two-lines">
-            <strong>{{mensaje.text}}</strong>
-            <span>{{mensaje.user.name}} <button ng-click="mensajes.$remove(mensaje)">X</button></span>
-        </div>
-
-        <div class="fab show_more">
-            <button class="fab__primary btn btn--xl btn--red btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top">
-                <i class="mdi mdi--add"></i>
-                <i class="mdi mdi--android"></i>
-            </button>
-
-            <div class="fab__actions fab__actions--left">
-                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--delete"></i>
-                </button>
-                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--archive"></i>
-                </button>
-                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--edit"></i>
-                </button>
-            </div>
-        </div>
-
-
-    </li>
-</ul>
-
-
-
-
-<form ng-submit="enviar()">
-    <input ng-model="nuevo.mensaje" />
-    <!-- <input type="submit" value="Enviar mensaje"> -->
-    <input type="submit" class="btn btn--m btn--blue btn--raised" lx-ripple>
-
-
-
-
-</form>
+</fa-app>

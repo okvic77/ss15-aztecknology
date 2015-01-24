@@ -6,7 +6,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 (function($) {
 	
 
-	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular']);
+	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx']);
 
 	app.factory('user', ['$timeout', function($timeout) {
 		var ok = {
@@ -86,7 +86,35 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			.state('chat', {
 				url: "/:chat",
 				templateUrl: "/partials/chat.html",
-				controller: ['$scope', 'live', '$firebase', 'user', function($scope, live, $firebase, user) {
+				controller: ['$scope', 'live', '$firebase', 'user', '$famous', function($scope, live, $firebase, user, $famous) {
+
+
+
+var EventHandler = $famous['famous/core/EventHandler'];
+    $scope.eventHandler = new EventHandler();
+    
+    
+//var EventHandler = $famous['famous/core/EventHandler'];
+        // $scope.eventHandler = new EventHandler();
+        // $scope.list = [{
+        //   content: "Awesome content"
+        // },{
+        //   content: "Scroll vertically to see more awesome content"
+        // },{
+        //   content: "Famo.us/angular rocks!"
+        //   }
+        // ];
+        
+        // $scope.options = {
+        //   scrollViewOuter: {
+        //     direction: 0,
+        //     paginated: true
+        //   },
+        //   scrollViewInner :{
+        //     direction: 1
+        //   }
+        // };
+        
 
 					live.chat.set({
 						title: live.alias
