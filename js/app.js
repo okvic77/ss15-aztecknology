@@ -199,7 +199,7 @@ console.log($element);
 				templateUrl: "/partials/home.html",
 				controller: ['$scope', '$firebase', 'user', function($scope, $firebase, user) {
 					$scope.chats = $firebase(myChatsRef).$asArray();
-
+					console.log($scope.chats);
 					$scope.user = user.main;
 					$scope.login = function() {
 						user.login();
@@ -332,7 +332,7 @@ $scope.tmp = {};
 					}
 					
 					$scope.salirSala = function(sala) {
-						$scope.chats.$remove(mensaje);
+						$scope.chats.$remove(sala);
 					}
 					
 					$scope.cambiarPin = function(pin){
