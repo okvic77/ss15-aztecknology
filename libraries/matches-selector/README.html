@@ -1,0 +1,17 @@
+<h1 id="matchesselector-helper">matchesSelector helper</h1>
+<p><a href="https://developer.mozilla.org/en-US/docs/DOM/Element.mozMatchesSelector"><code>matchesSelector</code></a> is pretty hot :fire:, but has <a href="http://caniuse.com/#search=matchesSelector">vendor-prefix baggage</a> :handbag: :pouch:. This helper function takes care of that, without augmenting <code>Element.prototype</code>.</p>
+<pre><code class="lang-js">matchesSelector( elem, selector );
+
+matchesSelector( myElem, &#39;div.my-hawt-selector&#39; );
+
+// this DOES NOT polyfill myElem.matchesSelector
+</code></pre>
+<h2 id="package-managers">Package managers</h2>
+<p>Install with <a href="http://bower.io">:bird: Bower</a></p>
+<pre><code class="lang-bash">bower install desandro/matches-selector
+</code></pre>
+<p>Install with <a href="https://github.com/component/component">:nut_and_bolt: component</a></p>
+<pre><code class="lang-bash">component install desandro/matches-selector
+</code></pre>
+<h2 id="mit-license">MIT license</h2>
+<p>matchesSelector is released under the <a href="http://desandro.mit-license.org">MIT license</a></p>

@@ -61,6 +61,23 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 	}]);
 
+app.directive('masonry', function() {
+	console.log('LOAD');
+// 	var container = document.querySelector('#miboardspace');
+// var msnry = new Masonry( container, {
+//   // options...
+//   itemSelector: '.item',
+//   columnWidth: 200
+// });
+	
+	
+  return {
+  	restrict: 'E',
+  	
+    template: 'Name: {{customer.name}} Address: {{customer.address}}'
+  };
+})
+
 	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		//
 		// For any unmatched url, redirect to /state1
@@ -92,8 +109,10 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
 
-					var EventHandler = $famous['famous/core/EventHandler'];
-					$scope.eventHandler = new EventHandler();
+
+
+					// var EventHandler = $famous['famous/core/EventHandler'];
+					// $scope.eventHandler = new EventHandler();
 					//$scope.eventHandler2 = new EventHandler();
 
 

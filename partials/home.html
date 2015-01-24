@@ -1,18 +1,20 @@
-<div style="margin-top:20px;">
-    <div align="center" style="width: 150px; display: inline-block;">
-        <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
+<div style="margin-top:25px;">
+    <div align="center" style="width: 170px; display: inline-block; height: 155px;">
+        <div ng-hide="user">
+            <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
+        </div>
         <div ng-show="user">
             <img src="" ng-src="{{user.image}}" alt="">
             <br>{{user.name}}
-            <br>{{user.name}}
+            <br><a>Salir</a>
         </div>
     </div>
 
 
-    <div style="width: calc(100% - 160px); display: inline-block;">
+    <div style="width: calc(100% - 180px); display: inline-block;">
         <div>
             <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" />
-            <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--red btn--raised" lx-ripple>Crear la chat <i><b>{{sala}}</b></i>
+            <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--red btn--raised" lx-ripple>Crear chat <i><b>{{sala}}</b></i>
             </button>
         </div>
 
@@ -32,4 +34,5 @@
             </ul>
         </div>
     </div>
+
 </div>
