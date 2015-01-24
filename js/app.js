@@ -22,10 +22,13 @@ var myChatsRef = myFirebaseRef.child('chats');
     .state('chat', {
       url: "/:chat",
       templateUrl: "/partials/chat.html",
-      controller: ['$scope', '$stateParams', 'liveChat', function($scope, $stateParams, liveChat) {
+      controller: ['$scope', '$stateParams', 'chat', '$firebase', function($scope, $stateParams, chat, $firebase) {
 		
+		$scope.mensajes = $firebase(chat.child('messages')).$asArray();
 		
 		$scope.enviar = function(){
+			
+			
 			
 			liveChat.$add('ok', true);
 			
@@ -39,11 +42,10 @@ var myChatsRef = myFirebaseRef.child('chats');
       }
       ],
       resolve: {
-      	liveChat: ['$firebase', '$stateParams', function($firebase, $stateParams){
+      	chat: ['$stateParams', function($stateParams){
       		var chat = $stateParams.chat;
       		console.log('Cargando firebase de '+ chat);
-      		var ref = myChatsRef.child(chat);
-      		return $firebase(ref);
+      		return myChatsRef.child(chat);
       	}]
       }
     });
