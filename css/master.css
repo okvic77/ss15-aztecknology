@@ -189,5 +189,9 @@ body {
 body {
   padding: 0px;
 }
+.show_more {
+  position: absoulte;
+  right: 0px;
+}
 
  /*# sourceMappingURL=master.css.map */

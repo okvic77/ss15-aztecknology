@@ -1,0 +1,200 @@
+<p><a href="http://neat.bourbon.io"><img src="http://images.thoughtbot.com/bourbon/neat-logo.svg" alt="Neat"></a></p>
+<p><a href="https://rubygems.org/gems/neat"><img src="http://img.shields.io/gem/v/neat.svg?style=flat" alt="Gem Version"></a> <a href="https://travis-ci.org/thoughtbot/neat"><img src="http://img.shields.io/travis/thoughtbot/neat.svg?style=flat" alt="Travis"></a>
+<a href="https://gitter.im/thoughtbot/neat"><img src="http://img.shields.io/badge/gitter-neat-ae3dd2.svg?style=flat" alt="Gitter"></a>
+<a href="http://stackoverflow.com/questions/tagged/neat"><img src="http://img.shields.io/badge/stack%20overflow-neat-ae3dd2.svg?style=flat" alt="Stack Overflow"></a></p>
+<h2 id="a-lightweight-semantic-grid-framework-built-with-bourbon">A lightweight, semantic grid framework built with Bourbon</h2>
+<p>Neat is a fluid grid framework built with <a href="https://github.com/thoughtbot/bourbon">Bourbon</a> with the aim of being easy enough to use out of the box and flexible enough to customize down the road.</p>
+<ul>
+<li><strong><a href="http://neat.bourbon.io">Demo</a></strong></li>
+<li><strong><a href="http://thoughtbot.github.io/neat-docs/latest">Documentation</a></strong></li>
+<li><strong><a href="https://github.com/thoughtbot/neat/releases">Changelog</a></strong></li>
+<li><strong><a href="https://github.com/thoughtbot/neat/issues">Issues &amp; Bugs</a></strong></li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li><a href="https://github.com/sass/sass">Sass</a> 3.3+</li>
+<li><a href="https://github.com/thoughtbot/bourbon">Bourbon</a> 4.0+</li>
+<li>:warning: If you need <strong>Sass 3.2 support</strong>, you should <a href="#installing-older-versions-of-neat">use Neat 1.5.1</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>For command line help, visit our wiki page on Neat’s <a href="https://github.com/thoughtbot/neat/wiki/Command-Line-Interface">command line interface</a>.</p>
+<ol>
+<li><p>Install the Neat gem using the <a href="https://rubygems.org">RubyGems</a> package manager:</p>
+<pre><code class="lang-bash">gem install neat
+</code></pre>
+<p>Alternatively, you can install Neat with <a href="http://bower.io">Bower</a>.</p>
+</li>
+<li><p>Install or update Neat’s dependencies:</p>
+<pre><code class="lang-bash">gem install sass # or gem update sass
+</code></pre>
+<pre><code class="lang-bash">gem install bourbon # or gem update bourbon
+</code></pre>
+</li>
+<li><p>Install the Neat library into the current directory:</p>
+<pre><code class="lang-bash">bourbon install # if not already installed
+</code></pre>
+<pre><code class="lang-bash">neat install
+</code></pre>
+</li>
+<li><p>Import Neat in your stylesheet, after Bourbon:</p>
+<pre><code class="lang-scss">@import &quot;bourbon/bourbon&quot;;
+@import &quot;neat/neat&quot;;
+</code></pre>
+<p>It’s not recommended to add or modify the Neat files so that you can update them easily.</p>
+</li>
+</ol>
+<h2 id="installation-for-ruby-on-rails">Installation for Ruby on Rails</h2>
+<ol>
+<li><p>Add Neat to your Gemfile:</p>
+<pre><code class="lang-ruby">gem &#39;neat&#39;
+</code></pre>
+</li>
+<li><p>Then run:</p>
+<pre><code class="lang-bash">bundle install
+</code></pre>
+<p>If you see the error <code>Bundler could not find compatible versions for gem &quot;sass&quot;</code>, run:</p>
+<pre><code class="lang-bash">bundle update sass
+</code></pre>
+</li>
+<li><p>Install the Neat library into the current directory:</p>
+<pre><code class="lang-bash">bourbon install # if not already installed
+</code></pre>
+<pre><code class="lang-bash">neat install
+</code></pre>
+</li>
+<li><p>Import Neat in your <code>application.css.scss</code>, after Bourbon:</p>
+<pre><code class="lang-scss">@import &quot;bourbon&quot;;
+@import &quot;neat&quot;;
+</code></pre>
+<p>It should be noted that <code>@import</code> rules are not compatible with Sprockets directives. You need to use one or the other.</p>
+</li>
+</ol>
+<h2 id="installing-older-versions-of-neat">Installing older versions of Neat</h2>
+<ol>
+<li><p>Uninstall any Neat gem versions you already have:</p>
+<pre><code class="lang-bash">gem uninstall neat
+</code></pre>
+</li>
+<li><p>Reinstall the Neat gem, using the <code>-v</code> flag to specify the version you need:</p>
+<pre><code class="lang-bash">gem install neat -v 1.7.0
+</code></pre>
+</li>
+<li><p>Follow the <a href="#installation">instructions above</a> to install Neat into your project.</p>
+</li>
+</ol>
+<h2 id="using-neat">Using Neat</h2>
+<p>First off, if you are planning to override the default grid settings (12 columns), it is recommended to create a <code>_grid-settings.scss</code> file for that purpose. Make sure to import it right <em>before</em> importing Neat:</p>
+<pre><code class="lang-scss">@import &quot;bourbon/bourbon&quot;; // or &quot;bourbon&quot; when in Rails
+@import &quot;grid-settings&quot;;
+@import &quot;neat/neat&quot;; // or &quot;neat&quot; when in Rails
+</code></pre>
+<p>In your newly created  <code>_grid-settings.scss</code>, import <code>neat-helpers</code> if you are planning to use <code>new-breakpoint()</code>, then define your new variables:</p>
+<pre><code class="lang-scss">@import &quot;neat/neat-helpers&quot;; // or &quot;neat-helpers&quot; when in Rails
+
+// Change the grid settings
+$column: 90px;
+$gutter: 30px;
+$grid-columns: 10;
+$max-width: em(1088);
+
+// Define your breakpoints
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+</code></pre>
+<p>See the <a href="http://thoughtbot.github.io/neat-docs/latest/#variable">docs</a> for a full list of settings.</p>
+<p>Next, include the <code>outer-container</code> mixin in the topmost container (to which the <code>max-width</code> setting will be applied):</p>
+<pre><code class="lang-scss">div.container {
+  @include outer-container;
+}
+</code></pre>
+<p>Then use <code>span-columns</code> on any element to specify the number of columns it should span:</p>
+<pre><code class="lang-scss">div.element {
+  @include span-columns(6);
+}
+</code></pre>
+<p>If the element’s parent isn’t the top-most container, you need to add the number of columns of the parent element to keep the right proportions:</p>
+<pre><code class="lang-scss">div.container {
+  @include outer-container;
+
+  div.parent-element {
+    @include span-columns(8);
+
+    div.element {
+      @include span-columns(6 of 8);
+    }
+  }
+}
+</code></pre>
+<p>To make your layout responsive, use the <code>media()</code> mixin to modify both the grid and the layout:</p>
+<pre><code class="lang-scss">.my-class {
+  @include media($mobile) { // As defined in _grid-settings.scss
+    @include span-columns(2);
+  }
+}
+
+// Compiled CSS
+@media screen and (max-width: 480px) {
+  .my-class {
+    display: block;
+    float: left;
+    margin-right: 7.42297%;
+    width: 46.28851%; // 2 columns of the total 4 in this media context
+  }
+  .my-class:last-child {
+    margin-right: 0;
+  }
+}
+</code></pre>
+<p>By setting <code>$visual-grid</code> to <code>true</code>, you can display the base grid in the background (default) or as an overlay. You can even change the color and opacity of the grid-lines by overriding the default settings as detailed in the section below.</p>
+<p>The visual grid reflects the changes applied to the grid via the <code>new-breakpoint()</code> mixin, as long as the media contexts are defined <em>before</em> importing Neat.</p>
+<h2 id="faq">FAQ</h2>
+<h4 id="how-do-i-use-omega-in-a-mobile-first-workflow-">How do I use <code>omega()</code> in a mobile-first workflow?</h4>
+<p>Using <code>omega()</code> with an <code>nth-child</code> pseudo selector in a mobile-first workflow will cause the style to be applied to wider-viewport media queries as well. That is the cascading nature of CSS.</p>
+<p>One solution would be to provide an <code>omega-reset()</code> mixin that negates the effect of <code>omega()</code> on that specific <code>nth-child</code> pseudo selector. While this is often the most suggested solution, it is also a lazy hack that outputs ugly code and can quickly get out of hand in complex layouts. As a general rule, having to <em>undo</em> CSS styles is a sign of poor stylesheet architecture (more about <a href="http://csswizardry.com/2012/11/code-smells-in-css/">CSS code smells</a>).</p>
+<p>The other, more elegant, solution is to use mutually exclusive media queries, also referred to as <a href="http://simurai.com/blog/2012/08/29/media-query-splitting">media-query
+splitting</a>. This would guarantee that <code>omega()</code> styles are only applied where desired.</p>
+<pre><code class="lang-scss">$first-breakpoint-value: 400px;
+$second-breakpoint-value: 700px;
+$medium-viewport: new-breakpoint(min-width em($first-breakpoint-value) max-width em($second-breakpoint-value));
+$large-viewport: new-breakpoint(min-width em($second-breakpoint-value + 1));
+
+.element {
+  @include media($medium-viewport) {
+    @include span-columns(6);
+    @include omega(2n);
+  }
+
+  @include media($large-viewport) {
+    @include span-columns(4);
+    @include omega(3n);
+  }
+}
+</code></pre>
+<p>If, for some reason, you still think that <code>omega-reset</code> is the only way you want to go, check out Josh Fry’s <a href="http://joshfry.me/blog/2013/05/13/omega-reset-for-bourbon-neat">omega-reset</a>.</p>
+<h4 id="why-are-the-elements-not-properly-aligned-with-the-visual-grid-">Why are the elements not properly aligned with the visual grid?</h4>
+<p>The visual grid is built using CSS gradients whose stops might contain decimal values depending on the default settings of your grid. In order to render the gradient, browsers round the pixel values since they can’t deal with pixel fractions.</p>
+<p>As a result the viusal grid might be few pixels off in some browsers. The result is also inconsistent across browsers. For best results, preview your website on Firefox as it renders closest to the expected outcome.</p>
+<p>At this point, writing an internal rounding mechanism is not high priority.</p>
+<h4 id="framework-x-has-this-feature-that-neat-seems-to-be-missing-can-you-add-it-">Framework X has this feature that Neat seems to be missing. Can you add it?</h4>
+<p>Unless you <a href="https://github.com/thoughtbot/neat/compare/">open a pull request</a>, the answer is most likely going to be no. Neat is lightweight and simple compared to other grid frameworks, and strives to remain so. We have plans for adding new features in future versions of the framework, but these will be most likely to support new ways of working with layouts on the Web, not patches to existing ones.</p>
+<h2 id="browser-support">Browser support</h2>
+<ul>
+<li>Chrome 4.0+</li>
+<li>Firefox 3.5+</li>
+<li>Internet Explorer 9+ (visual grid is IE 10 only)</li>
+<li>Internet Explorer 8 with <a href="http://selectivizr.com">selectivizr</a> (no <code>media()</code> support)</li>
+<li>Opera 9.5+</li>
+<li>Safari 4.0+</li>
+</ul>
+<h2 id="the-bourbon-family">The Bourbon family</h2>
+<ul>
+<li><a href="https://github.com/thoughtbot/bourbon">Bourbon</a>: A simple and lightweight mixin library for Sass</li>
+<li><a href="https://github.com/thoughtbot/neat">Neat</a>: A lightweight semantic grid framework for Sass and Bourbon</li>
+<li><a href="https://github.com/thoughtbot/bitters">Bitters</a>: Scaffold styles, variables and structure for Bourbon projects</li>
+<li><a href="https://github.com/thoughtbot/refills">Refills</a>: Prepackaged patterns and components built with Bourbon, Neat and Bitters</li>
+</ul>
+<h2 id="credits">Credits</h2>
+<p><a href="http://thoughtbot.com"><img src="http://images.thoughtbot.com/bourbon/thoughtbot-logo.svg" alt="thoughtbot"></a></p>
+<p>Neat is maintained and funded by <a href="http://thoughtbot.com">thoughtbot, inc</a>. Tweet your questions or suggestions to <a href="https://twitter.com/bourbonsass">@bourbonsass</a> and while you’re at it follow us too.</p>
+<h2 id="license">License</h2>
+<p>Copyright © 2012–2015 <a href="http://thoughtbot.com">thoughtbot, inc</a>. Neat is free software, and may be redistributed under the terms specified in the <a href="LICENSE.md">license</a>.</p>

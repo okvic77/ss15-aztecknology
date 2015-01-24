@@ -5,45 +5,53 @@
 <br>
 
 
-<fa-surface>
-  Here's some data-bound content myScopeVariable
-</fa-surface>
 
 
 
-<fa-modifier fa-scale="card.scale(data.t)">
-   <fa-surface>
-     {{data.name}} Prueba
-   </fa-surface>
-</fa-modifier>
 
-<fa-surface>
-  <input type="range" ng-model="data.t">
-  <input type="text" ng-model="data.name">
-</fa-surface>
+<ul class="list">
 
 
 
-<ul>
-    <li ng-repeat="mensaje in mensajes">{{mensaje.text}} por {{mensaje.user.name}}
+    <li ng-repeat="mensaje in mensajes" class="list-row list-row--has-primary list-row--has-separator">
+        <div class="list-primary-tile">
+            <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
+        </div>
 
-        <br>
+        <div class="list-content-tile list-content-tile--two-lines">
+            <strong>{{mensaje.text}}</strong>
+            <span>{{mensaje.user.name}} <button ng-click="mensajes.$remove(mensaje)">X</button></span>
+        </div>
 
-        <button ng-click="mensajes.$remove(mensaje)">X</button>
+        <div class="fab show_more">
+            <button class="fab__primary btn btn--xl btn--red btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top">
+                <i class="mdi mdi--add"></i>
+                <i class="mdi mdi--android"></i>
+            </button>
+
+            <div class="fab__actions fab__actions--left">
+                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--delete"></i>
+                </button>
+                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--archive"></i>
+                </button>
+                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--edit"></i>
+                </button>
+            </div>
+        </div>
+
 
     </li>
 </ul>
 
 
 
+
 <form ng-submit="enviar()">
     <input ng-model="nuevo.mensaje" />
-    <input type="submit" value="Enviar mensaje">
-    
+    <!-- <input type="submit" value="Enviar mensaje"> -->
+    <input type="submit" class="btn btn--m btn--blue btn--raised" lx-ripple>
 
 
 
-    
-    
-    
+
 </form>
