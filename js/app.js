@@ -1,10 +1,55 @@
-var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/");
-var myChatsRef = myFirebaseRef.child('chats');
-var myMessageRef = myFirebaseRef.child('messages');
+var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"), myChatsRef = myFirebaseRef.child('chats'), myMessageRef = myFirebaseRef.child('messages');
+
+
 (function($) {
 	
 	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular']);
 	
+	app.factory('user', function(){
+		var ok = {main:undefined};
+		var handleLogin = function(error, authData) {
+			  if (error) {
+			    ok.error = error;;
+			    ok.response = undefined;
+			    ok.main = undefined;
+			  } else {
+			  	ok.error = undefined;
+			  	ok.response = authData;
+			  	
+			  	if (authData.facebook)
+			  	
+			  	ok.main = {
+			  		name: authData.facebook.cachedUserProfile.first_name,
+			  		namefull: authData.facebook.displayName,
+			  		image: authData.facebook.cachedUserProfile.picture.data.url
+			  	}
+			  	
+			  	
+
+			    //console.log("Authenticated successfully with payload:", authData);
+			  }
+			}
+		
+		//myFirebaseRef.onAuth(handleLogin);
+		ok.login = function(){
+		myFirebaseRef.authWithOAuthPopup("facebook", handleLogin);
+		}
+		
+		ok.logout = function(){
+			myFirebaseRef.unauth();
+			ok.main = undefined;
+		}
+		
+		
+		handleLogin(undefined, myFirebaseRef.getAuth());
+		
+		
+		
+		
+		return ok;
+		
+		
+	});
 	
 	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   //
@@ -12,24 +57,18 @@ var myMessageRef = myFirebaseRef.child('messages');
   $urlRouterProvider.otherwise("/");
   //
   // Now set up the states
+  
+  
   $stateProvider
     .state('inicio', {
       url: "/",
       templateUrl: "/partials/home.html",
-      controller: ['$scope', '$firebase', function($scope, $firebase){
+      controller: ['$scope', '$firebase', 'user', function($scope, $firebase, user){
       	$scope.chats = $firebase(myChatsRef).$asArray();
       	
-      	
+      	$scope.user = user.main;
       	$scope.login = function(){
-      		myFirebaseRef.authWithOAuthPopup("facebook", function(error, authData) {
-			  if (error) {
-			    console.log("Login Failed!", error);
-			    $scope.response = error;
-			  } else {
-			  	$scope.response = authData;
-			    console.log("Authenticated successfully with payload:", authData);
-			  }
-			});
+      		user.login();
       	}
       	
       	
@@ -38,7 +77,7 @@ var myMessageRef = myFirebaseRef.child('messages');
     .state('chat', {
       url: "/:chat",
       templateUrl: "/partials/chat.html",
-      controller: ['$scope', 'live', '$firebase', function($scope, live, $firebase) {
+      controller: ['$scope', 'live', '$firebase', 'user', function($scope, live, $firebase, user) {
       	
       	live.chat.set({title:live.alias});
       	
@@ -48,8 +87,9 @@ var myMessageRef = myFirebaseRef.child('messages');
 		
 		
 		$scope.enviar = function(){
-			
-			$scope.mensajes.$add({text:$scope.nuevo.mensaje});
+			var insert = {text:$scope.nuevo.mensaje};
+			insert.user = user.main;
+			$scope.mensajes.$add(insert);
 			$scope.nuevo = {};
 		}
 

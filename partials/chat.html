@@ -6,7 +6,7 @@
 
 
 <ul>
-    <li ng-repeat="mensaje in mensajes">{{mensaje.text}}
+    <li ng-repeat="mensaje in mensajes">{{mensaje.text}} por {{mensaje.user.name}}
 
         <br>
 
@@ -18,9 +18,18 @@
 
 
 <form ng-submit="enviar()">
-    <fa-animation timeline="0">
     <input ng-model="nuevo.mensaje" />
     <input type="submit" value="Enviar mensaje">
-        <animate targetModSelector="#topMod" field="rotateX" startValue="3.1415" endValue="0" curve="inQuad" timelineLowerBound="0" timelineUpperBound=".25" />
-    </fa-animation>
+    
+    
+<fa-app id="banner">
+  <fa-modifier ...>
+     <fa-surface>
+       ...
+     </fa-surface>
+  </fa-modifier>
+</fa-app>
+    
+    
+    
 </form>

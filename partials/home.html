@@ -1,6 +1,12 @@
 Este es el inicio
-<button ng-click="login()">Entrar con Facebook</button>
-{{response}}
+<button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
+
+<p ng-show="user">
+
+{{user.name}} <img src="" ng-src="{{user.image}}" alt="">
+
+</p>
+
 <a href="/hola" ng-disable="true" ui-sref="chat({chat:sala})">Ir a la sala {{sala}}</a>
 
 
