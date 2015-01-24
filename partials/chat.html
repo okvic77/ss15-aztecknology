@@ -5,6 +5,25 @@
 <br>
 
 
+<fa-surface>
+  Here's some data-bound content myScopeVariable
+</fa-surface>
+
+
+
+<fa-modifier fa-scale="card.scale(data.t)">
+   <fa-surface>
+     {{data.name}} Prueba
+   </fa-surface>
+</fa-modifier>
+
+<fa-surface>
+  <input type="range" ng-model="data.t">
+  <input type="text" ng-model="data.name">
+</fa-surface>
+
+
+
 <ul>
     <li ng-repeat="mensaje in mensajes">{{mensaje.text}} por {{mensaje.user.name}}
 
@@ -21,14 +40,9 @@
     <input ng-model="nuevo.mensaje" />
     <input type="submit" value="Enviar mensaje">
     
-    
-<fa-app id="banner">
-  <fa-modifier ...>
-     <fa-surface>
-       ...
-     </fa-surface>
-  </fa-modifier>
-</fa-app>
+
+
+
     
     
     
