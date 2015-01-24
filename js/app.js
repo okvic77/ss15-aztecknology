@@ -50,27 +50,4 @@ var myChatsRef = myFirebaseRef.child('chats');
       }
     });
 }]);
-	
-	
-	// Firebase
-	
-	/*myFirebaseRef.child("title").on("value", function(snapshot) {
-		$('#live').text(snapshot.val());
-	});*/
-	myFirebaseRef.child("location/state").on("value", function(snapshot) {
-		$('#live').text(snapshot.val());
-	});
-	//console.log("test");
 })(jQuery);
-
-function test(demo){
-		myFirebaseRef.set({
-		title: demo,
-		author: "Firebase",
-		location: {
-			city: "San Francisco",
-			state: "California",
-			zip: 94103
-		}
-	});
-}
