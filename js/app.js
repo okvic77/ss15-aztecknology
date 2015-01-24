@@ -1,5 +1,6 @@
 var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	myChatsRef = myFirebaseRef.child('chats'),
+	myPinsRef = myFirebaseRef.child('pins'),
 	myMessageRef = myFirebaseRef.child('messages');
 
 
@@ -88,6 +89,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				templateUrl: "/partials/chat.html",
 				controller: ['$scope', 'live', '$firebase', 'user', '$famous', function($scope, live, $firebase, user, $famous) {
 
+var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
 
 var EventHandler = $famous['famous/core/EventHandler'];
@@ -122,7 +124,13 @@ var EventHandler = $famous['famous/core/EventHandler'];
 
 					$scope.nuevo = {};
 					$scope.mensajes = $firebase(live.menssages).$asArray();
-
+					$scope.pins = $firebase(live.pins).$asArray();
+					
+					$scope.pin = {
+						nuevo: function(){
+							
+						}
+					}
 
 $scope.data = {name:'dsadas', t:1};
     $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}];
@@ -135,6 +143,10 @@ $scope.data = {name:'dsadas', t:1};
 						insert.user = user.main;
 						$scope.mensajes.$add(insert);
 						$scope.nuevo = {};
+					}
+					
+					$scope.remover = function(mensaje) {
+							$scope.mensajes.$remove(mensaje);
 					}
 
 					$scope.list = [1, 2, 3, 4];
@@ -149,6 +161,7 @@ $scope.data = {name:'dsadas', t:1};
 						return {
 							chat: myChatsRef.child(chat),
 							menssages: myMessageRef.child(chat),
+							pins: myPinsRef.child(chat),
 							alias: chat
 						};
 					}]
