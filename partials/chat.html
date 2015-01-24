@@ -25,27 +25,43 @@
 
                     <div class="item" ng-repeat="pin in pins">
 
-                        
-                        
-                        
-                        
+
+
+
+
 
                         <div class="card">
-                            
-                            
-                            
-                             <div ng-hide="pin.tipo" class="card__content card__content--small">
+
+                            {{pin.name}}
+
+                            <div ng-hide="pin.tipo" class="card__content card__content--small">
                                 <span class="card-subtitle">Configura tu pin</span>
 
                                 <div class="paragraph">
                                     <p>
-                                        Configura tu pin
+
+
+                                        <input type="text" ng-model="pin.name" />
+                                        
+<lx-select ng-model="pin.tipo" placeholder="Lorem Ipsum" choices="tipos" floating-label>
+            <lx-select-selected>
+                {{ $selected.name }} - {{ $selected.age }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.email }}
+            </lx-select-choices>
+        </lx-select>                                        
+                                        
+                                        
+                                        
+
                                     </p>
                                 </div>
-                            </div>                           
+                            </div>
 
                             <div ng-hide="pin.tipo" class="card__actions">
-                                <button class="btn btn--m btn--black btn--flat" lx-ripple>Gaurdar</button>
+                                <button class="btn btn--m btn--black btn--flat" ng-click="pins.$save(pin)" lx-ripple>Gaurdar</button>
                                 <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pin)" lx-ripple>Eliminar</button>
                             </div>
 
@@ -124,7 +140,17 @@
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
 
             <!-- header -->
-            <fa-surface fa-index="2">Header</fa-surface>
+            <fa-surface fa-index="2">
+
+                <fa-modifier ng-repeat="usuarioOnline in usuariosOnline">
+                    <fa-surface>
+                       <div class="list-content-tile list-content-tile--two-lines">
+                            <strong>{{usuariosOnline.user.fullmane}}</strong>
+                        </div>
+                    </fa-surface>
+                </fa-modifier>
+
+            </fa-surface>
 
             <!-- content fa-background-color="'blue'" -->
 
@@ -192,6 +218,7 @@
                 </form>
 
             </fa-surface>
+
 
         </fa-header-footer-layout>
 
