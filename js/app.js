@@ -94,7 +94,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 					var EventHandler = $famous['famous/core/EventHandler'];
 					$scope.eventHandler = new EventHandler();
-					$scope.eventHandler2 = new EventHandler();
+					//$scope.eventHandler2 = new EventHandler();
 
 
 					//var EventHandler = $famous['famous/core/EventHandler'];
@@ -171,6 +171,9 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 					$scope.remover = function(mensaje) {
 						$scope.mensajes.$remove(mensaje);
+					}
+					$scope.salirSala = function(sala) {
+						$scope.chats.$remove(mensaje);
 					}
 
 					$scope.list = [1, 2, 3, 4];

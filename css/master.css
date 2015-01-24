@@ -196,10 +196,6 @@ body {
   padding: 0;
   right: 0px;
 }
-.test {
-  border: solid 1px #aaa;
-  background-color: #d13f19;
-}
 #chatView {
   position: fixed;
   top: 0;
@@ -210,9 +206,14 @@ body {
 .message {
   overflow: hidden;
 }
-.boxchat {
+.mainboard {
   background-color: #222;
-  overflow: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.chatbox {
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
  /*# sourceMappingURL=master.css.map */

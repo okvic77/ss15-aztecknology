@@ -14,11 +14,12 @@
 
             </fa-surface>
 
-                            <fa-scroll-view fa-pipe-from="eventHandler2">
-                                <fa-view>
-                                    <fa-surface fa-size="[undefined, true]">
+            <!--<fa-surface>-->
+                            <!--<fa-scroll-view fa-pipe-from="eventHandler2">-->
+                                <!--<fa-view>-->
+                                    <fa-surface fa-size="[undefined, undefined]" class="mainboard">
                                         <div class="grid">
-                                            <div ng-repeat="pin in pins" fa-pipe-to="eventHandler2" class="grid__col3">
+                                            <div ng-repeat="pin in pins" sfa-pipe-to="eventHandler2" class="grid__col3">
                                                 <div class="card">
                                                     <div class="card__top card__top--img">
                                                         <!--<img src="/demo/images/demo/2-horizontal.jpg">-->
@@ -46,9 +47,10 @@
 
                                     </fa-surface>
 
-                                </fa-view>
-                            </fa-scroll-view>
+                                <!--</fa-view>-->
+                            <!--</fa-scroll-view>-->
 
+            <!--</fa-surface>-->
 
 
 
@@ -69,13 +71,13 @@
             <!-- content fa-background-color="'blue'" -->
 
 
-                <fa-scroll-view fa-index="3" fa-pipe-from="eventHandler" sfa-options="{clipSize:500}">
-                    <fa-view fa-index="3">
+                <!--<fa-scroll-view fa-index="3" fa-pipe-from="eventHandler" sfa-options="{clipSize:500}">-->
+                <!--    <fa-view fa-index="3">-->
 
-                        <fa-surface>
+                        <fa-surface fa-size="[undefined, undefined]" class="chatbox">
 
-                            <ul>
-                                <li ng-repeat="mensaje in mensajes" fa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator">
+                            <ul class="list">
+                                <li ng-repeat="mensaje in mensajes" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator">
                                     <div class="list-primary-tile">
                                         <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
                                     </div>
@@ -104,8 +106,8 @@
                             </ul>
                         </fa-surface>
 
-                    </fa-view>
-                </fa-scroll-view>
+                <!--    </fa-view>-->
+                <!--</fa-scroll-view>-->
 
 
 
