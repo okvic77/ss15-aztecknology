@@ -142,13 +142,27 @@
             <!-- header -->
             <fa-surface fa-index="2">
                 <div ng-repeat="usuarioContecado in usuariosOnline | limitTo: 4" style="display:inline-block;">
-                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
+                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}{{usuarioContecado.length}}" tooltip-position="bottom">
                         <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                     </button>
-                    <div ng-if='usuarioContecado.length > 3'>Más</div>
+                    <div ng-if='usuarioContecado.length > 3'>
+                        <div class="fab ml">
+                            <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right">
+                                <i class="mdi mdi--add"></i>
+                                <i class="mdi mdi--android"></i>
+                            </button>
 
-                    {{Date.now()}}
-                    {{usuarioContecado.time}}
+                            <div class="fab__actions fab__actions--down">
+                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right"><i class="mdi mdi--edit"></i>
+                                </button>
+                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right"><i class="mdi mdi--archive"></i>
+                                </button>
+                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right"><i class="mdi mdi--delete"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- {{Date.now()}} {{usuarioContecado.time}}-->
                 </div>
             </fa-surface>
 
