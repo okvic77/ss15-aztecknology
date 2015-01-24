@@ -31,7 +31,7 @@
                             <div class="card__content card__content--small">
 
                                 <div ng-switch="pin.tipo">
-                                    <div ng-switch-when="Votacion">pruebas
+                                    <div ng-switch-when="votaciones">pruebas
 
                                         <input type="checkbox" ng-model="pin.finalizo">
 
@@ -42,14 +42,11 @@
 
 
 
-<lx-text-field label="Description" type="area" model="textFields.description">
-            <textarea ng-model="pin.desc"></textarea>
-        </lx-text-field>
-        
-        
-                                        <lx-text-field label="Descripcion">
-                                            <input type="text" ng-model="textFields.disabled">
+                                        <lx-text-field label="Description" type="area" model="textFields.description">
+                                            <textarea ng-model="pin.desc"></textarea>
                                         </lx-text-field>
+
+
 
                                         <input type="text" name="" /> Usuario fecha para conclusion done/undone
 
@@ -155,24 +152,23 @@
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
 
             <!-- header -->
-            <fa-surface fa-index="2">
+            <fa-surface fa-index="1">
                 <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
                     <div class="fab ml" style="display:inline-block;" ng-if='$index <= 1'>
-                        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}} - {{$index+1}} / {{usuariosOnline.length}}" tooltip-position="bottom">
+                        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
                             <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                         </button>
                     </div>
                     <div class="fab ml" style="display:inline-block;" ng-if='$index == 2'>
-                        <div ng-repeat="usuarioContecadoOculto in usuariosOnline">
+                        <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
+                            <i class="mdi mdi--add"></i>
+                            <i class="mdi mdi--android"></i>
+                        </button>
 
-                            <div ng-if='$index >= $parent.$index'>
-                                <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
-                                    <i class="mdi mdi--add"></i>
-                                    <i class="mdi mdi--android"></i>
-                                </button>
-
-                                <div class="fab__actions fab__actions--down">
-                                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}} - {{$index+1}} / {{usuariosOnline.length}}" tooltip-position="bottom">
+                        <div class="fab__actions fab__actions--down">
+                            <div ng-repeat="usuarioContecadoOculto in usuariosOnline">
+                                <div ng-if='$index >= $parent.$index'>
+                                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom">
                                         <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
                                     </button>
                                 </div>
@@ -180,7 +176,11 @@
                         </div>
                         <!-- {{Date.now()}} {{usuarioContecado.time}}-->
                     </div>
-                    </div>
+                </div>
+
+
+
+
             </fa-surface>
 
             <!-- content fa-background-color="'blue'" -->
@@ -226,7 +226,7 @@
             <!--</fa-scroll-view>-->
 
             <!-- footer fa-background-color="'green'" -->
-            <fa-surface fa-index="1">
+            <fa-surface fa-index="2">
 
 
                 <form name="myMessageForm" ng-submit="enviar()">
