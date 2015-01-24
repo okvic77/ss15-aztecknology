@@ -61,88 +61,117 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 	}]);
 
-app.directive('masonry', function() {
-	console.log('LOAD');
-// 	var container = document.querySelector('#miboardspace');
-// var msnry = new Masonry( container, {
-//   // options...
-//   itemSelector: '.item',
-//   columnWidth: 200
-// });
-	var link = function(scope, element, attrs){
-		
-// 		scope.$watch(attrs.items, function(value) {
-//      console.log('okas');
-//     }, true);
-		
-		
-// 		var newElement = document.createElement('div');
-// 		element.replaceWith(newElement);
-		
-// var msnry = new Masonry( newElement, {
-//   // options...
-//   itemSelector: '.item',
-//   columnWidth: 200
-// });
+	app.directive('masonry', function() {
+		console.log('LOAD');
+		// 	var container = document.querySelector('#miboardspace');
+		// var msnry = new Masonry( container, {
+		//   // options...
+		//   itemSelector: '.item',
+		//   columnWidth: 200
+		// });
+		var link = function(scope, element, attrs) {
 
-// //msnry.appended( elems );
-// angular.forEach(scope.items, function(value, key) {
-//   var item = {
-//   	dom: document.createElement('div')
-//   };
-  
-//   console.log(value, key)
-  
-// });
+			// 		scope.$watch(attrs.items, function(value) {
+			//      console.log('okas');
+			//     }, true);
+
+
+			// 		var newElement = document.createElement('div');
+			// 		element.replaceWith(newElement);
+
+			// var msnry = new Masonry( newElement, {
+			//   // options...
+			//   itemSelector: '.item',
+			//   columnWidth: 200
+			// });
+
+			// //msnry.appended( elems );
+			// angular.forEach(scope.items, function(value, key) {
+			//   var item = {
+			//   	dom: document.createElement('div')
+			//   };
+
+			//   console.log(value, key)
+
+			// });
+
+
+			// 		console.log('LINK', newElement, scope);
+		}
+
+		return {
+			restrict: 'E',
+			//link: link,
+			scope: {
+				items: '=imPins'
+			},
+			controller: ['$scope', '$element', '$attrs', '$transclude', '$timeout', function($scope, $element, $attrs, $transclude, $timeout) {
+				//console.log('CONTROLLER', $scope);
+
+
+
+
+
+
+				//var newElement = document.createElement('div');
+				var newElement = $('<div style="width:100%;"></div>');
+				$element.replaceWith(newElement);
+				
+				
+				var container = jQuery(newElement);
+var prueba = container.masonry({
+   itemSelector: '.item'
+});
+console.log(container);
+
+$scope.items.$watch(function(item) {
+	if (item.event == 'child_added') {
 		
+		var insert = $('<div class="item" style="width:50px;height: 100px;">Esto es una prueba</div>');
 		
-// 		console.log('LINK', newElement, scope);
+		container.append(insert);
+		//container.masonry();
+		prueba.masonry('appended', insert);
+		
+		$timeout(function(){
+			prueba.masonry('reloadItems');
+		},500);
+		
 	}
-	
-  return {
-  	restrict: 'E',
-  	//link: link,
-  	scope: {
-  		items: '=imPins'
-  	},
-  	controller: ['$scope', '$element', '$attrs', '$transclude', function( $scope, $element, $attrs, $transclude ) {
-  		//console.log('CONTROLLER', $scope);
-  		
-  		
-  		
-  			
+});
+				
+				// var msnry = new Masonry(newElement, {
+				// 	itemSelector: '.item',
+				// 	columnWidth: 200
+				// });
 
 
-  		 		var newElement = document.createElement('div');
- 		$element.replaceWith(newElement);
-  	var msnry = new Masonry( newElement, {
-  itemSelector: '.item',
-  columnWidth: 200
-});	
+//var container = newElement.querySelector('.masonry');
+
+				// $scope.items.$watch(function(item) {
+
+				// 	if (item.event == 'child_added') {
+						
+						
+						
+				// 		var newPin = document.createElement('div');
+				// 		newPin.className = '.item';
+				// 		msnry.addItems([newPin]);
+				// 		console.log('Inserted', item);
+				// 	}
 
 
-
-	$scope.items.$watch(function(value) {
-		
-		
-		  var item = {
-  	dom: document.createElement('div')
-  };
+				// });
 
 
-     console.log('okas', value);
-     msnry.appended( item.dom );
-    });
-    
-    
-console.log(newElement, $scope.items, $scope, 'CONTROLLER');
-  		
-            // Controller code goes here.
-        }]
-  	
-    //template: 'Name: {{customer.name}} Address: {{customer.address}}'
-  };
-})
+				//console.log(newElement, $scope.items, $scope, 'CONTROLLER');
+
+				// Controller code goes here.
+			}]
+
+			//template: 'Name: {{customer.name}} Address: {{customer.address}}'
+		};
+	})
 
 	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		//
@@ -222,10 +251,18 @@ console.log(newElement, $scope.items, $scope, 'CONTROLLER');
 							$scope.pins.$add(insert);
 						}
 					}
-					
-					
 
-    $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}];
+
+
+					$scope.grids = [{
+						bgColor: "orange"
+					}, {
+						bgColor: "red"
+					}, {
+						bgColor: "green"
+					}, {
+						bgColor: "yellow"
+					}];
 
 
 
@@ -247,7 +284,9 @@ console.log(newElement, $scope.items, $scope, 'CONTROLLER');
 
 					$scope.enviar = function() {
 						var insert = {
-							text: $scope.nuevo.mensaje
+							text: $scope.nuevo.mensaje,
+							date: Date.now()
+							//date: moment()
 						};
 						insert.user = user.main;
 						$scope.mensajes.$add(insert);

@@ -10,9 +10,7 @@
             <fa-surface>
                 <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple>Ir al inicio</button>
                 Prueba de board
-                <button ng-click="pin.nuevo()">Nuevo pin</button>
-                Hola
-
+                <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin</button>
             </fa-surface>
 
             <!--<fa-surface>-->
@@ -27,32 +25,32 @@
 
                                         
                                         
-                                        <div class="grid">
-                                            <div ng-repeat="pin in pins" sfa-pipe-to="eventHandler2" class="grid__col3">
-                                                <div class="card">
-                                                    <div class="card__top card__top--img">
+                                        <!--<div class="grid">-->
+                                        <!--    <div ng-repeat="pin in pins" sfa-pipe-to="eventHandler2" class="grid__col3">-->
+                                        <!--        <div class="card">-->
+                                        <!--            <div class="card__top card__top--img">-->
                                                         <!--<img src="/demo/images/demo/2-horizontal.jpg">-->
-                                                        <strong class="card-title">{{pin.text}}</strong>
-                                                    </div>
+                                        <!--                <strong class="card-title">{{pin.text}}</strong>-->
+                                        <!--            </div>-->
 
-                                                    <div class="card__content card__content--small">
-                                                        <span class="card-subtitle">Lorem Ipsum</span>
+                                        <!--            <div class="card__content card__content--small">-->
+                                        <!--                <span class="card-subtitle">Lorem Ipsum</span>-->
 
-                                                        <div class="paragraph">
-                                                            <p>
-                                                                {{pin}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique orci a lacinia malesuada.
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                        <!--                <div class="paragraph">-->
+                                        <!--                    <p>-->
+                                        <!--                        {{pin}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique orci a lacinia malesuada.-->
+                                        <!--                    </p>-->
+                                        <!--                </div>-->
+                                        <!--            </div>-->
 
-                                                    <div class="card__actions">
-                                                        <button class="btn btn--m btn--black btn--flat" lx-ripple>Share</button>
-                                                        <button class="btn btn--m btn--orange btn--flat" lx-ripple>Learn more</button>
-                                                    </div>
-                                                </div>
+                                        <!--            <div class="card__actions">-->
+                                        <!--                <button class="btn btn--m btn--black btn--flat" lx-ripple>Share</button>-->
+                                        <!--                <button class="btn btn--m btn--orange btn--flat" lx-ripple>Learn more</button>-->
+                                        <!--            </div>-->
+                                        <!--        </div>-->
 
-                                            </div>
-                                        </div>
+                                        <!--    </div>-->
+                                        <!--</div>-->
 
                                     </fa-surface>
 
@@ -96,7 +94,7 @@
 
                                     <div class="list-content-tile list-content-tile--two-lines">
                                         <strong>{{mensaje.text}}</strong>
-                                        <span>por {{mensaje.user.name}}</span>
+                                        <span>por {{mensaje.user.name}} {{mensaje.date}}</span>
                                     </div>
 
                                     <div class="fab show_more">
@@ -106,8 +104,10 @@
                                         </button>
 
                                         <div class="fab__actions fab__actions--left">
-                                            <button ng-click="remover(mensaje)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--delete"></i>
+                                            <!--
+                                            <button ng-click="remover(mensaje)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Eliminar" tooltip-position="top"><i class="mdi mdi--delete"></i>
                                             </button>
+                                            -->
                                             <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--archive"></i>
                                             </button>
                                             <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top"><i class="mdi mdi--edit"></i>
