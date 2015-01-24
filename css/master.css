@@ -221,6 +221,9 @@ body {
   bottom: 0;
   left: 0;
 }
+.boxfixed .item {
+  display: inline;
+}
 .contenedor {
   display: table;
 }

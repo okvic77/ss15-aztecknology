@@ -1,9 +1,9 @@
 <div class="contenedor">
     <div class="contenidos">
-        <div ng-hide="user">
+        <div ng-hide="user" align="center">
             <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
         </div>
-        <div ng-show="user">
+        <div ng-show="user" style="margin-top: 25px;">
             <div align="center" class="columna1" style="width: 170px; display: inline-block; min-height: 155px;">
                 <img src="" ng-src="{{user.image}}" alt="">
                 <br>{{user.name}}

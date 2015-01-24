@@ -107,6 +107,8 @@ app.constant('angularMomentConfig', {
 
 		return {
 			restrict: 'E',
+			transclude: true,
+			template: '<div class="boxfixed" ng-transclude></div>',
 			//link: link,
 			scope: {
 				items: '=imPins'
@@ -120,34 +122,34 @@ app.constant('angularMomentConfig', {
 
 
 				//var newElement = document.createElement('div');
-				var newElement = $('<div class="boxfixed" style="width:100%;"></div>');
-				$element.replaceWith(newElement);
+// 				var newElement = $('<div class="boxfixed" style="width:100%;" ng-transclude></div>');
+// 				$element.replaceWith(newElement);
 				
 				
-				var container = jQuery(newElement);
-var prueba = container.masonry({
-   itemSelector: '.item',
-   containerStyle: null,
-   columnWidth: 60,
-   "gutter": 10
-});
-console.log(container);
+// 				var container = jQuery(newElement);
+// var prueba = container.masonry({
+//   itemSelector: '.item',
+//   containerStyle: null,
+//   columnWidth: 60,
+//   "gutter": 10
+// });
+// console.log(container);
 
-$scope.items.$watch(function(item) {
-	if (item.event == 'child_added') {
+// $scope.items.$watch(function(item) {
+// 	if (item.event == 'child_added') {
 		
-		var insert = $('<div class="item" style="width:50px;height: 100px;">Esto es una prueba</div>');
+// 		var insert = $('<div class="item" style="width:50px;height: 100px;">Esto es una prueba</div>');
 		
-		container.append(insert);
-		//container.masonry();
-		prueba.masonry('appended', insert);
-	}
-});
+// 		container.append(insert);
+// 		//container.masonry();
+// 		prueba.masonry('appended', insert);
+// 	}
+// });
 
 
-$timeout(function(){
-	prueba.masonry('reloadItems');
-}, 1000);
+// $timeout(function(){
+// 	$(window).trigger('resize')
+// }, 1000);
 
 				
 				// var msnry = new Masonry(newElement, {
