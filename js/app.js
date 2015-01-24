@@ -24,14 +24,14 @@ var myChatsRef = myFirebaseRef.child('chats');
       templateUrl: "/partials/chat.html",
       controller: ['$scope', '$stateParams', 'chat', '$firebase', function($scope, $stateParams, chat, $firebase) {
 		
-		$scope.mensajes = $firebase(chat.child('messages')).$asArray();
+		var live = $firebase(chat.child('messages'))
+		$scope.mensajes = live.$asArray();
 		
 		$scope.enviar = function(){
 			
+			$scope.mensajes.$add({text:'Holas', other:true});
 			
-			
-			liveChat.$add('ok', true);
-			
+
 			console.log('Envio');
 		}
 
