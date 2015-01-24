@@ -2,26 +2,64 @@
 
     <fa-flexible-layout fa-options="{ratios:[1,1]}">
 
-        <fa-surface>
 
-            <a href="/hola" ui-sref="inicio">Ir al inicio</a> Prueba de board
-            
-            
-            {{pins}}
-            
-            
-            <button ng-click="pin.nuevo()">Nuevo pin</button>
-            
-            
-        </fa-surface>
-        
+
+        <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
+
+
+            <fa-surface>
+                <a href="/hola" ui-sref="inicio">Ir al inicio</a> Prueba de board
+                <button ng-click="pin.nuevo()">Nuevo pin</button>
+                Hola
+
+            </fa-surface>
+
+
+            <fa-surface>
+
+                <div class="grid">
+                    <div class="grid__col4" ng-repeat="pin in pins">
+                        <div class="card">
+                            <div class="card__top card__top--img">
+                                <!--<img src="/demo/images/demo/2-horizontal.jpg">-->
+                                <strong class="card-title">{{pin.text}}</strong>
+                            </div>
+
+                            <div class="card__content card__content--small">
+                                <span class="card-subtitle">Lorem Ipsum</span>
+
+                                <div class="paragraph">
+                                    <p>
+                                        {{pin}}
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique orci a lacinia malesuada.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card__actions">
+                                <button class="btn btn--m btn--black btn--flat" lx-ripple>Share</button>
+                                <button class="btn btn--m btn--orange btn--flat" lx-ripple>Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </fa-surface>
+
+
+
+        </fa-header-footer-layout>
+
+
+
+
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
 
             <!-- header -->
             <fa-surface>Header</fa-surface>
 
             <!-- content fa-background-color="'blue'" -->
-            <fa-modifier fa-size="[undefined, undefined]">
+            <fa-modifier fa-size="[600, 5]">
 
                 <fa-scroll-view fa-pipe-from="eventHandler" fa-options="{clipSize:300}">
                     <fa-view>

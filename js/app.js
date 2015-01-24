@@ -5,7 +5,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 (function($) {
-	
+
 
 	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx']);
 
@@ -24,7 +24,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				ok.response = authData;
 
 
-					ok.main = {
+				ok.main = {
 					name: authData.facebook.cachedUserProfile.first_name,
 					namefull: authData.facebook.displayName,
 					image: authData.facebook.cachedUserProfile.picture.data.url
@@ -38,8 +38,8 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 		//myFirebaseRef.onAuth(handleLogin);
 		ok.login = function() {
-			myFirebaseRef.authWithOAuthPopup("facebook", function(err, response){
-				$timeout(function(){
+			myFirebaseRef.authWithOAuthPopup("facebook", function(err, response) {
+				$timeout(function() {
 					handleLogin(err, response);
 				});
 			});
@@ -89,34 +89,34 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				templateUrl: "/partials/chat.html",
 				controller: ['$scope', 'live', '$firebase', 'user', '$famous', function($scope, live, $firebase, user, $famous) {
 
-var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
+					var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
 
-var EventHandler = $famous['famous/core/EventHandler'];
-    $scope.eventHandler = new EventHandler();
-    
-    
-//var EventHandler = $famous['famous/core/EventHandler'];
-        // $scope.eventHandler = new EventHandler();
-        // $scope.list = [{
-        //   content: "Awesome content"
-        // },{
-        //   content: "Scroll vertically to see more awesome content"
-        // },{
-        //   content: "Famo.us/angular rocks!"
-        //   }
-        // ];
-        
-        // $scope.options = {
-        //   scrollViewOuter: {
-        //     direction: 0,
-        //     paginated: true
-        //   },
-        //   scrollViewInner :{
-        //     direction: 1
-        //   }
-        // };
-        
+					var EventHandler = $famous['famous/core/EventHandler'];
+					$scope.eventHandler = new EventHandler();
+
+
+					//var EventHandler = $famous['famous/core/EventHandler'];
+					// $scope.eventHandler = new EventHandler();
+					// $scope.list = [{
+					//   content: "Awesome content"
+					// },{
+					//   content: "Scroll vertically to see more awesome content"
+					// },{
+					//   content: "Famo.us/angular rocks!"
+					//   }
+					// ];
+
+					// $scope.options = {
+					//   scrollViewOuter: {
+					//     direction: 0,
+					//     paginated: true
+					//   },
+					//   scrollViewInner :{
+					//     direction: 1
+					//   }
+					// };
+
 
 					live.chat.set({
 						title: live.alias
@@ -125,15 +125,40 @@ var EventHandler = $famous['famous/core/EventHandler'];
 					$scope.nuevo = {};
 					$scope.mensajes = $firebase(live.menssages).$asArray();
 					$scope.pins = $firebase(live.pins).$asArray();
-					
+
 					$scope.pin = {
-						nuevo: function(){
-							
+						nuevo: function() {
+							var insert = {
+								text: 'ok'
+							}
+
+							insert.user = user.main;
+							$scope.pins.$add(insert);
 						}
 					}
+					
+					$scope.myGridLayoutOptions = {
+       dimensions: [2,undefined], // specifies number of columns and rows
+    };
 
-$scope.data = {name:'dsadas', t:1};
     $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}];
+
+
+
+
+					$scope.data = {
+						name: 'dsadas',
+						t: 1
+					};
+					$scope.grids = [{
+						bgColor: "orange"
+					}, {
+						bgColor: "red"
+					}, {
+						bgColor: "green"
+					}, {
+						bgColor: "yellow"
+					}];
 
 
 					$scope.enviar = function() {
@@ -144,9 +169,9 @@ $scope.data = {name:'dsadas', t:1};
 						$scope.mensajes.$add(insert);
 						$scope.nuevo = {};
 					}
-					
+
 					$scope.remover = function(mensaje) {
-							$scope.mensajes.$remove(mensaje);
+						$scope.mensajes.$remove(mensaje);
 					}
 
 					$scope.list = [1, 2, 3, 4];
