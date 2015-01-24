@@ -27,59 +27,74 @@
 
                         <div class="card">
 
-                            {{pin.name}}
 
-                            <div ng-hide="pin.tipo" class="card__content card__content--small">
-                                <span class="card-subtitle">Configura tu pin</span>
+                            <div class="card__content card__content--small">
 
-                                <div class="paragraph">
-                                    <p>
+                                <div ng-switch="pin.tipo">
+                                    <div ng-switch-when="Votacion">pruebas
+
+                                        <input type="checkbox" ng-model="pin.finalizo">
 
 
-                                        <input type="text" ng-model="pin.name" />
-
-                                        <select name="" ng-model="tmp.tipo" id="">
-                                            <option value="uno">Uno</option>
-                                            <option value="dos">Dos</option>
-                                            <option value="tres">TRes</option>
-                                        </select>
-                                        <!--<lx-select ng-model="pin.tipo" placeholder="Lorem Ipsum" choices="tipos" floating-label>-->
-                                        <!--            <lx-select-selected>-->
-                                        <!--                {{ $selected.name }} - {{ $selected.age }}-->
-                                        <!--            </lx-select-selected>-->
-
-                                        <!--            <lx-select-choices>-->
-                                        <!--                {{ $choice.email }}-->
-                                        <!--            </lx-select-choices>-->
-                                        <!--        </lx-select>                                        -->
+                                    </div>
+                                    <div ng-switch-when="tarea">
+                                        Descripcion
 
 
 
+<lx-text-field label="Description" type="area" model="textFields.description">
+            <textarea ng-model="pin.desc"></textarea>
+        </lx-text-field>
+        
+        
+                                        <lx-text-field label="Descripcion">
+                                            <input type="text" ng-model="textFields.disabled">
+                                        </lx-text-field>
 
-                                    </p>
+                                        <input type="text" name="" /> Usuario fecha para conclusion done/undone
+
+
+                                    </div>
+                                    <div ng-switch-default>
+
+
+                                        <span class="card-subtitle">Configura tu pin</span>
+
+                                        <div class="paragraph">
+                                            <p>
+
+
+                                                <input type="text" ng-model="pin.name" /> sadasds
+
+
+
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+
+                                    <select name="" ng-model="pin.tipo" id="">
+                                        <option value="mensaje">Mensaje</option>
+                                        <option value="votaciones">Votacion</option>
+                                        <option value="tarea">Tarea</option>
+                                        <option value="cuentas">Cuentas</option>
+                                    </select>
+
                                 </div>
+
+
+
+
                             </div>
 
-                            <div ng-hide="pin.tipo" class="card__actions">
+                            <div class="card__actions">
                                 <button class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pin)" lx-ripple>Guardar</button>
                                 <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pin)" lx-ripple>Eliminar</button>
                             </div>
 
 
-                            <div ng-show="pin.tipo" class="card__content card__content--small">
-                                <span class="card-subtitle">Lorem Ipsum</span>
 
-                                <div class="paragraph">
-                                    <p>
-                                        {{pin}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique orci a lacinia malesuada.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div ng-show="pin.tipo" class="card__actions">
-                                <button class="btn btn--m btn--black btn--flat" lx-ripple>Share</button>
-                                <button class="btn btn--m btn--orange btn--flat" lx-ripple>Learn more</button>
-                            </div>
                         </div>
 
 
@@ -142,29 +157,30 @@
             <!-- header -->
             <fa-surface fa-index="2">
                 <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
-                    <div class="fab ml" style="display:inline-block;" ng-if='$index <= 2'>
+                    <div class="fab ml" style="display:inline-block;" ng-if='$index <= 1'>
                         <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}} - {{$index+1}} / {{usuariosOnline.length}}" tooltip-position="bottom">
                             <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                         </button>
                     </div>
-                    <div class="fab ml" style="display:inline-block;" ng-if='$index > 2'>
-                        <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right">
-                            <i class="mdi mdi--add"></i>
-                            <i class="mdi mdi--android"></i>
-                        </button>
+                    <div class="fab ml" style="display:inline-block;" ng-if='$index == 2'>
+                        <div ng-repeat="usuarioContecadoOculto in usuariosOnline">
 
-                        <div class="fab__actions fab__actions--down">
-                            <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="right">
-                                <i class="mdi mdi--edit">
-                                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}} - {{$index+1}} / {{usuariosOnline.length}}" tooltip-position="bottom">
-                                        <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
+                            <div ng-if='$index >= $parent.$index'>
+                                <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
+                                    <i class="mdi mdi--add"></i>
+                                    <i class="mdi mdi--android"></i>
+                                </button>
+
+                                <div class="fab__actions fab__actions--down">
+                                    <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}} - {{$index+1}} / {{usuariosOnline.length}}" tooltip-position="bottom">
+                                        <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
                                     </button>
-                                </i>
-                            </button>
+                                </div>
+                            </div>
                         </div>
+                        <!-- {{Date.now()}} {{usuarioContecado.time}}-->
                     </div>
-                    <!-- {{Date.now()}} {{usuarioContecado.time}}-->
-                </div>
+                    </div>
             </fa-surface>
 
             <!-- content fa-background-color="'blue'" -->

@@ -217,7 +217,7 @@ console.log($element);
 
 $scope.tmp = {};
 				$scope.guardarPin = function(pin){
-					pin.tipo = $scope.tmp.tipo;
+					//pin.tipo = $scope.tmp.tipo;
 					$scope.pins.$save(pin);
 				}
 
