@@ -23,20 +23,19 @@
 
                 <div class="" ng-repeat="pink in pins" ng-controller="PinView" ng-init="init(pink, pins)">
                     <div class="card">
-<select ng-model="data.tipo" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
+<select ng-model="data.tipo" ng-change="updateTipo()" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
 
                         <div class="card__content card__content--small">
-                            {{data}}
-                            <div ng-switch on="data.tipo">
-                                <div ng-switch-when="votaciones">
+                            
+                                <div ng-show="tipo == 'votaciones'">
                                     <lx-text-field label="Descripcion de la votacion">
                                         <input type="text" ng-model="votaciones.descripcion" required min="3">
                                     </lx-text-field>
                                 </div>
-                                <div ng-switch-when="mensaje"> Aqui sale el mensaje
+                                <div ng-show="tipo == 'mensaje'"> Aqui sale el mensaje
 
                                 </div>
-                                <div ng-switch-when="cuentas">
+                                <div ng-show="tipo == 'cuentas'">
                                     <lx-text-field label="Concepto">
                                         <input type="text" ng-model="cuentas.concepto" required min="3">
                                     </lx-text-field>
@@ -44,7 +43,7 @@
                                         <input type="text" ng-model="cuentas.precio" required min="3">
                                     </lx-text-field>
                                 </div>
-                                <div ng-switch-when="tarea">
+                                <div ng-show="tipo == 'tarea'">
                                     <lx-text-field label="¿En que consiste la tarea?">
                                         <input type="text" ng-model="tarea.descripcion" required min="3">
                                     </lx-text-field>
@@ -57,15 +56,8 @@
                                         <label for="checkbox1" class="checkbox__label">Done</label>
                                     </div>
                                 </div>
-                                <div ng-switch-default>
-
-                                    sdfsfs
-
-                                </div>
-                            </div>
 
                             
-{{tipo}}
                         </div>
 
                         <div class="card__actions">

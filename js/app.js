@@ -407,6 +407,13 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 $scope.data = {
 	tipo: ''
 }
+
+		$scope.updateTipo = function(){
+			$scope.tipo = angular.copy($scope.data.tipo);
+			console.log(tipo);
+			console.log('SET TYPE');
+		}
+		
 		$scope.init = function(pin, pins) {
 			pin = pin;
 			pins = pins;
