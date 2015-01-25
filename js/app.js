@@ -6,6 +6,24 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 (function($) {
 
+//
+	// var Transitionable = $famous['famous/transitions/Transitionable'];
+	// var Easing = $famous['famous/transitions/Easing'];
+
+	// $scope.boxTransitionable = new Transitionable([0, 0, 0]);
+
+	// $scope.animate = function() {
+	// 	$scope.boxTransitionable.set([200, 300, 0], {
+	// 		duration: 2000,
+	// 		curve: Easing.inOutBack
+	// 	});
+	// };
+//
+
+
+
+
+
 
 	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx', 'angularMoment']);
 
@@ -67,123 +85,123 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 	}]);
 
-	app.directive('masonry', function() {
-		console.log('LOAD');
-		// 	var container = document.querySelector('#miboardspace');
-		// var msnry = new Masonry( container, {
-		//   // options...
-		//   itemSelector: '.item',
-		//   columnWidth: 200
-		// });
-		var link = function(scope, element, attrs) {
+	// app.directive('masonry', function() {
+	// 	console.log('LOAD');
+	// 	// 	var container = document.querySelector('#miboardspace');
+	// 	// var msnry = new Masonry( container, {
+	// 	//   // options...
+	// 	//   itemSelector: '.item',
+	// 	//   columnWidth: 200
+	// 	// });
+	// 	var link = function(scope, element, attrs) {
 
-			// 		scope.$watch(attrs.items, function(value) {
-			//      console.log('okas');
-			//     }, true);
-
-
-			// 		var newElement = document.createElement('div');
-			// 		element.replaceWith(newElement);
-
-			// var msnry = new Masonry( newElement, {
-			//   // options...
-			//   itemSelector: '.item',
-			//   columnWidth: 200
-			// });
-
-			// //msnry.appended( elems );
-			// angular.forEach(scope.items, function(value, key) {
-			//   var item = {
-			//   	dom: document.createElement('div')
-			//   };
-
-			//   console.log(value, key)
-
-			// });
+	// 		// 		scope.$watch(attrs.items, function(value) {
+	// 		//      console.log('okas');
+	// 		//     }, true);
 
 
-			// 		console.log('LINK', newElement, scope);
-		}
+	// 		// 		var newElement = document.createElement('div');
+	// 		// 		element.replaceWith(newElement);
 
-		return {
-			restrict: 'E',
-			transclude: true,
-			template: '<div class="boxfixed" ng-transclude></div>',
-			//link: link,
-			scope: {
-				items: '=imPins'
-			},
-			controller: ['$scope', '$element', '$attrs', '$transclude', '$timeout', function($scope, $element, $attrs, $transclude, $timeout) {
-				//console.log('CONTROLLER', $scope);
+	// 		// var msnry = new Masonry( newElement, {
+	// 		//   // options...
+	// 		//   itemSelector: '.item',
+	// 		//   columnWidth: 200
+	// 		// });
+
+	// 		// //msnry.appended( elems );
+	// 		// angular.forEach(scope.items, function(value, key) {
+	// 		//   var item = {
+	// 		//   	dom: document.createElement('div')
+	// 		//   };
+
+	// 		//   console.log(value, key)
+
+	// 		// });
 
 
+	// 		// 		console.log('LINK', newElement, scope);
+	// 	}
+
+	// 	return {
+	// 		restrict: 'E',
+	// 		transclude: true,
+	// 		template: '<div class="boxfixed" ng-transclude></div>',
+	// 		//link: link,
+	// 		scope: {
+	// 			items: '=imPins'
+	// 		},
+	// 		controller: ['$scope', '$element', '$attrs', '$transclude', '$timeout', function($scope, $element, $attrs, $transclude, $timeout) {
+	// 			//console.log('CONTROLLER', $scope);
 
 
 
 
-				//var newElement = document.createElement('div');
-				// 				var newElement = $('<div class="boxfixed" style="width:100%;" ng-transclude></div>');
-				// 				$element.replaceWith(newElement);
 
 
-				var container = jQuery($element.context);
-				var prueba = container.masonry({
-					itemSelector: '.item',
-					containerStyle: null,
-					columnWidth: 60,
-					"gutter": 10
-				});
-				console.log($element);
-
-				// $scope.items.$watch(function(item) {
-				// 	if (item.event == 'child_added') {
-
-				// 		var insert = $('<div class="item" style="width:50px;height: 100px;">Esto es una prueba</div>');
-
-				// 		container.append(insert);
-				// 		//container.masonry();
-				// 		prueba.masonry('appended', insert);
-				// 	}
-				// });
+	// 			//var newElement = document.createElement('div');
+	// 			// 				var newElement = $('<div class="boxfixed" style="width:100%;" ng-transclude></div>');
+	// 			// 				$element.replaceWith(newElement);
 
 
-				// $timeout(function(){
-				// 	$(window).trigger('resize')
-				// }, 1000);
+	// 			// var container = jQuery($element.context);
+	// 			// var prueba = container.masonry({
+	// 			// 	itemSelector: '.item',
+	// 			// 	containerStyle: null,
+	// 			// 	columnWidth: 60,
+	// 			// 	"gutter": 10
+	// 			// });
+	// 			// console.log($element);
+
+	// 			// $scope.items.$watch(function(item) {
+	// 			// 	if (item.event == 'child_added') {
+
+	// 			// 		var insert = $('<div class="item" style="width:50px;height: 100px;">Esto es una prueba</div>');
+
+	// 			// 		container.append(insert);
+	// 			// 		//container.masonry();
+	// 			// 		prueba.masonry('appended', insert);
+	// 			// 	}
+	// 			// });
 
 
-				// var msnry = new Masonry(newElement, {
-				// 	itemSelector: '.item',
-				// 	columnWidth: 200
-				// });
+	// 			// $timeout(function(){
+	// 			// 	$(window).trigger('resize')
+	// 			// }, 1000);
 
 
-				//var container = newElement.querySelector('.masonry');
-
-				// $scope.items.$watch(function(item) {
-
-				// 	if (item.event == 'child_added') {
-
+	// 			// var msnry = new Masonry(newElement, {
+	// 			// 	itemSelector: '.item',
+	// 			// 	columnWidth: 200
+	// 			// });
 
 
-				// 		var newPin = document.createElement('div');
-				// 		newPin.className = '.item';
-				// 		msnry.addItems([newPin]);
-				// 		console.log('Inserted', item);
-				// 	}
+	// 			//var container = newElement.querySelector('.masonry');
+
+	// 			// $scope.items.$watch(function(item) {
+
+	// 			// 	if (item.event == 'child_added') {
 
 
-				// });
+
+	// 			// 		var newPin = document.createElement('div');
+	// 			// 		newPin.className = '.item';
+	// 			// 		msnry.addItems([newPin]);
+	// 			// 		console.log('Inserted', item);
+	// 			// 	}
 
 
-				//console.log(newElement, $scope.items, $scope, 'CONTROLLER');
+	// 			// });
 
-				// Controller code goes here.
-			}]
 
-			//template: 'Name: {{customer.name}} Address: {{customer.address}}'
-		};
-	})
+	// 			//console.log(newElement, $scope.items, $scope, 'CONTROLLER');
+
+	// 			// Controller code goes here.
+	// 		}]
+
+	// 		//template: 'Name: {{customer.name}} Address: {{customer.address}}'
+	// 	};
+	// })
 
 	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		//
@@ -214,23 +232,9 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', function($scope, live, $firebase, user, $famous, $interval) {
 
 
-					$scope.tipos = {
-						'votaciones': {
-							'title': 'Votación'
-						},
-						'mensaje': {
-							'title': 'Mensaje'
-						},
-						'tarea': {
-							'title': 'Tarea'
-						},
-						'cuentas': {
-							'title': 'Cuentas'
-						}
-					};
-					
-						
-						
+
+
+
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
 					$scope.tmp = {};
@@ -319,7 +323,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 						nuevo: function() {
 							var insert = {
 								text: 'ok',
-									tipo: 'prueba'
+								tipo: 'prueba'
 							}
 
 							insert.user = user.main;
@@ -379,31 +383,45 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				}
 			});
 	}]);
-	
-	
-	
-	app.controller('PinView', ['$scope', function($scope){
+
+
+
+	app.controller('PinView', ['$scope', function($scope) {
 		var pin, pins;
-		
-		$scope.tipo = '';
-		
-		$scope.init = function(pin, pins){
+		$scope.tipos = {
+			'votaciones': {
+				'title': 'Votación'
+			},
+			'mensaje': {
+				'title': 'Mensaje'
+			},
+			'tarea': {
+				'title': 'Tarea'
+			},
+			'cuentas': {
+				'title': 'Cuentas'
+			}
+		};
+
+		$scope.tipo = 'votaciones';
+$scope.data = {
+	tipo: ''
+}
+		$scope.init = function(pin, pins) {
 			pin = pin;
-			pins  = pins;
+			pins = pins;
 			var test = angular.copy(pin);
 			$scope.tipo = pin.tipo;
 		}
-		
-		
-		
-		$scope.guardarPin = function(){
-			
-			
-			
+
+		$scope.guardarPin = function() {
+
+
+
 			console.log('DEMO');
 		}
-		
+
 	}])
-	
-	
-})(jQuery);
+
+
+})();

@@ -19,56 +19,62 @@
             <fa-surface fa-size="[undefined, undefined]" class="mainboard">
 
 
-                <!--<masonry im-pins="pins">-->
-
-                <div class="boxfixed">
-
-                    <div class="item" ng-repeat="pink in pins" ng-controller="PinView" ng-init="init(pink, pins)">
-                        <div class="card">
 
 
-                            <div class="card__content card__content--small">
-                                <div ng-switch="tipo">
-                                    <div ng-switch-when="votaciones">
-                                        <lx-text-field label="Descripcion de la votacion">
-                                            <input type="text" ng-model="votaciones.descripcion" required min="3">
-                                        </lx-text-field>
-                                    </div>
-                                    <div ng-switch-when="mensaje"> Aqui sale el mensaje
+                <div class="" ng-repeat="pink in pins" ng-controller="PinView" ng-init="init(pink, pins)">
+                    <div class="card">
+<select ng-model="data.tipo" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
 
-                                    </div>
-                                    <div ng-switch-when="cuentas">
-                                        agregar concepto precio total total repartido
-                                    </div>
-                                    <div ng-switch-when="tarea">
-                                        <lx-text-field label="¿En que consiste la tarea?">
-                                            <input type="text" ng-model="tarea.descripcion" required min="3">
-                                        </lx-text-field>
-                                        <lx-text-field label="¿Quien es el encargado?">
-                                            <input type="text" ng-model="tarea.encargado" required min="3">
-                                        </lx-text-field>
-                                        <lx-date-picker model="datepicker.date" label="Fecha para terminarla"></lx-date-picker>
-f
-                                    </div>
-                                    <div ng-switch-default>
+                        <div class="card__content card__content--small">
+                            {{data}}
+                            <div ng-switch on="data.tipo">
+                                <div ng-switch-when="votaciones">
+                                    <lx-text-field label="Descripcion de la votacion">
+                                        <input type="text" ng-model="votaciones.descripcion" required min="3">
+                                    </lx-text-field>
+                                </div>
+                                <div ng-switch-when="mensaje"> Aqui sale el mensaje
 
-sdfsfs
-
+                                </div>
+                                <div ng-switch-when="cuentas">
+                                    <lx-text-field label="Concepto">
+                                        <input type="text" ng-model="cuentas.concepto" required min="3">
+                                    </lx-text-field>
+                                    <lx-text-field label="Precio">
+                                        <input type="text" ng-model="cuentas.precio" required min="3">
+                                    </lx-text-field>
+                                </div>
+                                <div ng-switch-when="tarea">
+                                    <lx-text-field label="¿En que consiste la tarea?">
+                                        <input type="text" ng-model="tarea.descripcion" required min="3">
+                                    </lx-text-field>
+                                    <lx-text-field label="¿Quien es el encargado?">
+                                        <input type="text" ng-model="tarea.encargado" required min="3">
+                                    </lx-text-field>
+                                    <lx-date-picker model="datepicker.date" label="Fecha para terminarla"></lx-date-picker>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="done" class="checkbox__input">
+                                        <label for="checkbox1" class="checkbox__label">Done</label>
                                     </div>
                                 </div>
+                                <div ng-switch-default>
 
-                                <select ng-model="tipo" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
+                                    sdfsfs
 
+                                </div>
                             </div>
 
-                            <div class="card__actions">
-                                <button class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pink)" lx-ripple>Guardar</button>
-                                <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pink)" lx-ripple>Eliminar</button>
-                            </div>
-
-
-
+                            
+{{tipo}}
                         </div>
+
+                        <div class="card__actions">
+                            <button class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pink)" lx-ripple>Guardar</button>
+                            <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pink)" lx-ripple>Eliminar</button>
+                        </div>
+
+
+
 
 
 
@@ -77,7 +83,6 @@ sdfsfs
                 </div>
 
 
-                <!--</masonry>-->
 
 
 
@@ -128,7 +133,7 @@ sdfsfs
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
             <!-- header -->
             <fa-surface fa-index="2">
-                
+
                 <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
                     <div class="fab ml" style="display:inline-block;" ng-if='$index <= 1'>
                         <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
