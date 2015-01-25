@@ -23,15 +23,16 @@
 
                 <div class="boxfixed">
 
-                    <div class="item" ng-repeat="pink in pins">
-
+                    <div class="item" ng-repeat="pink in pins" ng-controller="PinView" ng-init="init(pink, pins)">
                         <div class="card">
 
 
                             <div class="card__content card__content--small">
-                                <div ng-switch="pink.tipo">
+                                <div ng-switch="tipo">
                                     <div ng-switch-when="votaciones">
-
+                                        <lx-text-field label="Descripcion de la votacion">
+                                            <input type="text" ng-model="votaciones.descripcion" required min="3">
+                                        </lx-text-field>
                                     </div>
                                     <div ng-switch-when="mensaje"> Aqui sale el mensaje
 
@@ -40,8 +41,13 @@
                                         agregar concepto precio total total repartido
                                     </div>
                                     <div ng-switch-when="tarea">
-                                        Descripcion
-
+                                        <lx-text-field label="¿En que consiste la tarea?">
+                                            <input type="text" ng-model="tarea.descripcion" required min="3">
+                                        </lx-text-field>
+                                        <lx-text-field label="¿Quien es el encargado?">
+                                            <input type="text" ng-model="tarea.encargado" required min="3">
+                                        </lx-text-field>
+                                        <lx-date-picker model="datepicker.date" label="Fecha para terminarla"></lx-date-picker>
 f
                                     </div>
                                     <div ng-switch-default>
@@ -51,12 +57,7 @@ sdfsfs
                                     </div>
                                 </div>
 
-                                <select sng-model="pink.tipo" sng-model-options="{ getterSetter: true }" ng-change="cambiarPin(pink)" id="">
-                                    <option value="votaciones">Votacion</option>
-                                    <option value="mensaje">Mensaje</option>
-                                    <option value="tarea">Tarea</option>
-                                    <option value="cuentas">Cuentas</option>
-                                </select>
+                                <select ng-model="tipo" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
 
                             </div>
 

@@ -213,10 +213,29 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				templateUrl: "/partials/chat.html",
 				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', function($scope, live, $firebase, user, $famous, $interval) {
 
+
+					$scope.tipos = {
+						'votaciones': {
+							'title': 'Votación'
+						},
+						'mensaje': {
+							'title': 'Mensaje'
+						},
+						'tarea': {
+							'title': 'Tarea'
+						},
+						'cuentas': {
+							'title': 'Cuentas'
+						}
+					};
+					
+						
+						
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
 					$scope.tmp = {};
 					$scope.guardarPin = function(pin) {
+						console.log('Pruebas guardar');
 						//pin.tipo = $scope.tmp.tipo;
 						$scope.pins.$save(pin);
 					}
@@ -254,7 +273,6 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					var usersss = live.chat.child('online');
 					var me = usersss.child(user.response.uid);
 
-					console.log(live.alias);
 
 					live.chat.child('title').set(live.alias);
 
@@ -297,7 +315,6 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					$scope.mensajes = $firebase(live.menssages).$asArray();
 					//$scope.usuarioActivo = $firebase(live.usuarioActivo).$asArray();
 					$scope.pins = $firebase(live.pins).$asArray();
-					console.log($scope.pins);
 					$scope.pin = {
 						nuevo: function() {
 							var insert = {
@@ -362,4 +379,31 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				}
 			});
 	}]);
+	
+	
+	
+	app.controller('PinView', ['$scope', function($scope){
+		var pin, pins;
+		
+		$scope.tipo = '';
+		
+		$scope.init = function(pin, pins){
+			pin = pin;
+			pins  = pins;
+			var test = angular.copy(pin);
+			$scope.tipo = pin.tipo;
+		}
+		
+		
+		
+		$scope.guardarPin = function(){
+			
+			
+			
+			console.log('DEMO');
+		}
+		
+	}])
+	
+	
 })(jQuery);
