@@ -13,7 +13,9 @@
             <!--<fa-scroll-view fa-pipe-from="eventHandler2">-->
             <!--<fa-view>-->
             <fa-surface fa-size="[undefined, undefined]" class="mainboard">
-<button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin</button>
+                <div style="margin: 10px;" align="center">
+                    <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin</button>
+                </div>
                 <div ng-repeat="pink in pins" pin-view class="pin">
                     <div class="card">
                         <div style="margin-top:15px;" align="center">
@@ -66,7 +68,7 @@
                                 </lx-text-field>
 
 
-                                <button class="btn btn--m btn--blue btn--raised" lx-ripple ></button>
+                                <button class="btn btn--m btn--blue btn--raised" lx-ripple></button>
                                 <button ng-click="pink.concepto.push({texto:data.concepto, precio: data.precio }); guardarPin(pink); ">Agregar</button>
 
                             </div>
@@ -175,7 +177,7 @@
                 <div chat-view-scroll>
                     <ul class="list">
                         <li ng-attr-id="{{mensaje['$id']}}" ng-repeat="mensaje in mensajes" message-view sg-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator comentario">
-                            
+
                             <div class="list-primary-tile">
                                 <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
                             </div>
@@ -215,7 +217,7 @@
                                 </div>
                             </div>
                         </li>
-                        
+
                         <li id="ultimomensaje"></li>
                     </ul>
                 </div>

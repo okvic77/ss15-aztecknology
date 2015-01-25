@@ -1,0 +1,6 @@
+{
+  "name": "ss15-aztecknology",
+  "root": "./",
+  "clean_urls": true,
+  "error_page": "index.html"
+}
