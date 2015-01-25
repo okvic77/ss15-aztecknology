@@ -196,7 +196,7 @@ body {
   padding: 0;
   right: 0px;
 }
-#chatView {
+#chatView, fa-app {
   position: fixed;
   top: 0;
   right: 0;

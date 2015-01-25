@@ -1,46 +1,94 @@
-<div class="contenedor">
-    <div class="contenidos">
-        <div ng-hide="user" align="center">
-            <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
-            <fa-app>
-                <fa-render-node fa-node="masterView" id="render"></fa-render-node>
-            </fa-app>
-            <!--             
+<fa-app>
+
+
+    <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
+
+        <!-- header -->
+        <fa-surface fa-background-color="'red'">Header</fa-surface>
+
+        <!-- content -->
+        <fa-modifier fa-translate="box.translate.get()" fa-opacity="box.opacity" fa-size="[undefined, undefined]">
+            <fa-surface fa-background-color="'black'">
+                <div align="center">
+                    
+                    <div class="text-center">
+                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
+                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
+                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
+                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
+                    </div>
+                </div>
+
+            </fa-surface>
+        </fa-modifier>
+        <!-- footer -->
+        <fa-surface fa-background-color="'green'">Footer</fa-surface>
+
+    </fa-header-footer-layout>
+
+
+
+
+
+    <div class="contenedor">
+        <div class="contenidos">
+            <div ng-hide="user" align="center">
+                <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
+
+
+
+
+
+
+
+                <!--<fa-render-node fa-node="masterView" id="render"></fa-render-node>-->
+
+
+
+                <!--</fa-surface>-->
+
+
+
+
+                <!--             
             <fa-modifier fa-size="[100, 100]" fa-translate="boxTransitionable.get()">
                 <fa-surface fa-background-color="'red'" fa-click="animate()">
                     asdasdasd
                 </fa-surface>
             </fa-modifier>
             -->
-            <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="<img src='http://placehold.it/350x150'>" tooltip-position="bottom">Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 </button>
-        </div>
-        <div ng-show="user" style="margin-top: 25px;">
-            <div align="center" class="columna1" style="width: 170px; display: inline-block; min-height: 155px;">
-                <img src="" ng-src="{{user.image}}" alt="">
-                <br>{{user.name}}
-                <br><a>Salir</a>
+                <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="<img src='http://placehold.it/350x150'>" tooltip-position="bottom">Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 Tooltip1 </button>
             </div>
-            <div class="columna2" style="width: calc(100% - 180px); display: inline-block;">
-                <div>
-                    <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" />
-                    <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--blue btn--raised" lx-ripple>Crear chat {{sala}}</button>
+            <div ng-show="user" style="margin-top: 25px;">
+                <div align="center" class="columna1" style="width: 170px; display: inline-block; min-height: 155px;">
+                    <img src="" ng-src="{{user.image}}" alt="">
+                    <br>{{user.name}}
+                    <br><a>Salir</a>
                 </div>
+                <div class="columna2" style="width: calc(100% - 180px); display: inline-block;">
+                    <div>
+                        <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" />
+                        <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--blue btn--raised" lx-ripple>Crear chat {{sala}}</button>
+                    </div>
 
-                <div>
-                    Mis Chats:
-                    <ul>
-                        <li ng-repeat="chat in chats">
-                            <div style="width: 200px; display: inline-block;">
-                                {{chat.title}}
-                            </div>
-                            <div style="width: 200px; display: inline-block;">
-                                <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
-                                <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
-                            </div>
-                        </li>
-                    </ul>
+                    <div>
+                        Mis Chats:
+                        <ul>
+                            <li ng-repeat="chat in chats">
+                                <div style="width: 200px; display: inline-block;">
+                                    {{chat.title}}
+                                </div>
+                                <div style="width: 200px; display: inline-block;">
+                                    <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
+                                    <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+
+</fa-app>

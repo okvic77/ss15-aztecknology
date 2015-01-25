@@ -215,7 +215,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			.state('inicio', {
 				url: "/",
 				templateUrl: "/partials/home.html",
-				controller: ['$scope', '$firebase', 'user', '$famous', function($scope, $firebase, user, $famous) {
+				controller: ['$scope', '$firebase', 'user', '$famous', '$timeout', function($scope, $firebase, user, $famous, $timeout) {
 
 					//
 					var View = $famous['famous/core/View'];
@@ -223,10 +223,33 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					var Surface = $famous['famous/core/Surface'];
 					var Transform = $famous['famous/core/Transform'];
 					var StateModifier = $famous['famous/modifiers/StateModifier'];
+					var Transitionable = $famous['famous/transitions/Transitionable'];
+					var Easing = $famous['famous/transitions/Easing'];
+		
+					$scope.box = {
+						translate: new Transitionable([0, 500, 0]),
+						opacity: new Transitionable(.3)
+					};
+					$scope.animateBox = function() {
+						$scope.box.translate.set([0, 0, 0], {
+							duration: 1500,
+							curve: 'easeInOut'
+						});
+						$scope.box.opacity.set(1, {
+							duration: 1500,
+							curve: 'easeInOut'
+						});
+					};
+
+					$timeout(function(){
+						$scope.animateBox();
+					});
+
 					$scope.masterView = new View();
 
 					var surface = new Surface({
 						size: [100, 100],
+						origin: [0, 0],
 						properties: {
 							color: 'white',
 							textAlign: 'center',
@@ -238,9 +261,18 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 					$scope.masterView.add(stateModifier).add(surface);
 
+					/*
 					stateModifier.setTransform(
-						Transform.translate(100, 300, 0), {
-							duration: 1000,
+						Transform.translate(0, 0, 0), {
+							duration: 0,
+							curve: 'easeInOut'
+						}
+					);
+					*/
+
+					stateModifier.setTransform(
+						Transform.translate(screen.width / 2, screen.height / 2, 0), {
+							duration: 1500,
 							curve: 'easeInOut'
 						}
 					);
