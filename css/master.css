@@ -261,7 +261,7 @@ footer i {
   margin: auto auto;
 }
 .contenedorChat {
-  border: solid 2px black;
+  border: solid 2px #607D8B;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   -webkit-box-shadow: -5px 5px 10px 1px #A4A5A6;
@@ -284,8 +284,7 @@ footer i {
 	background: #EFEBE9;
 }
 .mensajeDatos{
-  font-size: 3px;
-  background-color:red;
+  font-size: 120%;
 }
 
 /*# sourceMappingURL=master.css.map */

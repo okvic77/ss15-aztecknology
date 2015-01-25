@@ -33,11 +33,11 @@
                                     <ul>
                                         <li ng-repeat="opcion in pink.opciones">
                                             <input type="checkbox">{{opcion.value}}
-                                            
+
                                             <br>
                                             <button ng-click="opcion.votos = opcion.votos ? opcion.votos + 1 : 1; guardarPin(pink)">Votos {{opcion.votos}}</button>
-                                            
-                                            </li>
+
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- lista de opciones -->
@@ -59,6 +59,7 @@
                                 <lx-text-field label="Precio">
                                     <input type="text" ng-model="data.precio" required min="3">
                                 </lx-text-field>
+                                <button ng-click="pink.concepto.push({value:data.concepto}); pink.precio.push({value:data.precio});">Agregar</button>
                             </div>
                             <div ng-show="pink.tipo == 'tarea'">
                                 <lx-text-field label="¿En que consiste la tarea?">
@@ -175,7 +176,7 @@
             <!--    <fa-view fa-index="3">-->
 
 
-            <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion contenedorChat">
+            <fa-surface fa-size="[undefined, undefined]" chat-view-scroll class="chatbox animacion contenedorChat">
                 <ul class="list">
                     <li ng-repeat="mensaje in mensajes" message-view sg-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator comentario">
                         <div class="list-primary-tile">
@@ -184,16 +185,16 @@
 
                         <div class="list-content-tile list-content-tile--two-lines">
                             <div>
-                                <strong>{{mensaje.text}}</strong>
+                                <strong class="mensajeDatos">{{mensaje.text}}</strong>
                             </div>
-                                <div ng-repeat="one in media" class="mensajeDatos">
-                                    <hr class="archivos">
-                                    <button href="" ng-hide="one.render" ng-click="showMedia(one)">Ver contenido</button>
-                                    <a href="{{one.url}}" ng-show="one.error" ng-click="showMedia(one)">Abrir</a>
-                                    <h3 ng-show="one.loading">Cargando...</h3>
-                                    
-                                    <div ng-show="one.html" ng-bind-html="one.html"></div>
-                                </div>
+                            <div ng-repeat="one in media">
+                                <hr class="archivos">
+                                <button class="btn btn--m btn--orange btn--raised" lx-ripple ng-hide="one.render" ng-click="showMedia(one)">Ver contenido</button>
+                                <a href="{{one.url}}" ng-show="one.error" ng-click="showMedia(one)">Abrir</a>
+                                <h3 ng-show="one.loading">Cargando...</h3>
+
+                                <div ng-show="one.html" ng-bind-html="one.html"></div>
+                            </div>
                             <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
                         </div>
 
@@ -231,7 +232,7 @@
                     <div class="grid" style="position:relative; top:-10px;">
                         <div class="grid__col6">
                             <lx-text-field label="Escribe tu mensaje">
-                                <input type="text" ng-model="nuevo.mensaje" required min="3">
+                                <input type="text" ng-model="nuevo.mensaje" required min="3" style="background-color: #FFCDD2;">
                             </lx-text-field>
                         </div>
 

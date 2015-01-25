@@ -379,7 +379,15 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					$scope.usuariosOnline = $firebase(usersss).$asArray();
 
 					$scope.nuevo = {};
+					
+					
+					//$firebase(live.menssages).$bindTo($scope.mensajes, "data");
+					
 					$scope.mensajes = $firebase(live.menssages).$asArray();
+					
+					$scope.nuevoMensaje = live.menssages;
+					
+					
 					//$scope.usuarioActivo = $firebase(live.usuarioActivo).$asArray();
 					$scope.pins = $firebase(live.pins).$asArray();
 					$scope.pin = {
@@ -486,9 +494,9 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				'title': 'Cuentas'
 			}
 		};
+		
 
-
-
+		
 		if (!$scope.pink.opciones) $scope.pink.opciones = [];
 
 		$scope.guardarPin = function(pin) {
@@ -567,6 +575,24 @@ app.directive('pinView', function() {
     controller: 'PinView'
   };
 });
+
+
+app.directive('chatViewScroll', function() {
+	
+	var link = function(scope, element, attrs){
+		console.log(attrs);
+	}
+	
+	
+  return {
+  	restric: 'A',
+  	link: link,
+  	sscope:{
+  		//livechat: '='
+  	}
+  };
+});
+
 
 
 
