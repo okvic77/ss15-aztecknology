@@ -2,6 +2,9 @@
     <div class="contenidos">
         <div ng-hide="user" align="center">
             <button ng-hide="user" ng-click="login()">Entrar con Facebook</button>
+            <fa-app>
+                <fa-render-node fa-node="masterView" id="render"></fa-render-node>
+            </fa-app>
             <!--             
             <fa-modifier fa-size="[100, 100]" fa-translate="boxTransitionable.get()">
                 <fa-surface fa-background-color="'red'" fa-click="animate()">

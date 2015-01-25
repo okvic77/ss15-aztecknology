@@ -215,7 +215,39 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			.state('inicio', {
 				url: "/",
 				templateUrl: "/partials/home.html",
-				controller: ['$scope', '$firebase', 'user', function($scope, $firebase, user) {
+				controller: ['$scope', '$firebase', 'user', '$famous', function($scope, $firebase, user, $famous) {
+
+					//
+					var View = $famous['famous/core/View'];
+					var Engine = $famous['famous/core/Engine'];
+					var Surface = $famous['famous/core/Surface'];
+					var Transform = $famous['famous/core/Transform'];
+					var StateModifier = $famous['famous/modifiers/StateModifier'];
+					$scope.masterView = new View();
+
+					var surface = new Surface({
+						size: [100, 100],
+						properties: {
+							color: 'white',
+							textAlign: 'center',
+							backgroundColor: '#FA5C4F'
+						}
+					});
+
+					var stateModifier = new StateModifier();
+
+					$scope.masterView.add(stateModifier).add(surface);
+
+					stateModifier.setTransform(
+						Transform.translate(100, 300, 0), {
+							duration: 1000,
+							curve: 'easeInOut'
+						}
+					);
+					//
+
+
+
 					$scope.chats = $firebase(myChatsRef).$asArray();
 					console.log($scope.chats);
 					$scope.user = user.main;
@@ -422,7 +454,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		$scope.guardarPin = function() {
 			console.log('DEMO');
 			$scope.pins.$save($scope.data);
-			
+
 		}
 
 	}])
