@@ -286,11 +286,31 @@ footer i {
   font-size: 120%;
 }
 .LiVotos {
+  padding:5px;
   margin-bottom:5px;
   max-width: 80%;
   border: solid 2px #607D8B;
--webkit-border-radius: 10px 10px 10px 0;
-border-radius: 10px 10px 10px 0;
-  
+-webkit-border-radius: 15px 15px 15px 0;
+border-radius: 15px 15px 15px 0;  
+}
+.pin{
+  width: 30%;
+  display:inline-block;
+  margin-left:10px;
+}
+
+
+select{
+        height: 37px;
+        padding: 1px 20px 1px;
+        background: #02b8fa;
+        color: #ffffff;
+        border: #ffffff solid 1px;
+        box-shadow: none;
+        -ms-transition: 0.4s;
+        -moz-transition: 0.4s;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 3px;
 }
 /*# sourceMappingURL=master.css.map */

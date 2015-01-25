@@ -380,13 +380,17 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 					$scope.nuevo = {};
 					
-					
+					live.menssages.on('child_added', function(snap, prevChild){
+						
+						
+						
+						console.log('ADDED');
+					});
 					//$firebase(live.menssages).$bindTo($scope.mensajes, "data");
 					
 					$scope.mensajes = $firebase(live.menssages).$asArray();
 					
-					$scope.nuevoMensaje = live.menssages;
-					
+
 					
 					//$scope.usuarioActivo = $firebase(live.usuarioActivo).$asArray();
 					$scope.pins = $firebase(live.pins).$asArray();
@@ -473,6 +477,13 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				},
 				onExit: ['live', function(live) {
 					console.log('EXIT');
+				}],
+				onEnter: ['live', function(live){
+					
+					
+					
+					
+
 				}]
 			});
 	}]);
@@ -577,22 +588,29 @@ app.directive('pinView', function() {
 });
 
 
-app.directive('chatViewScroll', function() {
+// app.directive('chatViewScroll', function() {
 	
-	var link = function(scope, element, attrs){
-		console.log(scope);
-	}
+// 	var link = function(scope, element, attrs){
+		
+		
+// 		// scope.altura.$apply(function(){
+// 		// 	scope.altura = 'DEMO';
+// 		// });
+			
+
+// 		console.log(scope.altura, 'ALTURA');
+// 	}
 	
 	
-  return {
-  	restric: 'A',
-  	//transclude: true,
-  	link: link,
-  	sscope:{
-  		//livechat: '='
-  	}
-  };
-});
+//   return {
+//   	restric: 'A',
+//   	//transclude: true,
+//   	link: link,
+//   	scope:{
+//   		altura: '&'
+//   	}
+//   };
+// });
 
 
 
