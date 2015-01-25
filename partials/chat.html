@@ -142,12 +142,12 @@
             <fa-surface fa-index="2">
                 <div class="contenedorUsuariosOnline">
                     <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
-                        <div class="fab ml" style="display:inline-block;" ng-show='$index <= 1'>
+                        <div class="fab ml" style="display:inline-block;" ng-show='$index <= 0'>
                             <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
                                 <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                             </button>
                         </div>
-                        <div class="fab ml" style="display:inline-block;" ng-show="$index == 2">
+                        <div class="fab ml" style="display:inline-block;" ng-show="$index == 1">
                             <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios conectados" tooltip-position="bottom" style="position: relative; top: -7px;">
                                 <i class="mdi mdi--add"></i>
                                 <i class="mdi mdi--android"></i>
@@ -177,28 +177,29 @@
 
             <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion contenedorChat">
                 <ul class="list">
-                    <li ng-repeat="mensaje in mensajes" ng-controller="MessageView" ng-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator">
+                    <li ng-repeat="mensaje in mensajes" message-view ng-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator">
                         <div class="list-primary-tile">
                             <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
                         </div>
 
                         <div class="list-content-tile list-content-tile--two-lines">
-                            <strong>{{mensaje.text}}</strong>
+                            <div>
+                                <strong>{{mensaje.text}}</strong>
+                            </div>
+                            <div>
+                                <div ng-repeat="one in media">
+                                    <hr class="archivos">
+                                    <button href="" ng-hide="one.render" ng-click="showMedia(one)">Ver contenido</button>
+                                    <h3 ng-show="one.loading">CARGANDO</h3>
+                                    <strong ng-bind="one.url" ng-click="showMedia(one)"></strong>
+                                    <div ng-show="one.html" ng-bind-html="one.html"></div>
+                                </div>
+                            </div>
                             <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
                         </div>
 
 
-                        <div ng-repeat="one in media" class="">
-
-                            <button href="" ng-hide="one.render" ng-click="showMedia(one)">Ver contenido</button>
-                            <h3 ng-show="one.loading">CARGANDO</h3>
-                            <strong ng-bind="one.url"></strong>
-                            <div ng-show="one.html" ng-bind-html="one.html">
-
-                            </div>
-
-
-                        </div>
+                        <!-- -->
 
 
                         <div class="fab show_more">

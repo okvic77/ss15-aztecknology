@@ -1,11 +1,12 @@
 var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	myChatsRef = myFirebaseRef.child('chats'),
 	myPinsRef = myFirebaseRef.child('pins'),
+	myVotaRef = myFirebaseRef.child('vota'),
 	myMessageRef = myFirebaseRef.child('messages');
 
 
 (function($) {
-
+	$.embedly.defaults.key = '1ecc9b4c141b42e989a0a107f4744296';
 	//
 	// var Transitionable = $famous['famous/transitions/Transitionable'];
 	// var Easing = $famous['famous/transitions/Easing'];
@@ -47,18 +48,18 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			else {
 				ok.error = undefined;
 				ok.response = authData;
-				
 
-				var perfil = authData.provider ?  authData[authData.provider] : authData.cachedUserProfile;
+
+				var perfil = authData.provider ? authData[authData.provider] : authData.cachedUserProfile;
 
 				ok.main = {
 					name: perfil.displayName,
 					image: perfil.cachedUserProfile.image || perfil.cachedUserProfile.picture || perfil.cachedUserProfile.profile_image_url,
 					id: authData.uid || motor_ + ':' + perfil.id
 				}
-				
+
 				if (angular.isObject(ok.main.image)) ok.main.image = ok.main.image.data.url;
-				
+
 
 
 				//console.log("Authenticated successfully with payload:", authData);
@@ -313,7 +314,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', function($scope, live, $firebase, user, $famous, $interval) {
 
 
-
+					//console.log($element);
 
 
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
@@ -356,7 +357,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 					var usersss = live.chat.child('online');
-					
+
 
 
 					live.chat.child('title').set(live.alias);
@@ -435,10 +436,10 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				resolve: {
 					live: ['$stateParams', 'user', function($stateParams, user) {
 						var chat = $stateParams.chat;
-						
-						
+
+
 						var chatRef = myChatsRef.child(chat);
-						
+
 						var me = chatRef.child('online').child(user.response.uid);
 
 						me.set({
@@ -450,10 +451,10 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 
-						
-						
+
+
 						me.onDisconnect().remove();
-						
+
 						console.log('Cargando firebase de ' + chat);
 						return {
 							chat: chatRef,
@@ -463,9 +464,9 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 						};
 					}]
 				},
-				onExit: ['live', function(live){
-    console.log('EXIT');
-  }]
+				onExit: ['live', function(live) {
+					console.log('EXIT');
+				}]
 			});
 	}]);
 
@@ -511,59 +512,66 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		}
 
 	}]);
+
 	
-	$.embedly.defaults.key = '1ecc9b4c141b42e989a0a107f4744296';
-	
-	app.controller('MessageView', ['$scope', '$timeout', '$sce', function($scope, $timeout, $sce){
 
-		$scope.init = function(mensaje){
-var media = new Array;
-$scope.embed = [];
-var regexp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+	app.controller('MessageView', ['$scope', '$timeout', '$sce', function($scope, $timeout, $sce) {
 
-while (matches = regexp.exec(mensaje.text)) media.push({
-	render: false,
-	url: matches[0]
-});
 
-$scope.media = media;
-			
-		}
+			var media = new Array;
+			$scope.embed = [];
+			var regexp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+
+			while (matches = regexp.exec($scope.mensaje.text)) media.push({
+				render: false,
+				url: matches[0]
+			});
+
+			$scope.media = media;
+
 		
-		
-		$scope.showMedia = function(item){
+
+
+		$scope.showMedia = function(item) {
 			item.loading = true;
-			$.embedly.extract(item.url).progress(function(data){
-				
-				$timeout(function(){
-					
-				switch (data.media.type) {
-					case 'photo':
-						item.html = $sce.trustAsHtml('<img src="'+data.media.url+'">');
-						break;
-					case 'video':
-						case 'rich':
-						item.html = $sce.trustAsHtml(data.media.html);
-						break;
-					
-					default:
-						console.log(data);
-						break;
-				}
-				item.loading = false;
-				item.media = data.media;				})
-				
+			$.embedly.extract(item.url).progress(function(data) {
+			
+				$timeout(function() {
 
-				
-				
-				
-	  
-});
+					switch (data.media.type) {
+						case 'photo':
+							item.html = $sce.trustAsHtml('<img src="' + data.media.url + '">');
+							break;
+						case 'video':
+						case 'rich':
+							item.html = $sce.trustAsHtml(data.media.html);
+							break;
+
+						default:
+							console.log(data);
+							break;
+					}
+					item.loading = false;
+					item.media = data.media;
+				})
+
+
+
+
+
+
+			});
 			item.render = true;
 		}
-		
+
 	}]);
-	
+
+	app.directive('messageView', function() {
+  return {
+  	restric: 'A',
+    controller: 'MessageView'
+  };
+});
 
 
 })(jQuery);
