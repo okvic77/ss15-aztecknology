@@ -255,8 +255,19 @@ footer i {
   box-shadow: 5px 5px 20px 5px #707070;
 }
 .contenedorUsuariosOnline {
+  margin-top: 10px;
+  padding-top: 21px;
+  width: 90%;
+  margin: auto auto;
+}
+.contenedorChat {
+  border: solid 2px black;
   -webkit-border-radius: 8px;
   border-radius: 8px;
-  border: solid 1px black;
+  -webkit-box-shadow: -5px 5px 10px 1px #A4A5A6;
+  box-shadow: -5px 5px 10px 1px #A4A5A6;
+}
+.contenedorEnviar{
+  
 }
 /*# sourceMappingURL=master.css.map */

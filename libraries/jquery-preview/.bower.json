@@ -1,0 +1,15 @@
+{
+  "name": "jquery-preview",
+  "homepage": "https://github.com/embedly/jquery-preview",
+  "version": "0.3.2",
+  "_release": "0.3.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.2",
+    "commit": "3339102c2623678b6bd1dfb7150bfe6f2c41efd4"
+  },
+  "_source": "git://github.com/embedly/jquery-preview.git",
+  "_target": "~0.3.2",
+  "_originalSource": "embedly/jquery-preview",
+  "_direct": true
+}

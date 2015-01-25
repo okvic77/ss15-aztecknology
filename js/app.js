@@ -514,41 +514,33 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	
 	$.embedly.defaults.key = '1ecc9b4c141b42e989a0a107f4744296';
 	
-	app.controller('MessageView', ['$scope', function($scope){
+	app.controller('MessageView', ['$scope', '$timeout', '$sce', function($scope, $timeout, $sce){
 
 		$scope.init = function(mensaje){
 var media = new Array;
-
+$scope.embed = [];
 var regexp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 
-while (matches = regexp.exec(mensaje.text)) media.push(matches[0]);
-
-
-
-if (media.length != 0){
-	
-	$.embedly.extract(media, {
-  query: {
-    words: 20,
-  }
-}).progress(function(data){
-  // Called after each URL has been returned from the Embedly server. Order
-  // is not preserved for this method, so for long lists where URLs need to
-  // be batched the data results will likely be out of order.
-  console.log(data.url, data.title);
-}).done(function(results){
-  // Called after the call has been completed with every data result in a
-  // list. Order is preserved in this method regardless of batching.
-  $.each(results, function(i, data){
-    console.log(data)
-  });
+while (matches = regexp.exec(mensaje.text)) media.push({
+	render: false,
+	url: matches[0]
 });
-	
-	
-}
 
 $scope.media = media;
 			
+		}
+		
+		
+		$scope.showMedia = function(item){
+			
+			$.embedly.extract(item.url).progress(function(data){
+				item.media = data.media;
+				
+				item.html = $sce.trustAsHtml('<img src="'+data.media.url+'">');
+				
+	  console.log(data.media);
+});
+			item.render = true;
 		}
 		
 	}]);

@@ -147,14 +147,14 @@
                                 <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                             </button>
                         </div>
-                        <div class="fab ml" style="display:inline-block;" ng-show='$index == 2'>
-                            <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
+                        <div class="fab ml" style="display:inline-block;" ng-show="$index == 2">
+                            <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios conectados" tooltip-position="bottom" style="position: relative; top: -7px;">
                                 <i class="mdi mdi--add"></i>
                                 <i class="mdi mdi--android"></i>
                             </button>
 
                             <div class="fab__actions fab__actions--right">
-                                <div ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' style="position: relative; top: 50px;">
+                                <div ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' style="position: relative; top: 7px;">
                                     <button class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom">
                                         <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
                                     </button>
@@ -162,7 +162,6 @@
                             </div>
                             <!-- {{Date.now()}} {{usuarioContecado.time}}-->
                         </div>
-
                     </div>
                 </div>
 
@@ -177,7 +176,8 @@
             <!--<fa-scroll-view fa-index="3" fa-pipe-from="eventHandler" sfa-options="{clipSize:500}">-->
             <!--    <fa-view fa-index="3">-->
 
-            <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion">
+
+            <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion contenedorChat">
                 <ul class="list">
                     <li ng-repeat="mensaje in mensajes" ng-controller="MessageView" ng-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator">
                         <div class="list-primary-tile">
@@ -186,8 +186,22 @@
 
                         <div class="list-content-tile list-content-tile--two-lines">
                             <strong>{{mensaje.text}}</strong>
-                            <span>por {{mensaje.user.name}} {{media}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
+                            <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
                         </div>
+
+
+                        <div ng-repeat="one in media" class="">
+
+                            <button href="" ng-hide="one.render" ng-click="showMedia(one)">Ver contenido</button>
+
+                            <strong ng-bind="one.url"></strong>
+                            <div ng-show="one.html" ng-bind-html="one.html">
+
+                            </div>
+
+
+                        </div>
+
 
                         <div class="fab show_more">
                             <button class="fab__primary btn btn--xl btn--red btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top">
@@ -215,26 +229,27 @@
 
             <!-- footer fa-background-color="'green'" -->
             <fa-surface fa-index="1">
+                <div class="contenedorEnviar">
 
+                    <form name="myMessageForm" ng-submit="enviar()">
 
-                <form name="myMessageForm" ng-submit="enviar()">
+                        <div class="grid">
+                            <div class="grid__col6">
+                                <lx-text-field label="Escribe tu mensaje">
+                                    <input type="text" ng-model="nuevo.mensaje" required min="3">
+                                </lx-text-field>
+                            </div>
 
-                    <div class="grid">
-                        <div class="grid__col4">
-                            <lx-text-field label="Escribe tu mensaje">
-                                <input type="text" ng-model="nuevo.mensaje" required min="3">
-                            </lx-text-field>
+                            <div class="grid__col4">
+                                <input type="submit" ng-disabled="myMessageForm.$invalid" class="btn btn--m btn--blue btn--raised" lx-ripple>
+                            </div>
+
                         </div>
 
-                        <div class="grid__col4">
-                            <input type="submit" ng-disabled="myMessageForm.$invalid" class="btn btn--m btn--blue btn--raised" lx-ripple>
-                        </div>
+                        <!-- <input type="submit" value="Enviar mensaje"> -->
 
-                    </div>
-
-                    <!-- <input type="submit" value="Enviar mensaje"> -->
-
-                </form>
+                    </form>
+                </div>
 
             </fa-surface>
 

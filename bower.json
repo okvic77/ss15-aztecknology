@@ -11,6 +11,7 @@
     "lumx": "~0.2.51",
     "masonry": "~3.2.2",
     "angular-moment": "~0.9.0",
-    "jquery-embedly": "embedly/embedly-jquery#~3.1.2"
+    "jquery-embedly": "embedly/embedly-jquery#~3.1.2",
+    "jquery-preview": "embedly/jquery-preview#~0.3.2"
   }
 }
