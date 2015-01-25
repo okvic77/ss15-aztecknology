@@ -25,7 +25,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 
-	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx', 'angularMoment', 'duScroll']);
+	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx', 'angularMoment']);
 
 
 	app.constant('angularMomentConfig', {
@@ -313,7 +313,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				}]
 			})
 			.state('chat', {
-				url: "/:chat",
+				url: "/chat/:chat",
 				templateUrl: "/partials/chat.html",
 				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', '$anchorScroll', '$location', function($scope, live, $firebase, user, $famous, $interval, $anchorScroll, $location) {
 

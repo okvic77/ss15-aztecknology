@@ -13,10 +13,10 @@
             <!--<fa-scroll-view fa-pipe-from="eventHandler2">-->
             <!--<fa-view>-->
             <fa-surface fa-size="[undefined, undefined]" class="mainboard">
-                <div style="margin: 10px;" align="center" style="background-color:#E0F2F1; border: solid 2px #607D8B;">
+                <div style="margin: 10px;" align="center" style="border: solid 2px #607D8B;">
                     <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin <i class="mdi mdi--exposure-plus-1"></i></button>
                 </div>
-                <div ng-repeat="pink in pins" pin-view class="pin" style="background-color:#E0F2F1; border: solid 2px #607D8B;">
+                <div ng-repeat="pink in pins" pin-view class="pin" style="border: solid 2px #607D8B;">
                     <div class="card">
                         <div style="margin-top:15px;" align="center">
                             <select ng-model="pink.tipo" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
@@ -24,7 +24,8 @@
                         </div>
                         <div class="card__content card__content--small">
                             <div ng-show="pink.tipo == 'votaciones'">
-                                <lx-text-field label="Descripcion de la votacion">
+                                <lx-text-field ng-disabled="data.guardado" label="Descripcion de la votacion"
+                                <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
                                     <input type="text" ng-model="data.votaciones" required min="3">
                                 </lx-text-field>
                                 <div id="opciones">
@@ -44,7 +45,7 @@
                                     <input type="text" ng-model="data.opcion" required min="3">
                                     <button class="btn btn--m btn--blue btn--raised" lx-ripple ng-click="pink.opciones.push({value:data.opcion})">Agregar</button>
                                 </lx-text-field>
-                                <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
+
                             </div>
                             <div ng-show="pink.tipo == 'mensaje'">
                                 <lx-text-field label="Mensaje">

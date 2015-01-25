@@ -208,7 +208,10 @@ fa-app {
   overflow: hidden;
 }
 .mainboard {
+  border: solid 2px #607D8B;
+  width: 95%;
   overflow: scroll;
+  background-color: #E0F2F1;
   overflow-x: hidden;
 }
 .chatbox {
