@@ -5,17 +5,18 @@
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
 
             <fa-surface>
-                <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple style="margin-top:25px; margin-left:25px;"><i class="mdi mdi--keyboard-arrow-left"></i> Usuarios</button>
+                <div style="margin-top:25px; margin-left:25px;">
+                    
+                <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple><i class="mdi mdi--keyboard-arrow-left"></i> Usuarios</button>
                 <!-- Prueba de board -->
+                <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin <i class="mdi mdi--exposure-plus-1"></i></button>
+                </div>
             </fa-surface>
 
             <!--<fa-surface>-->
             <!--<fa-scroll-view fa-pipe-from="eventHandler2">-->
             <!--<fa-view>-->
             <fa-surface fa-size="[undefined, undefined]" class="mainboard">
-                <div style="margin: 10px;" align="center" style="border: solid 2px #607D8B;">
-                    <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin <i class="mdi mdi--exposure-plus-1"></i></button>
-                </div>
                 <div ng-repeat="pink in pins" pin-view class="pin" style="border: solid 2px #607D8B;">
                     <div class="card">
                         <div style="margin-top:15px;" align="center">
@@ -81,17 +82,18 @@
                                 <lx-text-field label="Encargado">
                                     <input type="text" ng-model="pink.encargado" ng-disabled="data.guardado">
                                 </lx-text-field>
-                                <lx-date-picker model="pink.fecha" ng-disabled="data.guardado" label="Fecha para terminarla" ></lx-date-picker>
+                                <lx-date-picker model="pink.fecha" ng-disabled="data.guardado" label="Fecha para terminarla"></lx-date-picker>
                                 <div class="checkbox">
                                     <input type="checkbox" id="done" class="checkbox__input">
                                     <label for="checkbox1" class="checkbox__label">Done</label>
                                 </div>
+                                <!--   <button ng-click="data.guardado=true">Guardar Tarea</button> -->
                             </div>
 
                         </div>
 
                         <div class="card__actions">
-                            <button ng-hide="pink.saved" class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pink)" lx-ripple>Guardar</button>
+                            <button ng-hide="pink.saved" class="btn btn--m btn--black btn--flat" ng-click="data.guardado=true; guardarPin(pink)" lx-ripple>Guardar</button>
                             <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pink)" lx-ripple>Eliminar</button>
                         </div>
 
@@ -157,7 +159,8 @@
                             </button>
 
                             <div class="fab__actions fab__actions--left">
-                                <button ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{::usuarioContecadoOculto.usuario.name}} - Usuario conectado a sala" tooltip-position="bottom" style="position: relative; top:7px;">
+                                <button ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{::usuarioContecadoOculto.usuario.name}} - Usuario conectado a sala" tooltip-position="bottom"
+                                style="position: relative; top:7px;">
                                     <img class="list-primary-tile__img" src="{{usuarioContecadoOculto.usuario.image}}">
                                 </button>
                             </div>
