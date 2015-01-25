@@ -124,12 +124,12 @@
             <fa-surface fa-index="2">
 
                 <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
-                    <div class="fab ml" style="display:inline-block;" ng-show='$index <= 1'>
+                    <div class="fab ml" style="display:inline-block;" ng-show='$index <= 5'>
                         <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
                             <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                         </button>
                     </div>
-                    <div class="fab ml" style="display:inline-block;" ng-show='$index == 2'>
+                    <div class="fab ml" style="display:inline-block;" ng-show='$index == 6'>
                         <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
                             <i class="mdi mdi--add"></i>
                             <i class="mdi mdi--android"></i>
@@ -167,7 +167,7 @@
 
                         <div class="list-content-tile list-content-tile--two-lines">
                             <strong>{{mensaje.text}}</strong>
-                            <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date"></span></span>
+                            <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
                         </div>
 
                         <div class="fab show_more">

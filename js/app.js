@@ -47,7 +47,10 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				ok.error = undefined;
 				ok.response = authData;
 
-
+				var info = authData.facebook || authData.twitter || authData.google;
+				
+				console.log(info);
+				
 				ok.main = {
 					name: authData.facebook.cachedUserProfile.first_name,
 					namefull: authData.facebook.displayName,
@@ -62,54 +65,22 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 		//myFirebaseRef.onAuth(handleLogin);
 		ok.login = function(engine) {
-			
 			switch (engine) {
 				case 'facebook':
-myFirebaseRef.authWithOAuthPopup("facebook", function(err, response) {
-				$timeout(function() {
-					handleLogin(err, response);
-				});
-			});
-			break;
-			
-			
-			
-			case 'twitter':
-				
-				myFirebaseRef.authWithOAuthPopup("twitter", function(error, authData) {
-  if (error) {
-    console.log("Login Failed!", error);
-  } else {
-    console.log("Authenticated successfully with payload:", authData);
-  }
-});
-				
-				break;
-				
-				
-				
-				case 'google':
-					
-					
-					myFirebaseRef.authWithOAuthPopup("google", function(error, authData) {
-  if (error) {
-    console.log("Login Failed!", error);
-  } else {
-    console.log("Authenticated successfully with payload:", authData);
-  }
-});
-					
-					
+					myFirebaseRef.authWithOAuthPopup("facebook", handleLogin);
 					break;
-			
-				
+				case 'twitter':
+					myFirebaseRef.authWithOAuthPopup("twitter", handleLogin);
+					break;
+				case 'google':
+					myFirebaseRef.authWithOAuthPopup("google", handleLogin);
+					break;
 				default:
 					// code
-					
 					break;
 			}
-			
-			
+
+
 		}
 
 		ok.logout = function() {
@@ -268,7 +239,7 @@ myFirebaseRef.authWithOAuthPopup("facebook", function(err, response) {
 					var StateModifier = $famous['famous/modifiers/StateModifier'];
 					var Transitionable = $famous['famous/transitions/Transitionable'];
 					var Easing = $famous['famous/transitions/Easing'];
-		
+
 					$scope.box = {
 						translate: new Transitionable([0, 500, 0]),
 						opacity: new Transitionable(.3)
@@ -284,7 +255,7 @@ myFirebaseRef.authWithOAuthPopup("facebook", function(err, response) {
 						});
 					};
 
-					$timeout(function(){
+					$timeout(function() {
 						$scope.animateBox();
 					});
 
@@ -326,8 +297,8 @@ myFirebaseRef.authWithOAuthPopup("facebook", function(err, response) {
 					$scope.chats = $firebase(myChatsRef).$asArray();
 					console.log($scope.chats);
 					$scope.user = user.main;
-					$scope.login = function() {
-						user.login();
+					$scope.login = function(motor) {
+						user.login(motor);
 					}
 
 
