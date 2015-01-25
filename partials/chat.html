@@ -153,12 +153,10 @@
                                 <i class="mdi mdi--android"></i>
                             </button>
 
-                            <div class="fab__actions fab__actions--right">
-                                <div ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' style="position: relative; top: 7px;">
-                                    <button class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom">
-                                        <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
-                                    </button>
-                                </div>
+                            <div class="fab__actions fab__actions--left">
+                                <button ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom" style="position: relative; top:7px;">
+                                    <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
+                                </button>
                             </div>
                             <!-- {{Date.now()}} {{usuarioContecado.time}}-->
                         </div>
@@ -193,7 +191,7 @@
                         <div ng-repeat="one in media" class="">
 
                             <button href="" ng-hide="one.render" ng-click="showMedia(one)">Ver contenido</button>
-
+                            <h3 ng-show="one.loading">CARGANDO</h3>
                             <strong ng-bind="one.url"></strong>
                             <div ng-show="one.html" ng-bind-html="one.html">
 
@@ -229,33 +227,23 @@
 
             <!-- footer fa-background-color="'green'" -->
             <fa-surface fa-index="1">
-                <div class="contenedorEnviar">
-
-                    <form name="myMessageForm" ng-submit="enviar()">
-
-                        <div class="grid">
-                            <div class="grid__col6">
-                                <lx-text-field label="Escribe tu mensaje">
-                                    <input type="text" ng-model="nuevo.mensaje" required min="3">
-                                </lx-text-field>
-                            </div>
-
-                            <div class="grid__col4">
-                                <input type="submit" ng-disabled="myMessageForm.$invalid" class="btn btn--m btn--blue btn--raised" lx-ripple>
-                            </div>
-
+                <form name="myMessageForm" ng-submit="enviar()">
+                    <div class="grid" style="position:relative; top:-10px;">
+                        <div class="grid__col6">
+                            <lx-text-field label="Escribe tu mensaje">
+                                <input type="text" ng-model="nuevo.mensaje" required min="3">
+                            </lx-text-field>
                         </div>
 
-                        <!-- <input type="submit" value="Enviar mensaje"> -->
-
-                    </form>
-                </div>
+                        <div class="grid__col4" style="margin-top: 26px;">
+                            <input type="submit" ng-disabled="myMessageForm.$invalid" class="btn btn--m btn--blue btn--raised" lx-ripple>
+                        </div>
+                    </div>
+                    <!-- <input type="submit" value="Enviar mensaje"> -->
+                </form>
 
             </fa-surface>
-
-
         </fa-header-footer-layout>
-
     </fa-flexible-layout>
 
 </fa-app>

@@ -532,13 +532,32 @@ $scope.media = media;
 		
 		
 		$scope.showMedia = function(item){
-			
+			item.loading = true;
 			$.embedly.extract(item.url).progress(function(data){
-				item.media = data.media;
 				
-				item.html = $sce.trustAsHtml('<img src="'+data.media.url+'">');
+				$timeout(function(){
+					
+				switch (data.media.type) {
+					case 'photo':
+						item.html = $sce.trustAsHtml('<img src="'+data.media.url+'">');
+						break;
+					case 'video':
+						case 'rich':
+						item.html = $sce.trustAsHtml(data.media.html);
+						break;
+					
+					default:
+						console.log(data);
+						break;
+				}
+				item.loading = false;
+				item.media = data.media;				})
 				
-	  console.log(data.media);
+
+				
+				
+				
+	  
 });
 			item.render = true;
 		}
