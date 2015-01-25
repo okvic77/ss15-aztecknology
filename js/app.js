@@ -315,7 +315,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			.state('chat', {
 				url: "/chat/:chat",
 				templateUrl: "/partials/chat.html",
-				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', '$anchorScroll', '$location', function($scope, live, $firebase, user, $famous, $interval, $anchorScroll, $location) {
+				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', '$anchorScroll', '$location', '$timeout', function($scope, live, $firebase, user, $famous, $interval, $anchorScroll, $location, $timeout) {
 
 
 					//console.log($element);
@@ -427,7 +427,9 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 						$scope.mensajes.$add(insert).then(function(snap){
 							
 								$location.hash(snap.key());
-						$anchorScroll();
+						$timeout(function(){
+							$anchorScroll();
+						});
 						});
 						$scope.nuevo = {};
 					}
