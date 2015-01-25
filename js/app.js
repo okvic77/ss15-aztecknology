@@ -6,7 +6,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 (function($) {
 
-//
+	//
 	// var Transitionable = $famous['famous/transitions/Transitionable'];
 	// var Easing = $famous['famous/transitions/Easing'];
 
@@ -18,7 +18,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	// 		curve: Easing.inOutBack
 	// 	});
 	// };
-//
+	//
 
 
 
@@ -387,7 +387,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 	app.controller('PinView', ['$scope', function($scope) {
-		var pin, pins;
+		var pin;
 		$scope.tipos = {
 			'votaciones': {
 				'title': 'Votación'
@@ -404,28 +404,25 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		};
 
 		$scope.tipo = 'votaciones';
-$scope.data = {
-	tipo: ''
-}
+		$scope.data = {
+			tipo: ''
+		}
 
-		$scope.updateTipo = function(){
-			$scope.tipo = angular.copy($scope.data.tipo);
-			console.log(tipo);
+		$scope.updateTipo = function(tipo) {
+			$scope.tipo = angular.copy(tipo);
 			console.log('SET TYPE');
 		}
-		
+
 		$scope.init = function(pin, pins) {
-			pin = pin;
-			pins = pins;
-			var test = angular.copy(pin);
+			$scope.pins = pins;
+			$scope.data = angular.copy(pin);
 			$scope.tipo = pin.tipo;
 		}
 
 		$scope.guardarPin = function() {
-
-
-
 			console.log('DEMO');
+			$scope.pins.$save(angular.copy($scope.data));
+			
 		}
 
 	}])

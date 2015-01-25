@@ -1,4 +1,4 @@
-<fa-app id="chatView">
+ <fa-app id="chatView">
 
     <fa-flexible-layout fa-options="{ratios:[1,1]}">
 
@@ -23,13 +23,13 @@
 
                 <div class="" ng-repeat="pink in pins" ng-controller="PinView" ng-init="init(pink, pins)">
                     <div class="card">
-<select ng-model="data.tipo" ng-change="updateTipo()" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
-
+<select ng-model="data.tipo" ng-change="updateTipo(data.tipo)" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
+{{data}}
                         <div class="card__content card__content--small">
                             
                                 <div ng-show="tipo == 'votaciones'">
                                     <lx-text-field label="Descripcion de la votacion">
-                                        <input type="text" ng-model="votaciones.descripcion" required min="3">
+                                        <input type="text" ng-model="pink.data.votaciones" required min="3">
                                     </lx-text-field>
                                 </div>
                                 <div ng-show="tipo == 'mensaje'"> Aqui sale el mensaje
@@ -37,20 +37,20 @@
                                 </div>
                                 <div ng-show="tipo == 'cuentas'">
                                     <lx-text-field label="Concepto">
-                                        <input type="text" ng-model="cuentas.concepto" required min="3">
+                                        <input type="text" ng-model="pink.data.concepto" required min="3">
                                     </lx-text-field>
                                     <lx-text-field label="Precio">
-                                        <input type="text" ng-model="cuentas.precio" required min="3">
+                                        <input type="text" ng-model="pink.data.precio" required min="3">
                                     </lx-text-field>
                                 </div>
                                 <div ng-show="tipo == 'tarea'">
                                     <lx-text-field label="¿En que consiste la tarea?">
-                                        <input type="text" ng-model="tarea.descripcion" required min="3">
+                                        <input type="text" ng-model="data.descripcion" required min="3">
                                     </lx-text-field>
                                     <lx-text-field label="¿Quien es el encargado?">
-                                        <input type="text" ng-model="tarea.encargado" required min="3">
+                                        <input type="text" ng-model="data.encargado" required min="3">
                                     </lx-text-field>
-                                    <lx-date-picker model="datepicker.date" label="Fecha para terminarla"></lx-date-picker>
+                                    <lx-date-picker model="data.date" label="Fecha para terminarla"></lx-date-picker>
                                     <div class="checkbox">
                                         <input type="checkbox" id="done" class="checkbox__input">
                                         <label for="checkbox1" class="checkbox__label">Done</label>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="card__actions">
-                            <button class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pink)" lx-ripple>Guardar</button>
+                            <button ng-hide="pink.saved" class="btn btn--m btn--black btn--flat" ng-click="guardarPin(pink)" lx-ripple>Guardar</button>
                             <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pink)" lx-ripple>Eliminar</button>
                         </div>
 
@@ -113,8 +113,6 @@
             <!--</fa-scroll-view>-->
 
             <!--</fa-surface>-->
-
-
 
             <fa-surface>
                 Footer de baord
