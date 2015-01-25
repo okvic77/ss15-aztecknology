@@ -2,5 +2,8 @@
   "name": "ss15-aztecknology",
   "root": "./",
   "clean_urls": true,
+  "routes": {
+    "**": "index.html"
+  },
   "error_page": "index.html"
 }

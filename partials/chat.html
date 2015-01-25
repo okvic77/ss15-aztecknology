@@ -145,7 +145,7 @@
             <!-- header -->
             <fa-surface fa-index="2">
                 <div class="contenedorUsuariosOnline">
-                    <button class="btn btn--l btn--blue btn--raised" lx-ripple lx-tooltip="Usuarios que actualmente estan en esta Chat" tooltip-position="bottom">Usuarios:</button>
+                    <button class="btn btn--l btn--blue btn--raised" lx-ripple lx-tooltip="Usuarios que actualmente estan en esta Chat" tooltip-position="bottom"><i class="mdi mdi--contacts"></i> Usuarios</button>
                     <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
                         <div class="fab ml" style="display:inline-block;" ng-show='$index <= 1'>
                             <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
@@ -155,7 +155,7 @@
                         <div class="fab ml" style="display:inline-block;" ng-show="$index == 2">
                             <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios conectados" tooltip-position="bottom" style="position: relative; top: -7px;">
                                 <i class="mdi mdi--add"></i>
-                                <i class="mdi mdi--android"></i>
+                                <i class="mdi mdi--account-child"></i>
                             </button>
 
                             <div class="fab__actions fab__actions--left">
@@ -205,7 +205,7 @@
                             <div class="fab show_more">
                                 <button class="fab__primary btn btn--xl btn--red btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top">
                                     <i class="mdi mdi--add"></i>
-                                    <i class="mdi mdi--android"></i>
+                                    <i class="mdi mdi--settings"></i>
                                 </button>
 
                                 <div class="fab__actions fab__actions--left">
