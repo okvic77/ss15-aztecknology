@@ -24,10 +24,10 @@
                         </div>
                         <div class="card__content card__content--small">
                             <div ng-show="pink.tipo == 'votaciones'">
-                                <lx-text-field ng-disabled="data.guardado" label="Descripcion de la votacion"
-                                <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
+                                <lx-text-field ng-disabled="data.guardado" label="Descripcion de la votacion">
                                     <input type="text" ng-model="data.votaciones" required min="3">
                                 </lx-text-field>
+                                <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
                                 <div id="opciones">
                                     <ul>
                                         <li ng-repeat="opcion in pink.opciones" class="LiVotos">
@@ -146,8 +146,8 @@
                     <button class="btn btn--l btn--blue btn--raised" lx-ripple lx-tooltip="Usuarios que actualmente estan en esta Chat" tooltip-position="bottom"><i class="mdi mdi--contacts"></i> Usuarios</button>
                     <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
                         <div class="fab ml" style="display:inline-block;" ng-show='$index <= 1'>
-                            <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
-                                <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
+                            <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{::usuarioContecado.usuario.name}}" tooltip-position="bottom">
+                                <img class="list-primary-tile__img" ng-src="{{::usuarioContecado.usuario.image}}">
                             </button>
                         </div>
                         <div class="fab ml" style="display:inline-block;" ng-show="$index == 2">
@@ -157,8 +157,8 @@
                             </button>
 
                             <div class="fab__actions fab__actions--left">
-                                <button ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}} - Usuario conectado a sala" tooltip-position="bottom" style="position: relative; top:7px;">
-                                    <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
+                                <button ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{::usuarioContecadoOculto.usuario.name}} - Usuario conectado a sala" tooltip-position="bottom" style="position: relative; top:7px;">
+                                    <img class="list-primary-tile__img" src="{{usuarioContecadoOculto.usuario.image}}">
                                 </button>
                             </div>
                             <!-- {{Date.now()}} {{usuarioContecado.time}}-->
@@ -177,17 +177,17 @@
             <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion contenedorChat">
                 <div chat-view-scroll>
                     <ul class="list">
-                        <li ng-attr-id="{{mensaje['$id']}}" ng-repeat="mensaje in mensajes" message-view sg-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator comentario">
+                        <li ng-attr-id="{{::mensaje['$id']}}" ng-repeat="mensaje in mensajes" message-view class="list-row list-row--has-primary list-row--has-separator comentario">
 
                             <div class="list-primary-tile">
-                                <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
+                                <img class="list-primary-tile__img" src="{{::mensaje.user.image}}">
                             </div>
 
                             <div class="list-content-tile list-content-tile--two-lines">
                                 <div>
-                                    <strong class="mensajeDatos">{{mensaje.text}}</strong>
+                                    <strong class="mensajeDatos" ng-bind="::mensaje.text"></strong>
                                 </div>
-                                <div ng-repeat="one in media">
+                                <div ng-repeat="one in ::media">
                                     <hr class="archivos">
                                     <button class="btn btn--m btn--orange btn--raised" lx-ripple ng-hide="one.render" ng-click="showMedia(one)">Ver contenido</button>
                                     <a href="{{one.url}}" ng-show="one.error" ng-click="showMedia(one)">Abrir</a>
@@ -195,7 +195,7 @@
 
                                     <div ng-show="one.html" ng-bind-html="one.html"></div>
                                 </div>
-                                <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
+                                <span>por {{::mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
                             </div>
 
                             <!-- -->
