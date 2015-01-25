@@ -45,7 +45,7 @@
                     <div class="text-center">
                         <h1 style="color: #E26714;">SteakIm</h1>
                     </div>
-                    <div style="border:solid 1px black; max-width: 1200px;">
+                    <div style="max-width: 1200px;">
                         <div align="center" class="columna1" style="width: 170px; display: inline-block; min-height: 155px;">
                             <img src="" ng-src="{{user.image}}" alt="">
                             <br>{{user.name}}
@@ -64,15 +64,15 @@
                                 <h2>
                                 Mis Chats:
                             </h2>
-                                    <div ng-repeat="chat in chats">
-                                        <div style="width: 200px; display: inline-block;">
-                                            {{chat.title}}
-                                        </div>
-                                        <div style="width: 200px; display: inline-block;">
-                                            <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
-                                            <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
-                                        </div>
+                                <div ng-repeat="chat in chats">
+                                    <div style="width: 200px; display: inline-block;">
+                                        {{chat.title}}
                                     </div>
+                                    <div style="width: 200px; display: inline-block;">
+                                        <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
+                                        <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
