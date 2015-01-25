@@ -50,7 +50,7 @@
                             </div>
                             <div ng-show="pink.tipo == 'mensaje'">
                                 <lx-text-field label="Mensaje">
-                                    <input type="text" ng-model="data.mensaje" required min="3">
+                                    <input ng-disabled="pink.guardado" type="text" ng-model="pink.mensaje" required min="3">
                                 </lx-text-field>
                             </div>
                             <div ng-show="pink.tipo == 'cuentas'">
@@ -214,7 +214,7 @@
                                     <button ng-click="remover(mensaje)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Eliminar" tooltip-position="top"><i class="mdi mdi--delete"></i>
                                     </button>
 
-                                    <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Archivar como Ping" tooltip-position="top"><i class="mdi mdi--archive"></i>
+                                    <button ng-click ="pin.nuevo(mensaje.text)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Archivar como Ping" tooltip-position="top"><i class="mdi mdi--archive"></i>
                                     </button>
                                     <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Editar" tooltip-position="top"><i class="mdi mdi--edit"></i>
                                     </button>

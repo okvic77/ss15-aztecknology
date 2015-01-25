@@ -10,69 +10,68 @@
         <!-- content -->
         <fa-modifier fa-translate="box.translate.get()" fa-opacity="box.opacity" fa-size="[undefined, undefined]">
             <fa-surface fsa-size="[undefined, undefined]" class="bgc-light-blue-50 homeMainView">
-                <div align="center" ng-hide="user">
+                <div align="center">
                     <div class="text-center" style="margin-top:50px;">
-                        <img src="http://placehold.it/350x150"></img>
+                        <img src="./img/logoBistec.png" width="200"></img>
                     </div>
-                    <div class="text-center">
-                        <h1 style="color: #E26714;">SteakIm</h1>
-                    </div>
-                    <div class="text-center">
-                        <pre>{{user}}</pre>
-                        <h2>Join with</h2>
-                        <button ng-click="login('google')" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sign Up - LogIn" tooltip-position="bottom" style="margin-right:25px;">Google <i class="mdi mdi--plus-one"></i>
-                        </button>
-                        <button ng-click="login('twitter')" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sign Up - LogIn" tooltip-position="bottom" style="margin-right:25px;">Twitter</button>
-                        <button ng-click="login('facebook')" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sign Up - LogIn" tooltip-position="bottom">Facebook</button>
-                    </div>
-                    <div class="text-center" style="margin-top:25px; font-size:120;word-wrap: break-word;">
-                        <div>
-                            What is <font style="color: #E26714;">SteakIm</font>?
+                    <div ng-hide="user">
+                        <div class="text-center">
+                            <h1 style="color: #E26714;">SteakIm</h1>
                         </div>
-                        <div>
-                            Not another instant message application! Steak.im makes a lot easier the hard task of getting together with your school and work buddy’s and finally make that perfect barbecue that you always dreamed with!
-                            <br> You'll have the facilities of an instant message chat with the group you want to go with, and also you will have a board where you can pin up important messages and tasks.
-                            <br> You’ll have a whole toolbox to organize and assign your tasks to your group-mates, you can give a tasks to everyone manually or you can let the system assign them randomly to all the group.
-                            <br> We all live in a democratic country so, let’s vote!! Steak.im lets you submit pools to all the group, or just flip a coin to decide where the barbecue is going to be!
-                            <br> Manage the money account of the entire group and then distribute the total cost between all the members in a transparent way!
+                        <div class="text-center">
+                            <pre>{{user}}</pre>
+                            <h2>Join with</h2>
+                            <button ng-click="login('google')" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sign Up - LogIn" tooltip-position="bottom" style="margin-right:25px;">Google <i class="mdi mdi--plus-one"></i>
+                            </button>
+                            <button ng-click="login('twitter')" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sign Up - LogIn" tooltip-position="bottom" style="margin-right:25px;">Twitter</button>
+                            <button ng-click="login('facebook')" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sign Up - LogIn" tooltip-position="bottom">Facebook</button>
                         </div>
-                    </div>
-                </div>
-                <div align="center" ng-show="user">
-                    <div class="text-center" style="margin-top:50px;">
-                        <img src="http://placehold.it/350x150"></img>
-                    </div>
-                    <div class="text-center">
-                        <h1 style="color: #E26714;">SteakIm</h1>
-                    </div>
-                    <div style="max-width: 1200px;">
-                        <div align="center" style="width: 170px; display: inline-block; min-height: 155px;">
-                            <div style="position: absolute; top: 375px;">
-                                <img src="" ng-src="{{user.image}}" alt="" style="max-height:100px; max-width: 100px;">
-                                <br>{{user.name}}
-                                <br>
-                                <button ng-click="logout()" class="btn btn--s btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Logout" tooltip-position="bottom">Exit <i class="mdi mdi--clear"></i>
+                        <div class="text-center" style="margin-top:25px; font-size:120;word-wrap: break-word;">
+                            <div>
+                                What is <font style="color: #E26714;">SteakIm</font>?
+                            </div>
+                            <div>
+                                Not another instant message application! Steak.im makes a lot easier the hard task of getting together with your school and work buddy’s and finally make that perfect barbecue that you always dreamed with!
+                                <br> You'll have the facilities of an instant message chat with the group you want to go with, and also you will have a board where you can pin up important messages and tasks.
+                                <br> You’ll have a whole toolbox to organize and assign your tasks to your group-mates, you can give a tasks to everyone manually or you can let the system assign them randomly to all the group.
+                                <br> We all live in a democratic country so, let’s vote!! Steak.im lets you submit pools to all the group, or just flip a coin to decide where the barbecue is going to be!
+                                <br> Manage the money account of the entire group and then distribute the total cost between all the members in a transparent way!
                             </div>
                         </div>
-
-
-                        <div style="display: inline-block;">
-
-                            <h2>Mis Chats:</h2>
-                            <div style="border:solid 1px #D7CCC8; background-color: #fff; padding-top: 31px; -webkit-border-radius: 8px; border-radius: 8px;">
-                                <div ng-repeat="chat in chats" style="margin-bottom: 25px;">
-                                    <div style="min-width: 200px; display: inline-block; font-size:20px;">
-                                        {{chat.title}}
-                                    </div>
-                                    <div style="width: 200px; height:36px; display: inline-block; padding-top:20px;">
-                                        <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
-                                        <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
-                                    </div>
+                    </div>
+                    <div align="center" ng-show="user">
+                        <div class="text-center">
+                            <h1 style="color: #E26714;">SteakIm</h1>
+                        </div>
+                        <div style="max-width: 1200px;">
+                            <div align="center" style="width: 170px; display: inline-block; min-height: 155px;">
+                                <div style="position: absolute; top: 375px;">
+                                    <img src="" ng-src="{{user.image}}" alt="" style="max-height:100px; max-width: 100px;">
+                                    <br>{{user.name}}
+                                    <br>
+                                    <button ng-click="logout()" class="btn btn--s btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Logout" tooltip-position="bottom">Exit <i class="mdi mdi--clear"></i>
                                 </div>
                             </div>
-                            <div style="margin-top:25px;">
-                                <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" style="height: 36px;"/>
-                                <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--blue btn--raised" lx-ripple>Crear chat {{sala}}</button>
+
+
+                            <div style="display: inline-block;">
+
+                                <h2>Mis Chats:</h2>
+                                <div style="border:solid 1px #D7CCC8; background-color: #fff; padding-top: 31px; -webkit-border-radius: 8px; border-radius: 8px;">
+                                    <div ng-repeat="chat in chats" style="margin-bottom: 25px;">
+                                        <div style="min-width: 200px; display: inline-block;">
+                                            {{chat.title}}
+                                        </div>
+                                        <div style="width: 200px; height:36px; display: inline-block;">
+                                            <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
+                                            <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top:25px;">
+                                    <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" style="height: 36px;" />
+                                    <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--blue btn--raised" lx-ripple>Crear chat {{sala}}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,11 +121,5 @@
                 </div>
             </footer>
         </fa-surface>
-
     </fa-header-footer-layout>
-
-
-
-
-
 </fa-app>

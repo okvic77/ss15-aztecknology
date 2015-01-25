@@ -445,10 +445,10 @@ return promesa.promise;
 					//$scope.usuarioActivo = $firebase(live.usuarioActivo).$asArray();
 					$scope.pins = $firebase(live.pins).$asArray();
 					$scope.pin = {
-						nuevo: function() {
+						nuevo: function(s) {
 							var insert = {
-								text: 'ok',
-								tipo: 'prueba'
+								mensaje: s || 'Testing',
+								tipo: 'mensaje'
 							}
 
 							insert.user = user.main;
