@@ -2,25 +2,18 @@
 
     <fa-flexible-layout fa-options="{ratios:[1,1]}">
 
-
-
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
-
 
             <fa-surface>
                 <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple>Ir al inicio</button>
                 Prueba de board
-                <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin</button>
             </fa-surface>
 
             <!--<fa-surface>-->
             <!--<fa-scroll-view fa-pipe-from="eventHandler2">-->
             <!--<fa-view>-->
             <fa-surface fa-size="[undefined, undefined]" class="mainboard">
-
-
-
-
+<button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin</button>
                 <div ng-repeat="pink in pins" pin-view class="pin">
                     <div class="card">
                         <div style="margin-top:15px;" align="center">
@@ -60,13 +53,10 @@
 
 
                                 <ul>
-                                    <li ng-init="pink.concepto || (pink.concepto = [])" ng-repeat="concepto in pink.concepto">
+                                    <li ng-repeat="concepto in pink.concepto">
                                         Concepto: {{concepto.texto}} Precio: $ {{concepto.precio}}
                                     </li>
                                 </ul>
-
-
-
 
                                 <lx-text-field label="Concepto">
                                     <input type="text" ng-model="data.concepto" required min="3">
@@ -76,25 +66,25 @@
                                 </lx-text-field>
 
 
+                                <button class="btn btn--m btn--blue btn--raised" lx-ripple ></button>
+                                <button ng-click="pink.concepto.push({texto:data.concepto, precio: data.precio }); guardarPin(pink); ">Agregar</button>
 
-                                <button class="btn btn--m btn--blue btn--raised" lx-ripple ></button><button ng-click="pink.concepto.push({texto:data.concepto, precio: data.precio }); guardarPin(pink) ">Agregar</button>
-                                <button ng-click="pink.concepto.push({texto:data.concepto})">Agregar2</button>
                             </div>
                             <div ng-show="pink.tipo == 'tarea'">
 
                                 <lx-text-field label="¿En que consiste la tarea?">
-                                    <input type="text" ng-model="data.descripcion" required min="3">
+                                    <input type="text" ng-model="pink.descripcion" required min="3">
                                 </lx-text-field>
                                 <lx-text-field label="¿Quien es el encargado?">
-                                    <input type="text" ng-model="data.encargado" required min="3">
+                                    <input type="text" ng-model="pink.encargado" required min="3">
                                 </lx-text-field>
                                 <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
                                 <div class="checkbox">
                                     <input type="checkbox" id="done" class="checkbox__input">
                                     <label for="checkbox1" class="checkbox__label">Done</label>
+                                    <button ng-click="">Guardar tarea</button>
                                 </div>
                             </div>
-
 
                         </div>
 
@@ -103,20 +93,9 @@
                             <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pink)" lx-ripple>Eliminar</button>
                         </div>
 
-
-
-
-
-
                     </div>
                     <!--TEMRINA-->
                 </div>
-
-
-
-
-
-
 
                 <!--<div class="grid">-->
                 <!--    <div ng-repeat="pin in pins" sfa-pipe-to="eventHandler2" class="grid__col3">-->
@@ -185,22 +164,18 @@
                 </div>
 
 
-
-
             </fa-surface>
 
             <!-- content fa-background-color="'blue'" -->
 
-
             <!--<fa-scroll-view fa-index="3" fa-pipe-from="eventHandler" sfa-options="{clipSize:500}">-->
             <!--    <fa-view fa-index="3">-->
 
-
             <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion contenedorChat">
-                <div csshat-view-scroll="altura" class="">
-                    {{altura}}
+                <div chat-view-scroll>
                     <ul class="list">
-                        <li ng-repeat="mensaje in mensajes" message-view sg-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator comentario">
+                        <li ng-attr-id="{{mensaje['$id']}}" ng-repeat="mensaje in mensajes" message-view sg-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator comentario">
+                            
                             <div class="list-primary-tile">
                                 <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
                             </div>
@@ -220,9 +195,7 @@
                                 <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
                             </div>
 
-
                             <!-- -->
-
 
                             <div class="fab show_more">
                                 <button class="fab__primary btn btn--xl btn--red btn--fab" lx-ripple lx-tooltip="Lorem Ipsum" tooltip-position="top">
@@ -242,8 +215,9 @@
                                 </div>
                             </div>
                         </li>
+                        
+                        <li id="ultimomensaje"></li>
                     </ul>
-
                 </div>
             </fa-surface>
 
@@ -266,7 +240,6 @@
                     </div>
                     <!-- <input type="submit" value="Enviar mensaje"> -->
                 </form>
-
             </fa-surface>
         </fa-header-footer-layout>
     </fa-flexible-layout>

@@ -25,7 +25,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 
-	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx', 'angularMoment']);
+	var app = angular.module('SteakIm', ['ui.router', 'firebase', 'famous.angular', 'lumx', 'angularMoment', 'duScroll']);
 
 
 	app.constant('angularMomentConfig', {
@@ -220,10 +220,11 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	// 	};
 	// })
 
-	app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+	app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 		//
 		// For any unmatched url, redirect to /state1
 		$urlRouterProvider.otherwise("/");
+		//$locationProvider.html5Mode(true);
 		//
 		// Now set up the states
 
@@ -310,7 +311,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			.state('chat', {
 				url: "/:chat",
 				templateUrl: "/partials/chat.html",
-				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', function($scope, live, $firebase, user, $famous, $interval) {
+				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', '$anchorScroll', '$location', function($scope, live, $firebase, user, $famous, $interval, $anchorScroll, $location) {
 
 
 					//console.log($element);
@@ -319,11 +320,11 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
 					$scope.tmp = {};
-					$scope.guardarPin = function(pin) {
-						console.log('Pruebas guardar');
-						//pin.tipo = $scope.tmp.tipo;
-						$scope.pins.$save(pin);
-					}
+					// $scope.guardarPin = function(pin) {
+					// 	console.log('Pruebas guardar');
+					// 	//pin.tipo = $scope.tmp.tipo;
+					// 	$scope.pins.$save(pin);
+					// }
 
 					// var EventHandler = $famous['famous/core/EventHandler'];
 					// $scope.eventHandler = new EventHandler();
@@ -382,9 +383,9 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					
 					live.menssages.on('child_added', function(snap, prevChild){
 						
-						
-						
-						console.log('ADDED');
+						$location.hash(snap.key());
+						$anchorScroll();
+
 					});
 					//$firebase(live.menssages).$bindTo($scope.mensajes, "data");
 					
@@ -419,7 +420,11 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 							date: Firebase.ServerValue.TIMESTAMP
 						};
 						insert.user = user.main;
-						$scope.mensajes.$add(insert);
+						$scope.mensajes.$add(insert).then(function(snap){
+							
+								$location.hash(snap.key());
+						$anchorScroll();
+						});
 						$scope.nuevo = {};
 					}
 
@@ -491,6 +496,8 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 	app.controller('PinView', ['$scope', function($scope) {
+		
+
 		$scope.tipos = {
 			'votaciones': {
 				'title': 'Votación'
@@ -509,6 +516,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 		
 		if (!$scope.pink.opciones) $scope.pink.opciones = [];
+		if (!$scope.pink.concepto) $scope.pink.concepto = [];
 
 		$scope.guardarPin = function(pin) {
 			$scope.pins.$save(pin);
@@ -588,29 +596,21 @@ app.directive('pinView', function() {
 });
 
 
-// app.directive('chatViewScroll', function() {
+app.directive('chatViewScroll', function() {
 	
-// 	var link = function(scope, element, attrs){
-		
-		
-// 		// scope.altura.$apply(function(){
-// 		// 	scope.altura = 'DEMO';
-// 		// });
-			
 
-// 		console.log(scope.altura, 'ALTURA');
-// 	}
+  return {
+  	restric: 'A',
+  	controller: ['$scope', '$element', function($scope, $element){
+  		
+  		
+  		
+  		
+  		console.log($element);
+  	}]
+}
 	
-	
-//   return {
-//   	restric: 'A',
-//   	//transclude: true,
-//   	link: link,
-//   	scope:{
-//   		altura: '&'
-//   	}
-//   };
-// });
+});
 
 
 
