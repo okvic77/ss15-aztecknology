@@ -415,13 +415,13 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 		$scope.init = function(pin, pins) {
 			$scope.pins = pins;
-			$scope.data = angular.copy(pin);
+			$scope.data = pin;
 			$scope.tipo = pin.tipo;
 		}
 
 		$scope.guardarPin = function() {
 			console.log('DEMO');
-			$scope.pins.$save(angular.copy($scope.data));
+			$scope.pins.$save($scope.data);
 			
 		}
 
