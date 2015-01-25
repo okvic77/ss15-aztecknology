@@ -34,11 +34,18 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	});
 
 	app.factory('user', ['$timeout', function($timeout) {
+		
+
 		var ok = {
 			main: undefined
 		};
 		var motor_ = undefined;
 		var handleLogin = function(error, authData) {
+			
+			
+
+				
+				
 			if (error || !authData) {
 				ok.error = error;
 				ok.response = undefined;
@@ -62,7 +69,13 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 				//console.log("Authenticated successfully with payload:", authData);
+		
+			
+			
 			}
+			
+			
+		
 		}
 
 		//myFirebaseRef.onAuth(handleLogin);
@@ -222,6 +235,14 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 	app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 		//
+		
+		
+// 		$rootScope.$on('$stateChangeStart', 
+// function(event, toState, toParams, fromState, fromParams){ 
+// 	console.log(fromState);
+//     //event.preventDefault(); 
+// });
+		
 		// For any unmatched url, redirect to /state1
 		$urlRouterProvider.otherwise("/inicio");
 		
@@ -315,12 +336,12 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			.state('chat', {
 				url: "/chat/:chat",
 				templateUrl: "/partials/chat.html",
-				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', '$anchorScroll', '$location', '$timeout', function($scope, live, $firebase, user, $famous, $interval, $anchorScroll, $location, $timeout) {
+				controller: ['$scope', 'live', '$firebase', 'user', '$famous', '$interval', '$anchorScroll', '$location', '$timeout', '$state', function($scope, live, $firebase, user, $famous, $interval, $anchorScroll, $location, $timeout, $state) {
 
 
 					//console.log($element);
-
-
+					console.log('Hola usuario', user);
+					if (!user) $state.go('inicio');
 					//var _docHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
 
 					$scope.tmp = {};

@@ -7,7 +7,7 @@
             <fa-surface>
                 <div style="margin-top:25px; margin-left:25px;">
                     
-                <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple><i class="mdi mdi--keyboard-arrow-left"></i> Usuarios</button>
+                <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple><i class="mdi mdi--keyboard-arrow-left"></i> Regresar</button>
                 <!-- Prueba de board -->
                 <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin <i class="mdi mdi--exposure-plus-1"></i></button>
                 </div>
@@ -20,15 +20,15 @@
                 <div ng-repeat="pink in pins" pin-view class="pin" style="border: solid 2px #607D8B;">
                     <div class="card">
                         <div style="margin-top:15px;" align="center">
-                            <select ng-model="pink.tipo" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
+                            <select ng-disabled="pink.guardado" ng-model="pink.tipo" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
 
                         </div>
                         <div class="card__content card__content--small">
                             <div ng-show="pink.tipo == 'votaciones'">
-                                <lx-text-field ng-disabled="data.guardado" label="Descripcion de la votacion">
-                                    <input type="text" ng-model="data.votaciones" required min="3">
+                                <lx-text-field  label="Descripcion de la votacion">
+                                    <input type="text" ng-disabled="pink.guardado" ng-model="pink.votaciones" required min="3">
                                 </lx-text-field>
-                                <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
+                                <lx-date-picker model="pink.fecha" label="Fecha para terminarla"></lx-date-picker>
                                 <div id="opciones">
                                     <ul>
                                         <li ng-repeat="opcion in pink.opciones" class="LiVotos">
@@ -77,12 +77,12 @@
                             <div ng-show="pink.tipo == 'tarea'">
 
                                 <lx-text-field label="Descripcion">
-                                    <input type="text" ng-model="pink.descripcion" ng-disabled="data.guardado">
+                                    <input type="text" ng-model="pink.descripcion" ng-disabled="pink.guardado">
                                 </lx-text-field>
                                 <lx-text-field label="Encargado">
-                                    <input type="text" ng-model="pink.encargado" ng-disabled="data.guardado">
+                                    <input type="text" ng-model="pink.encargado" ng-disabled="pink.guardado">
                                 </lx-text-field>
-                                <lx-date-picker model="pink.fecha" ng-disabled="data.guardado" label="Fecha para terminarla"></lx-date-picker>
+                                <lx-date-picker model="pink.fecha" ng-disabled="pink.guardado" label="Fecha para terminarla"></lx-date-picker>
                                 <div class="checkbox">
                                     <input type="checkbox" id="done" class="checkbox__input">
                                     <label for="checkbox1" class="checkbox__label">Done</label>
@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="card__actions">
-                            <button ng-hide="pink.saved" class="btn btn--m btn--black btn--flat" ng-click="data.guardado=true; guardarPin(pink)" lx-ripple>Guardar</button>
+                            <button ng-hide="pink.saved" class="btn btn--m btn--black btn--flat" ng-click="pink.guardado=true; guardarPin(pink)" lx-ripple>Guardar</button>
                             <button class="btn btn--m btn--orange btn--flat" ng-click="quitarPin(pink)" lx-ripple>Eliminar</button>
                         </div>
 

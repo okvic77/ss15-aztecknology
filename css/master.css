@@ -318,4 +318,9 @@ select{
         transition: 0.4s;
         border-radius: 3px;
 }
-/*# sourceMappingURL=master.css.map */
+
+
+.homeMainView {
+    overflow: scroll;
+  overflow-x: hidden;
+}
