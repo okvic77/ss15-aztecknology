@@ -33,11 +33,12 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		timezone: 'Europe/London' // optional
 	});
 
-	app.factory('user', ['$timeout', function($timeout) {
-		
+	app.factory('user', ['$q', function($q) {
+		//var promesa = $q.defer();
 
 		var ok = {
-			main: undefined
+			main: {},
+			//update: promesa.promise
 		};
 		var motor_ = undefined;
 		var handleLogin = function(error, authData) {
@@ -50,6 +51,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				ok.error = error;
 				ok.response = undefined;
 				ok.main = undefined;
+				//promesa.resolve(ok.main);
 			}
 			else {
 				ok.error = undefined;
@@ -63,10 +65,12 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					image: perfil.cachedUserProfile.image || perfil.cachedUserProfile.picture || perfil.cachedUserProfile.profile_image_url,
 					id: authData.uid || motor_ + ':' + perfil.id
 				}
+				
+				
 
 				if (angular.isObject(ok.main.image)) ok.main.image = ok.main.image.data.url;
 
-
+//promesa.resolve(ok.main);
 
 				//console.log("Authenticated successfully with payload:", authData);
 		
@@ -96,17 +100,17 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					break;
 			}
 
-
+		
 		}
 
 		ok.logout = function() {
 			myFirebaseRef.unauth();
 			ok.main = undefined;
+			//promesa.resolve(undefined);
 		};
 
 
 		handleLogin(undefined, myFirebaseRef.getAuth());
-
 
 
 
@@ -326,8 +330,21 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					$scope.chats = $firebase(myChatsRef).$asArray();
 					console.log($scope.chats);
 					$scope.user = user.main;
+					
+				
+					
 					$scope.login = function(motor) {
-						user.login(motor);
+						
+						
+							//$timeout(function(){
+								user.login(motor);
+							//});
+
+					}
+					
+					$scope.logout = function(){
+							user.logout();
+							$scope.user = user.main;
 					}
 
 
