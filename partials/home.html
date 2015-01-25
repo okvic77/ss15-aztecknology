@@ -42,8 +42,8 @@
                     </div>
                     <div align="center" ng-show="user"><!-- Register Users -->
                         <div style="max-width: 1200px;">
-                            <div align="center" style="width: 170px; display: inline-block; min-height: 155px;">
-                                <div style="position: absolute; top: 320px;">
+                            <div align="center" style="width: 170px; display: inline-block; vertical-align:top; padding-top:63px;">
+                                <div style="">
                                     <img src="" ng-src="{{user.image}}" alt="" style="max-height:100px; max-width: 100px;">
                                     <br>{{user.name}}
                                     <br>
@@ -53,16 +53,15 @@
 
 
                             <div style="display: inline-block;">
-
                                 <h2>Mis Chats:</h2>
                                 <div style="border:solid 1px #D7CCC8; background-color: #fff; padding-top: 31px; -webkit-border-radius: 8px; border-radius: 8px;">
-                                    <div ng-repeat="chat in chats" style="margin-bottom: 25px;">
-                                        <div style="min-width: 200px; display: inline-block;">
+                                    <div ng-repeat="chat in chats" style="margin-bottom: 25px; padding:10px;">
+                                        <div style="min-width: 200px; display: inline-block; width: calc(100% - 220px);">
                                             {{chat.title}}
                                         </div>
                                         <div style="width: 200px; height:36px; display: inline-block;">
-                                            <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
-                                            <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
+                                            <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Enter</button>
+                                            <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple lx-tooltip="Not available" tooltip-position="bottom">Exit</button>
                                         </div>
                                     </div>
                                 </div>

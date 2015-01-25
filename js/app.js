@@ -3,6 +3,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	myPinsRef = myFirebaseRef.child('pins'),
 	myMessageRef = myFirebaseRef.child('messages');
 
+var meRef;
 
 (function($) {
 	$.embedly.defaults.key = '1ecc9b4c141b42e989a0a107f4744296';
@@ -37,7 +38,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		//var promesa = $q.defer();
 
 		var ok = {
-			main: {},
+			main: {}
 			//update: promesa.promise
 		};
 		var motor_ = undefined;
@@ -47,6 +48,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				ok.error = error;
 				ok.response = undefined;
 				ok.main = undefined;
+				meRef = null;
 				promesa && promesa.resolve(ok.main);
 			}
 			else {
@@ -55,7 +57,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 				var perfil = authData.provider ? authData[authData.provider] : authData.cachedUserProfile;
-
+				
 				ok.main = {
 					name: perfil.displayName,
 					image: perfil.cachedUserProfile.image || perfil.cachedUserProfile.picture || perfil.cachedUserProfile.profile_image_url,
@@ -67,7 +69,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 				if (angular.isObject(ok.main.image)) ok.main.image = ok.main.image.data.url;
 
 promesa && promesa.resolve(ok.main);
-
+				
 				//console.log("Authenticated successfully with payload:", authData);
 		
 			
@@ -332,7 +334,11 @@ return promesa.promise;
 
 
 
+					//$scope.chats = $firebase(myChatsRef).$asArray();
 					$scope.chats = $firebase(myChatsRef).$asArray();
+					
+					
+					
 					console.log($scope.chats);
 					$scope.user = user.main;
 					
@@ -516,7 +522,7 @@ return promesa.promise;
 						});
 
 
-
+						//meRef && meRef.push(live.alias);
 
 
 
