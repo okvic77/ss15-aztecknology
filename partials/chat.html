@@ -136,7 +136,7 @@
             <!--</fa-surface>-->
 
             <fa-surface>
-                Footer de baord
+                <!-- Footer de baord -->
             </fa-surface>
 
         </fa-header-footer-layout>
@@ -147,7 +147,7 @@
                 <div class="contenedorUsuariosOnline">
                     <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
                         <div class="fab ml" style="display:inline-block;" ng-show='$index <= 1'>
-                            <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}<br>Usuario conectado a sala" tooltip-position="bottom">
+                            <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}} - Usuario conectado a sala" tooltip-position="bottom">
                                 <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
                             </button>
                         </div>
@@ -158,7 +158,7 @@
                             </button>
 
                             <div class="fab__actions fab__actions--left">
-                                <button ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}<br>Usuario conectado a sala" tooltip-position="bottom" style="position: relative; top:7px;">
+                                <button ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}} - Usuario conectado a sala" tooltip-position="bottom" style="position: relative; top:7px;">
                                     <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
                                 </button>
                             </div>
