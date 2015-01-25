@@ -267,24 +267,30 @@ footer i {
   -webkit-box-shadow: -5px 5px 10px 1px #A4A5A6;
   box-shadow: -5px 5px 10px 1px #A4A5A6;
 }
-
-.archivos{
-  margin-bottom:10px;
-  margin-top:10px;
+.archivos {
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
-
-.comentario img, .comentario iframe{
+.comentario img,
+.comentario iframe {
   max-width: 90%;
   max-height: 1000px;
 }
-.comentario{
+.comentario {
   background-color: #ECEFF1;
 }
-.comentario:nth-child(even){
-	background: #EFEBE9;
+.comentario:nth-child(even) {
+  background: #EFEBE9;
 }
-.mensajeDatos{
+.mensajeDatos {
   font-size: 120%;
 }
-
+.LiVotos {
+  margin-bottom:5px;
+  max-width: 80%;
+  border: solid 2px #607D8B;
+-webkit-border-radius: 10px 10px 10px 0;
+border-radius: 10px 10px 10px 0;
+  
+}
 /*# sourceMappingURL=master.css.map */

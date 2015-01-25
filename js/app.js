@@ -580,12 +580,13 @@ app.directive('pinView', function() {
 app.directive('chatViewScroll', function() {
 	
 	var link = function(scope, element, attrs){
-		console.log(attrs);
+		console.log(scope);
 	}
 	
 	
   return {
   	restric: 'A',
+  	//transclude: true,
   	link: link,
   	sscope:{
   		//livechat: '='

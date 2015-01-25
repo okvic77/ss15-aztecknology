@@ -31,11 +31,11 @@
                                 </lx-text-field>
                                 <div id="opciones">
                                     <ul>
-                                        <li ng-repeat="opcion in pink.opciones">
+                                        <li ng-repeat="opcion in pink.opciones" class="LiVotos">
                                             <input type="checkbox">{{opcion.value}}
-
                                             <br>
-                                            <button ng-click="opcion.votos = opcion.votos ? opcion.votos + 1 : 1; guardarPin(pink)">Votos {{opcion.votos}}</button>
+                                            <button class="btn btn--m btn--blue btn--flat" lx-ripple>Votos {{opcion.votos}}</button>
+                                            <button class="btn btn--m btn--blue btn--raised" lx-ripple ng-click="opcion.votos = opcion.votos ? opcion.votos + 1 : 1; guardarPin(pink)">Votar <i class="mdi mdi--plus-one"></i></button>
 
                                         </li>
                                     </ul>
@@ -43,7 +43,7 @@
                                 <!-- lista de opciones -->
                                 <lx-text-field label="Agregar nueva opcion">
                                     <input type="text" ng-model="data.opcion" required min="3">
-                                    <button ng-click="pink.opciones.push({value:data.opcion})">Agregar</button>
+                                    <button class="btn btn--m btn--blue btn--raised" lx-ripple ng-click="pink.opciones.push({value:data.opcion})">Agregar</button>
                                 </lx-text-field>
                                 <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
                             </div>
@@ -53,13 +53,31 @@
                                 </lx-text-field>
                             </div>
                             <div ng-show="pink.tipo == 'cuentas'">
+                                
+                                
+                                 <ul>
+                                        <li ng-init="pink.concepto || (pink.concepto = [])" ng-repeat="concepto in pink.concepto">
+                                            Concepto: {{concepto.texto}}
+                                            Precio: $ {{concepto.precio}}
+                                            
+
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                    
+                                
                                 <lx-text-field label="Concepto">
                                     <input type="text" ng-model="data.concepto" required min="3">
                                 </lx-text-field>
                                 <lx-text-field label="Precio">
                                     <input type="text" ng-model="data.precio" required min="3">
                                 </lx-text-field>
-                                <button ng-click="pink.concepto.push({value:data.concepto}); pink.precio.push({value:data.precio});">Agregar</button>
+                                
+                                
+                                
+                                
+                                <button ng-click="pink.concepto.push({texto:data.concepto, precio: data.precio });data = {}; guardarPin(pink) ">Agregar</button>
                             </div>
                             <div ng-show="pink.tipo == 'tarea'">
                                 <lx-text-field label="¿En que consiste la tarea?">
@@ -176,8 +194,8 @@
             <!--    <fa-view fa-index="3">-->
 
 
-            <fa-surface fa-size="[undefined, undefined]" chat-view-scroll class="chatbox animacion contenedorChat">
-                <ul class="list">
+            <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion contenedorChat">
+                <ul class="list" chat-view-scroll>
                     <li ng-repeat="mensaje in mensajes" message-view sg-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator comentario">
                         <div class="list-primary-tile">
                             <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
