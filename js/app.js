@@ -1,7 +1,6 @@
 var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	myChatsRef = myFirebaseRef.child('chats'),
 	myPinsRef = myFirebaseRef.child('pins'),
-	myVotaRef = myFirebaseRef.child('vota'),
 	myMessageRef = myFirebaseRef.child('messages');
 
 
@@ -473,7 +472,6 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 	app.controller('PinView', ['$scope', function($scope) {
-		var pin;
 		$scope.tipos = {
 			'votaciones': {
 				'title': 'Votación'
@@ -489,25 +487,12 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			}
 		};
 
-		$scope.tipo = 'votaciones';
-		$scope.data = {
-			tipo: ''
-		}
 
-		$scope.updateTipo = function(tipo) {
-			$scope.tipo = angular.copy(tipo);
-			console.log('SET TYPE');
-		}
 
-		$scope.init = function(pin, pins) {
-			$scope.pins = pins;
-			$scope.data = pin;
-			$scope.tipo = pin.tipo;
-		}
+		if (!$scope.pink.opciones) $scope.pink.opciones = [];
 
-		$scope.guardarPin = function() {
-			console.log('DEMO');
-			$scope.pins.$save($scope.data);
+		$scope.guardarPin = function(pin) {
+			$scope.pins.$save(pin);
 
 		}
 
@@ -549,6 +534,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 						default:
 							console.log(data);
+							item.error = true;
 							break;
 					}
 					item.loading = false;
@@ -572,6 +558,18 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
     controller: 'MessageView'
   };
 });
+
+
+
+app.directive('pinView', function() {
+  return {
+  	restric: 'A',
+    controller: 'PinView'
+  };
+});
+
+
+
 
 
 })(jQuery);

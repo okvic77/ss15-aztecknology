@@ -273,4 +273,19 @@ footer i {
   margin-top:10px;
 }
 
+.comentario img, .comentario iframe{
+  max-width: 90%;
+  max-height: 1000px;
+}
+.comentario{
+  background-color: #ECEFF1;
+}
+.comentario:nth-child(even){
+	background: #EFEBE9;
+}
+.mensajeDatos{
+  font-size: 3px;
+  background-color:red;
+}
+
 /*# sourceMappingURL=master.css.map */
