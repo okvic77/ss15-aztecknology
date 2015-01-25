@@ -242,5 +242,13 @@ body {
     -moz-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
 }
+a{
+  color: #004080;
+	text-decoration: none;
+}
+
+footer i{
+  font-size: 2em;
+}
 
  /*# sourceMappingURL=master.css.map */

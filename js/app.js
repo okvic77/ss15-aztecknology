@@ -61,12 +61,55 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		}
 
 		//myFirebaseRef.onAuth(handleLogin);
-		ok.login = function() {
-			myFirebaseRef.authWithOAuthPopup("facebook", function(err, response) {
+		ok.login = function(engine) {
+			
+			switch (engine) {
+				case 'facebook':
+myFirebaseRef.authWithOAuthPopup("facebook", function(err, response) {
 				$timeout(function() {
 					handleLogin(err, response);
 				});
 			});
+			break;
+			
+			
+			
+			case 'twitter':
+				
+				myFirebaseRef.authWithOAuthPopup("twitter", function(error, authData) {
+  if (error) {
+    console.log("Login Failed!", error);
+  } else {
+    console.log("Authenticated successfully with payload:", authData);
+  }
+});
+				
+				break;
+				
+				
+				
+				case 'google':
+					
+					
+					myFirebaseRef.authWithOAuthPopup("google", function(error, authData) {
+  if (error) {
+    console.log("Login Failed!", error);
+  } else {
+    console.log("Authenticated successfully with payload:", authData);
+  }
+});
+					
+					
+					break;
+			
+				
+				default:
+					// code
+					
+					break;
+			}
+			
+			
 		}
 
 		ok.logout = function() {

@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "steak";
+  src:url("fonts/steak.eot");
+  src:url("fonts/steak.eot?#iefix") format("embedded-opentype"),
+    url("fonts/steak.woff") format("woff"),
+    url("fonts/steak.ttf") format("truetype"),
+    url("fonts/steak.svg#steak") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "steak" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="steak-"]:before,
+[class*=" steak-"]:before {
+  font-family: "steak" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.steak-github:before {
+  content: "a";
+}
+.steak-facebook-alt:before {
+  content: "b";
+}
+.steak-facebook:before {
+  content: "c";
+}
+.steak-github-alt:before {
+  content: "d";
+}
+.steak-google:before {
+  content: "e";
+}
+.steak-twitter-alt:before {
+  content: "f";
+}
+.steak-twitter:before {
+  content: "g";
+}
+.steak-lovedsgn:before {
+  content: "h";
+}
