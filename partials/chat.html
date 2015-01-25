@@ -6,10 +6,15 @@
 
             <fa-surface>
                 <div style="margin-top:25px; margin-left:25px;">
-                    
-                <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple><i class="mdi mdi--keyboard-arrow-left"></i> Regresar</button>
-                <!-- Prueba de board -->
-                <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin <i class="mdi mdi--exposure-plus-1"></i></button>
+
+                    <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple><i class="mdi mdi--keyboard-arrow-left"></i> Regresar</button>
+                    <!-- Prueba de board -->
+                    <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin <i class="mdi mdi--exposure-plus-1"></i>
+                    </button>
+
+                    <button class="btn btn--xl btn--orange btn--flat tc--deep-orange-600" lx-ripple>
+                        SteakIm
+                    </button>
                 </div>
             </fa-surface>
 
@@ -25,7 +30,7 @@
                         </div>
                         <div class="card__content card__content--small">
                             <div ng-show="pink.tipo == 'votaciones'">
-                                <lx-text-field  label="Descripcion de la votacion">
+                                <lx-text-field label="Descripcion de la votacion">
                                     <input type="text" ng-disabled="pink.guardado" ng-model="pink.votaciones" required min="3">
                                 </lx-text-field>
                                 <lx-date-picker model="pink.fecha" label="Fecha para terminarla"></lx-date-picker>
@@ -82,10 +87,11 @@
                                 <lx-text-field label="Encargado">
                                     <input type="text" ng-model="pink.encargado" ng-disabled="pink.guardado">
                                 </lx-text-field>
+
                                 <lx-date-picker model="pink.fecha" ng-disabled="pink.guardado" label="Fecha para terminarla"></lx-date-picker>
                                 <div class="checkbox">
-                                    <input type="checkbox" id="done" class="checkbox__input">
-                                    <label for="checkbox1" class="checkbox__label">Done</label>
+                                    <input ng-model="pink.dome" type="checkbox" id="checkbox-{{pink['$id']}}" class="checkbox__input">
+                                    <label for="checkbox-{{pink['$id']}}" class="checkbox__label">Done</label>
                                 </div>
                                 <!--   <button ng-click="data.guardado=true">Guardar Tarea</button> -->
                             </div>
@@ -214,9 +220,7 @@
                                     <button ng-click="remover(mensaje)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Eliminar" tooltip-position="top"><i class="mdi mdi--delete"></i>
                                     </button>
 
-                                    <button ng-click ="pin.nuevo(mensaje.text)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Archivar como Ping" tooltip-position="top"><i class="mdi mdi--archive"></i>
-                                    </button>
-                                    <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Editar" tooltip-position="top"><i class="mdi mdi--edit"></i>
+                                    <button ng-click="pin.nuevo(mensaje.text)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Archivar como Ping" tooltip-position="top"><i class="mdi mdi--archive"></i>
                                     </button>
                                 </div>
                             </div>
