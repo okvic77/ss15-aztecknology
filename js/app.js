@@ -42,16 +42,12 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		};
 		var motor_ = undefined;
 		var handleLogin = function(error, authData) {
-			
-			
-
-				
 				
 			if (error || !authData) {
 				ok.error = error;
 				ok.response = undefined;
 				ok.main = undefined;
-				//promesa.resolve(ok.main);
+				promesa && promesa.resolve(ok.main);
 			}
 			else {
 				ok.error = undefined;
@@ -70,7 +66,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 				if (angular.isObject(ok.main.image)) ok.main.image = ok.main.image.data.url;
 
-//promesa.resolve(ok.main);
+promesa && promesa.resolve(ok.main);
 
 				//console.log("Authenticated successfully with payload:", authData);
 		
@@ -81,9 +77,16 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 			
 		
 		}
+		
+		var promesa;
+		
 
 		//myFirebaseRef.onAuth(handleLogin);
 		ok.login = function(engine) {
+			
+			
+			promesa = $q.defer();
+			
 			motor_ = engine;
 			switch (engine) {
 				case 'facebook':
@@ -99,6 +102,8 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					// code
 					break;
 			}
+
+return promesa.promise;
 
 		
 		}
@@ -337,7 +342,9 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 						
 						
 							//$timeout(function(){
-								user.login(motor);
+								user.login(motor).then(function(){
+									$scope.user = user.main;
+								});
 							//});
 
 					}

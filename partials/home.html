@@ -61,17 +61,17 @@
                             <h2>Mis Chats:</h2>
                             <div style="border:solid 1px #D7CCC8; background-color: #fff; padding-top: 31px; -webkit-border-radius: 8px; border-radius: 8px;">
                                 <div ng-repeat="chat in chats" style="margin-bottom: 25px;">
-                                    <div style="width: 200px; display: inline-block;">
+                                    <div style="min-width: 200px; display: inline-block; font-size:20px;">
                                         {{chat.title}}
                                     </div>
-                                    <div style="width: 200px; height:36px; display: inline-block;">
-                                            <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
-                                            <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
+                                    <div style="width: 200px; height:36px; display: inline-block; padding-top:20px;">
+                                        <button ui-sref="chat({chat:chat.title})" class="btn btn--m btn--blue btn--raised" lx-ripple>Entrar</button>
+                                        <button ng-click="salirSala(title)" class="btn btn--m btn--red btn--raised" lx-ripple>Salir</button>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" />
+                            <div style="margin-top:25px;">
+                                <input type="text" ng-model="sala" placeholder="Nombre de la chat a crear" style="height: 36px;"/>
                                 <button ng-disable="true" ui-sref="chat({chat:sala})" class="btn btn--m btn--blue btn--raised" lx-ripple>Crear chat {{sala}}</button>
                             </div>
                         </div>
