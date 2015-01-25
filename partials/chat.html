@@ -40,14 +40,15 @@
                                         <li>
                                             <input type="checkbox"> opcion 4</li>
                                     </ul>
-                                </div>  <!-- lista de opciones -->
+                                </div>
+                                <!-- lista de opciones -->
                                 <lx-text-field label="Agregar nueva opcion">
                                     <input type="text" ng-model="data.opciones" required min="3">
                                 </lx-text-field>
                                 <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
                             </div>
-                            <div ng-show="tipo == 'mensaje'"> 
-                                 <lx-text-field label="data.mensaje">
+                            <div ng-show="tipo == 'mensaje'">
+                                <lx-text-field label="Mensaje">
                                     <input type="text" ng-model="data.mensaje" required min="3">
                                 </lx-text-field>
                             </div>
@@ -139,29 +140,30 @@
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
             <!-- header -->
             <fa-surface fa-index="2">
-
-                <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
-                    <div class="fab ml" style="display:inline-block;" ng-show='$index <= 5'>
-                        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
-                            <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
-                        </button>
-                    </div>
-                    <div class="fab ml" style="display:inline-block;" ng-show='$index == 6'>
-                        <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
-                            <i class="mdi mdi--add"></i>
-                            <i class="mdi mdi--android"></i>
-                        </button>
-
-                        <div class="fab__actions fab__actions--down">
-                            <div ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index'>
-                                <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom">
-                                    <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
-                                </button>
-                            </div>
+                <div class="contenedorUsuariosOnline">
+                    <div ng-repeat="usuarioContecado in usuariosOnline" style="display:inline-block;">
+                        <div class="fab ml" style="display:inline-block;" ng-show='$index <= 1'>
+                            <button class="btn btn--m btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecado.usuario.name}}" tooltip-position="bottom">
+                                <img class="list-primary-tile__img" ng-src="{{usuarioContecado.usuario.image}}">
+                            </button>
                         </div>
-                        <!-- {{Date.now()}} {{usuarioContecado.time}}-->
-                    </div>
+                        <div class="fab ml" style="display:inline-block;" ng-show='$index == 2'>
+                            <button class="fab__primary btn btn--xl btn--green btn--fab" lx-ripple lx-tooltip="Más usuarios" tooltip-position="right">
+                                <i class="mdi mdi--add"></i>
+                                <i class="mdi mdi--android"></i>
+                            </button>
 
+                            <div class="fab__actions fab__actions--right">
+                                <div ng-repeat="usuarioContecadoOculto in usuariosOnline" ng-show='$index >= $parent.$index' style="position: relative; top: 50px;">
+                                    <button class="btn btn--l btn--black btn--flat" lx-ripple lx-tooltip="{{usuarioContecadoOculto.usuario.name}}" tooltip-position="bottom">
+                                        <img class="list-primary-tile__img" ng-src="{{usuarioContecadoOculto.usuario.image}}">
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- {{Date.now()}} {{usuarioContecado.time}}-->
+                        </div>
+
+                    </div>
                 </div>
 
 
@@ -184,7 +186,7 @@
 
                         <div class="list-content-tile list-content-tile--two-lines">
                             <strong>{{mensaje.text}}</strong>
-                            <span>por {{mensaje.user.name}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
+                            <span>por {{mensaje.user.name}} {{media}} <span am-time-ago="::mensaje.date" class="mdi mdi--alarm-on"></span></span>
                         </div>
 
                         <div class="fab show_more">

@@ -1,0 +1,22 @@
+{
+  "name": "jquery-embedly",
+  "version": "3.1.2",
+  "homepage": "https://embed.ly/",
+  "authors": [
+    "Art Gibson <art@embed.ly>",
+    "Sean Creeley <sean@embed.ly>"
+  ],
+  "description": "jQuery Library for interacting with the Embedly API.",
+  "license": "BSD",
+  "main": "jquery.embedly.js",
+  "_release": "3.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.1.2",
+    "commit": "04aae4d8e0dbf24c1cf2f91148b0fbc3363aaceb"
+  },
+  "_source": "git://github.com/embedly/embedly-jquery.git",
+  "_target": "~3.1.2",
+  "_originalSource": "embedly/embedly-jquery",
+  "_direct": true
+}
