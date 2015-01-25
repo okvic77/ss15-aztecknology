@@ -25,14 +25,31 @@
                     <div class="card">
                         <select ng-model="data.tipo" ng-change="updateTipo(data.tipo)" ng-options="key as tipo.title for (key, tipo) in tipos"></select>
                         <div class="card__content card__content--small">
-
                             <div ng-show="tipo == 'votaciones'">
                                 <lx-text-field label="Descripcion de la votacion">
                                     <input type="text" ng-model="data.votaciones" required min="3">
                                 </lx-text-field>
+                                <div id="opciones">
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox"> opcion 1</li>
+                                        <li>
+                                            <input type="checkbox"> opcion 2</li>
+                                        <li>
+                                            <input type="checkbox"> opcion 3</li>
+                                        <li>
+                                            <input type="checkbox"> opcion 4</li>
+                                    </ul>
+                                </div>  <!-- lista de opciones -->
+                                <lx-text-field label="Agregar nueva opcion">
+                                    <input type="text" ng-model="data.opciones" required min="3">
+                                </lx-text-field>
+                                <lx-date-picker model="data.fecha" label="Fecha para terminarla"></lx-date-picker>
                             </div>
-                            <div ng-show="tipo == 'mensaje'"> Aqui sale el mensaje
-
+                            <div ng-show="tipo == 'mensaje'"> 
+                                 <lx-text-field label="data.mensaje">
+                                    <input type="text" ng-model="data.mensaje" required min="3">
+                                </lx-text-field>
                             </div>
                             <div ng-show="tipo == 'cuentas'">
                                 <lx-text-field label="Concepto">
@@ -160,7 +177,7 @@
 
             <fa-surface fa-size="[undefined, undefined]" class="chatbox animacion">
                 <ul class="list">
-                    <li ng-repeat="mensaje in mensajes" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator">
+                    <li ng-repeat="mensaje in mensajes" ng-controller="MessageView" ng-init="init(mensaje)" sfa-pipe-to="eventHandler" class="list-row list-row--has-primary list-row--has-separator">
                         <div class="list-primary-tile">
                             <img class="list-primary-tile__img" ng-src="{{mensaje.user.image}}">
                         </div>
@@ -181,7 +198,7 @@
                                 <button ng-click="remover(mensaje)" class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Eliminar" tooltip-position="top"><i class="mdi mdi--delete"></i>
                                 </button>
 
-                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Marcar" tooltip-position="top"><i class="mdi mdi--archive"></i>
+                                <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Archivar como Ping" tooltip-position="top"><i class="mdi mdi--archive"></i>
                                 </button>
                                 <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Editar" tooltip-position="top"><i class="mdi mdi--edit"></i>
                                 </button>
@@ -225,4 +242,3 @@
     </fa-flexible-layout>
 
 </fa-app>
- 

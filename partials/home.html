@@ -5,15 +5,53 @@
 
         <!-- header -->
         <fa-surface class="bgc-light-blue-50 header">
-            <div>
-                Header
+            <div class="card">
+                <div class="toolbar">
+                    <div class="toolbar__left mr">
+                        <button class="btn btn--l btn--black btn--icon" lx-ripple>
+                            <i class="mdi mdi--menu"></i>
+                        </button>
+                    </div>
 
+                    <span class="toolbar__label fs-title">Lorem Ipsum</span>
+
+                    <div class="toolbar__right">
+                        <lx-dropdown position="right" from-top>
+                            <button class="btn btn--l btn--black btn--icon" lx-ripple lx-dropdown-toggle>
+                                <i class="mdi mdi--more-vert"></i>
+                            </button>
+
+                            <lx-dropdown-menu>
+                                <ul>
+                                    <li>
+                                        <a class="dropdown-link">Action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-link">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-link">Something else here</a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-link dropdown-link--is-header">Header</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-link">Separated link</a>
+                                    </li>
+                                </ul>
+                            </lx-dropdown-menu>
+                        </lx-dropdown>
+
+                        <lx-search-filter closed theme="dark"></lx-search-filter>
+                    </div>
+                </div>
             </div>
         </fa-surface>
 
         <!-- content -->
         <fa-modifier fa-translate="box.translate.get()" fa-opacity="box.opacity" fa-size="[undefined, undefined]">
-            <fa-surface class="bgc-light-blue-50">
+            <fa-surface class="bgc-light-blue-50 homeMainView">
                 <div align="center">
                     <div class="text-center" style="margin-top:50px;">
                         <img src="http://placehold.it/350x150"></img>
@@ -22,6 +60,7 @@
                         <h1 style="color: #E26714;">SteakIm</h1>
                     </div>
                     <div class="text-center">
+                        <pre>{{user}}</pre>
                         <h2>Entrar con</h2>
                         <button ng-hide="user" ng-click="login('google')" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sign Up - LogIn" tooltip-position="bottom" style="margin-right:25px;">Google <i class="mdi mdi--plus-one"></i>
                         </button>
@@ -35,7 +74,43 @@
         <!-- footer -->
         <fa-surface class="bgc-light-blue-50">
             <footer>
-                <a href="">GitHub <i class="steak-github-alt"></i></a>
+                <div align="center">
+                    <div class="text-center">
+                        <div class="fab" style="margin-top:10px;">
+                            <a href="">GitHub<i class="steak-github-alt" style="vertical-align:middle;"></i></a>
+                        </div>
+                        <div class="fab">
+                            <button class="fab__primary btn btn--xl btn--blue btn--fab" lx-ripple lx-tooltip="Programadores" tooltip-position="left">
+                                <i class="mdi mdi--desktop-windows"></i>
+                                <i class="mdi mdi--keyboard"></i>
+                            </button>
+
+                            <div class="fab__actions fab__actions--up">
+                                <a href="https://www.facebook.com/jorgeenrique.morenoleon.1" target="_blank">
+                                    <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Jorge Enrique Moreno León" tooltip-position="bottom">
+                                        <img class="list-primary-tile__img" src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/37018_251547664988576_1705237246_n.jpg?oh=bcb2a345119cc65120ba90cb02fb529e&oe=552AD91C&__gda__=1428526320_ef6c4a9754aa9b9d51bb7f07759066ee">
+                                    </button>
+                                </a>
+                                <a href="https://www.facebook.com/okvic77" target="_blank">
+                                    <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Victor Manuel Rojas Hernandez" tooltip-position="bottom">
+                                        <img class="list-primary-tile__img" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c47.47.590.590/s160x160/180817_186473941372889_5243302_n.jpg?oh=f95533838372038b6ae230960d099f14&oe=555A774B&__gda__=1428371328_9bfcbc84134fb6b0d6bc12b54e2212b9">
+                                    </button>
+                                </a>
+                                <a href="https://www.facebook.com/alex.chikito.1" target="_blank">
+                                    <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="Alex Chiquito" tooltip-position="bottom">
+                                        <img class="list-primary-tile__img" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/s100x100/1010001_875340365814572_6352156979033364608_n.jpg?oh=ac4c3d5f8ceb4e45041723a70674b1d8&oe=5563A7EA&__gda__=1432687984_708412cf9704251a830471c432fa0c17">
+                                    </button>
+                                </a>
+                                <a href="https://www.facebook.com/davidraziel.jimenezpz" target="_blank">
+                                    <button class="btn btn--l btn--black btn--fab" lx-ripple lx-tooltip="David Raziel Jimenez Pz" tooltip-position="bottom">
+                                        <img class="list-primary-tile__img" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/1982182_10201721387531783_1690412050_n.jpg?oh=857b2120b651bbef15924d20364bc2e0&oe=5520E0A8&__gda__=1433218873_4fa5f11449b2b367ceb72019f1e84696">
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </footer>
         </fa-surface>
 

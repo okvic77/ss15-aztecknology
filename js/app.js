@@ -37,26 +37,28 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		var ok = {
 			main: undefined
 		};
+		var motor_ = undefined;
 		var handleLogin = function(error, authData) {
 			if (error || !authData) {
-				ok.error = error;;
+				ok.error = error;
 				ok.response = undefined;
 				ok.main = undefined;
 			}
 			else {
 				ok.error = undefined;
 				ok.response = authData;
+				
 
-				var info = authData.facebook || authData.twitter || authData.google;
-				
-				console.log(info);
-				
+				var perfil = authData.provider ?  authData[authData.provider] : authData.cachedUserProfile;
+
 				ok.main = {
-					name: authData.facebook.cachedUserProfile.first_name,
-					namefull: authData.facebook.displayName,
-					image: authData.facebook.cachedUserProfile.picture.data.url
+					name: perfil.displayName,
+					image: perfil.cachedUserProfile.image || perfil.cachedUserProfile.picture || perfil.cachedUserProfile.profile_image_url,
+					id: authData.uid || motor_ + ':' + perfil.id
 				}
-
+				
+				if (angular.isObject(ok.main.image)) ok.main.image = ok.main.image.data.url;
+				
 
 
 				//console.log("Authenticated successfully with payload:", authData);
@@ -65,6 +67,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 		//myFirebaseRef.onAuth(handleLogin);
 		ok.login = function(engine) {
+			motor_ = engine;
 			switch (engine) {
 				case 'facebook':
 					myFirebaseRef.authWithOAuthPopup("facebook", handleLogin);
@@ -353,7 +356,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 
 					var usersss = live.chat.child('online');
-					var me = usersss.child(user.response.uid);
+					
 
 
 					live.chat.child('title').set(live.alias);
@@ -369,24 +372,6 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 					//}				
 
-
-					var reporter = function reporter() {
-						me.set({
-							online: true,
-							time: Date.now(),
-							usuario: user.main
-						});
-
-
-
-					};
-
-
-
-
-
-					var myReporter = $interval(reporter, 10000);
-					reporter();
 
 
 
@@ -419,7 +404,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 						var insert = {
 							text: $scope.nuevo.mensaje,
 							//date: moment().format('x')
-							date: Date.now()
+							date: Firebase.ServerValue.TIMESTAMP
 						};
 						insert.user = user.main;
 						$scope.mensajes.$add(insert);
@@ -448,17 +433,39 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 				}],
 				resolve: {
-					live: ['$stateParams', function($stateParams) {
+					live: ['$stateParams', 'user', function($stateParams, user) {
 						var chat = $stateParams.chat;
+						
+						
+						var chatRef = myChatsRef.child(chat);
+						
+						var me = chatRef.child('online').child(user.response.uid);
+
+						me.set({
+							online: true,
+							time: Date.now(),
+							usuario: user.main
+						});
+
+
+
+
+						
+						
+						me.onDisconnect().remove();
+						
 						console.log('Cargando firebase de ' + chat);
 						return {
-							chat: myChatsRef.child(chat),
+							chat: chatRef,
 							menssages: myMessageRef.child(chat),
 							pins: myPinsRef.child(chat),
 							alias: chat
 						};
 					}]
-				}
+				},
+				onExit: ['live', function(live){
+    console.log('EXIT');
+  }]
 			});
 	}]);
 
@@ -503,7 +510,18 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 		}
 
-	}])
+	}]);
+	
+	
+	app.controller('MessageView', ['$scope', function($scope){
+		var mensaje;
+		$scope.init = function(mensaje){
+			mensaje = mensaje;
+			console.log(mensaje);
+		}
+		
+	}]);
+	
 
 
 })();

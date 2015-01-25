@@ -196,8 +196,7 @@ body {
   padding: 0;
   right: 0px;
 }
-#chatView,
-fa-app {
+#chatView, fa-app {
   position: fixed;
   top: 0;
   right: 0;
@@ -239,20 +238,33 @@ fa-app {
   min-height: 155px;
 }
 .animacion {
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
-a {
+a{
   color: #004080;
-  text-decoration: none;
+	text-decoration: none;
 }
-footer i {
+
+footer i{
   font-size: 2em;
 }
-.header {
-  border-bottom: 1px solid red;
-  -webkit-box-shadow: 0 10px 50px 10px #969696;
-  box-shadow: 0 10px 50px 10px #969696;
+.test{
+  border-bottom:1px solid red;
+/*
+-webkit-box-shadow: 0 10px 50px 10px #969696;
+box-shadow: 0 10px 50px 10px #969696;
+  */
+-webkit-box-shadow: 0 20px 60px 5px #737373;
+box-shadow: 0 20px 60px 5px #737373;}
+ /*# sourceMappingURL=master.css.map */
+ 
+ 
+ 
+ 
+.homeMainView {
+  overflow: scroll;
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
-/*# sourceMappingURL=master.css.map */
