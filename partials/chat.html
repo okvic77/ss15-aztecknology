@@ -5,7 +5,7 @@
         <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
 
             <fa-surface>
-                <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple style="margin-top:25px; margin-left:25px;">Ir al inicio</button>
+                <button ui-sref="inicio" class="btn btn--m btn--red btn--raised" lx-ripple style="margin-top:25px; margin-left:25px;"><i class="mdi mdi--keyboard-arrow-left"></i> Usuarios</button>
                 <!-- Prueba de board -->
             </fa-surface>
 
@@ -14,7 +14,7 @@
             <!--<fa-view>-->
             <fa-surface fa-size="[undefined, undefined]" class="mainboard">
                 <div style="margin: 10px;" align="center" style="background-color:#E0F2F1; border: solid 2px #607D8B;">
-                    <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin</button>
+                    <button ng-click="pin.nuevo()" class="btn btn--m btn--orange btn--raised" lx-ripple>Nuevo pin <i class="mdi mdi--exposure-plus-1"></i></button>
                 </div>
                 <div ng-repeat="pink in pins" pin-view class="pin" style="background-color:#E0F2F1; border: solid 2px #607D8B;">
                     <div class="card">
@@ -69,24 +69,21 @@
 
 
                                 <button class="btn btn--m btn--blue btn--raised" lx-ripple></button>
-                                <button ng-click="pink.concepto.push({texto:data.concepto, precio: data.precio }); guardarPin(pink); ">Agregar</button>
+                                <button class="btn btn--m btn--blue btn--raised" lx-ripple ng-click="pink.concepto.push({texto:data.concepto, precio: data.precio }); guardarPin(pink); ">Agregar</button>
 
                             </div>
                             <div ng-show="pink.tipo == 'tarea'">
-                                Descripcion: {{pink.descripcion}}
-                                Encargado: {{pink.encargado}}
-                                Fecha: {{pink.fecha}}
-                                <lx-text-field label="¿En que consiste la tarea?">
-                                    <input type="text" ng-model="pink.descripcion" required min="3">
+
+                                <lx-text-field label="Descripcion">
+                                    <input type="text" ng-model="pink.descripcion" ng-disabled="data.guardado">
                                 </lx-text-field>
-                                <lx-text-field label="¿Quien es el encargado?">
-                                    <input type="text" ng-model="pink.encargado" required min="3">
+                                <lx-text-field label="Encargado">
+                                    <input type="text" ng-model="pink.encargado" ng-disabled="data.guardado">
                                 </lx-text-field>
-                                <lx-date-picker model="pink.fecha" label="Fecha para terminarla"></lx-date-picker>
+                                <lx-date-picker model="pink.fecha" ng-disabled="data.guardado" label="Fecha para terminarla" ></lx-date-picker>
                                 <div class="checkbox">
                                     <input type="checkbox" id="done" class="checkbox__input">
                                     <label for="checkbox1" class="checkbox__label">Done</label>
-                                    <button ng-model="button" ng-disabled="data.guardado" ng-click="data.guardado=true">Guardar tarea</button>
                                 </div>
                             </div>
 

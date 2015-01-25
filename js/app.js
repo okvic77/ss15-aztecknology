@@ -223,7 +223,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 	app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 		//
 		// For any unmatched url, redirect to /state1
-		$urlRouterProvider.otherwise("/");
+		$urlRouterProvider.otherwise("/inicio");
 		
 		if (window.__env && window.__env.HTML5) {
 			console.log('We are in divshot');
@@ -235,7 +235,7 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 
 		$stateProvider
 			.state('inicio', {
-				url: "/",
+				url: "/inicio",
 				templateUrl: "/partials/home.html",
 				controller: ['$scope', '$firebase', 'user', '$famous', '$timeout', function($scope, $firebase, user, $famous, $timeout) {
 
