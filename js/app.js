@@ -224,7 +224,8 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 		//
 		// For any unmatched url, redirect to /state1
 		$urlRouterProvider.otherwise("/");
-		//$locationProvider.html5Mode(true);
+		
+		if (window.__env && window._env.HTML5) $locationProvider.html5Mode(true);
 		//
 		// Now set up the states
 
