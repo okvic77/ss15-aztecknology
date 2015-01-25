@@ -4,18 +4,23 @@
     <fa-header-footer-layout fa-options="{headerSize: 75, footerSize: 75}">
 
         <!-- header -->
-        <fa-surface fa-background-color="'red'">Header</fa-surface>
+        <fa-surface class="bgc-light-blue-100">Header</fa-surface>
 
         <!-- content -->
         <fa-modifier fa-translate="box.translate.get()" fa-opacity="box.opacity" fa-size="[undefined, undefined]">
-            <fa-surface fa-background-color="'black'">
+            <fa-surface>
                 <div align="center">
-                    
+                    <div class="text-center" style="margin-top:50px;">
+                        <img src="http://placehold.it/350x150"></img>
+                    </div>
                     <div class="text-center">
-                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
-                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
-                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
-                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple>Button</button>
+                        <h1 style="color: #E26714;">SteakIm</h1>
+                    </div>
+                    <div class="text-center">
+                        <h2>Entrar con</h2>
+                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sing in" tooltip-position="bottom" style="margin-right:25px;">Google <i class="mdi mdi--plus-one"></i></button>
+                        <button class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sing in" tooltip-position="bottom" style="margin-right:25px;">Twitter</button>
+                        <button ng-hide="user" ng-click="login()" class="btn btn--xl btn--blue btn--raised bgc-red-600" lx-ripple lx-tooltip="Sing in" tooltip-position="bottom">Facebook</button>
                     </div>
                 </div>
 

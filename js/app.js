@@ -232,11 +232,11 @@ var myFirebaseRef = new Firebase("https://steakim.firebaseio.com/"),
 					};
 					$scope.animateBox = function() {
 						$scope.box.translate.set([0, 0, 0], {
-							duration: 1500,
+							duration: 800,
 							curve: 'easeInOut'
 						});
 						$scope.box.opacity.set(1, {
-							duration: 1500,
+							duration: 800,
 							curve: 'easeInOut'
 						});
 					};
